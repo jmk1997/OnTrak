@@ -3,13 +3,6 @@
 
 This starter template is using create-react-app and is using the MERN stack. Not Mongodb but MySQL. If you wish to use a different DB, take a look at the [express database integration docs](https://expressjs.com/en/guide/database-integration.html).
 
-# Getting Started
-Start by cloning the repo
-
-`git clone https://github.com/ccsalazar/react-mysql-boilerplate.git MyApp` 
-
-There are two package.json files that will need to be used to install dependencies. One in the root directory and one in the client directory.
-
 # Using Yarn
 
 From the root directoy and the client directory install dependencies by running
@@ -19,29 +12,6 @@ From the root directoy and the client directory install dependencies by running
 Once the dependencies have been installed from both directories, you can start the template from the root directory by running
 
 `yarn run dev`
-
-
-# Using NPM
-
-This template is already set up to use yarn but if you prefer to use npm then there will be slight modifications to the scripts inside the root directories package.json file. Just update your package.json scripts in the root directory to:
-
-```
-  "scripts": {
-    "start": "node server/server.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
-    "server": "nodemon server/server.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-```
-
-To install dependencies, inside the root and client directory run
-
-`npm install`
-
-Once the dependencies have been installed from both directories, you can start the template from the root directory by running
-
-`npm run dev`
 
 # Configuring dev environment keys
 
