@@ -17,13 +17,3 @@ Once the dependencies have been installed from both directories, you can start t
 
 Inside the server/config directory you can add a `dev.js` file to hold your db information or things like API keys while you develop. This repo is already set to .gitignore `dev.js` but if you name your file something different just don't forget to update your .gitignore. 
 
-# Heroku Deploy Option
-
-There is a heroku-postbuild script included in the template if you choose to deploy to Heroku. [This article](https://daveceddia.com/deploy-react-express-app-heroku/) by Dave Ceddia covers the reasoning pretty well. But basically it tells heroku to install the react-scripts needed to build the React app. By default the react-scripts are not installed in production. 
-
-
-
-
-
-
-
