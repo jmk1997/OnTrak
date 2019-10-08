@@ -1,28 +1,77 @@
-.App {
-  text-align: center;
+.loginForm {
+  width: 35%;
+  float: right;
+  background: #FFF;
+  height: 100vh;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.logo {
+  width: 25%;
+  margin-top: 0;
+  margin-right: 5%;
+  float: right;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+form {
+  width: 75%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 60%;
 }
 
-.App-title {
-  font-size: 1.5em;
+.loginImage {
+  width: 65%;
+  height: 100vh;
+  float: left;
 }
 
-.App-intro {
-  font-size: large;
+.formGroup {
+  margin-bottom: 23px;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+label {
+	font-size: 14px;
+	font-weight: bold;
+	font-family: 'Arial';
+	margin-bottom: 2px;
+	display: block; 
 }
+
+input {
+  display: block;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  padding: 11px;
+  box-sizing: border-box;
+  font-family: 'Arial';
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.formSubmit {
+  text-align: right;
+  margin-top: 5%;
+}
+
+.submit {
+  width: 140px;
+  height: 40px;
+  display: inline-block;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 13px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#submit {
+  background: #ff6801;
+  color: #fff;
+}
+
+#submit:hover {
+  background-color: #cd5300; 
+}
+
