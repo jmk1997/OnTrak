@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import logo from './OnTrak_blue.png';
 import loginImg from './chi.jpg';
 import './App.css';
+import Groups from './Groups';
 
 class App extends Component {
+
 
   render() {
     return (
@@ -22,16 +24,12 @@ class App extends Component {
             </div>
 
             <div className="formSubmit">
+              
               <input type="submit" value="Login" class="submit" name="submit" id="submit" />
+             
             </div>
           </form>
         </div>
-          {/*
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-          */}
-        
       </div>
     
     );
