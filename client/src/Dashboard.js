@@ -21,7 +21,7 @@ class Dashboard extends Component {
 
             <nav>
                 <ul>
-                    <li><a class="active" href="#">DASHBOARD</a></li>
+                    <li><a className="active" href="#">DASHBOARD</a></li>
                     <li><a href="#">CALENDAR</a></li>
                     <li><a href="#">TASKS</a></li>
                     <li><a href="#">FILES</a></li>
