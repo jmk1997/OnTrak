@@ -33,6 +33,20 @@ db.query('SELECT * FROM Users', function (err, rows, fields){
   console.log(rows)
 })
 
+
+app.get('/db', (req, res) => {
+  db.query('SELECT * FROM TEMPTasks', (err, results) =>{
+    if(err){
+      return res.send(err)
+    }
+    else{
+      return res.json({
+        data: results
+      })
+    }
+  });
+});
+
 // usage: if username and password belong to same row on user table, let them log in a display the information relevant to them
 // store current user -> current group to display correct info
 

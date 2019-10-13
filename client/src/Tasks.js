@@ -113,11 +113,10 @@ class Tasks extends Component {
           <div className="content">
 
             <h1>Tasks</h1>
-
             <div className="taskAddition">
               <h3 style={{color:'#2699FB'}}>Add Task:</h3>
-            </div>
-            <div className = "card">
+            
+              <div className = "taskForm">
                 <Input
                     inputType={"text"}
                     title={"Task Name"}
@@ -141,6 +140,13 @@ class Tasks extends Component {
                     style={buttonStyle}
                     /> {" "} {/*Submit */}
               </div>
+            </div>
+            <div className = "curTasks"> 
+            <h3 style={{color:'#2699FB'}}>Add Task:</h3>
+            
+
+
+            </div>
           </div>
 
         </div>

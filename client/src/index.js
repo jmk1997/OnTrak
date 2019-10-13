@@ -7,5 +7,5 @@ import Dashboard from './Dashboard';
 import Tasks from './Tasks';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Tasks />, document.getElementById('root'));
+ReactDOM.render(<Tasks/>, document.getElementById('root'));
 registerServiceWorker();
