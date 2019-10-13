@@ -11,24 +11,47 @@ import TextArea from "./components/TextArea";
 A lot of components used from https://codesandbox.io/embed/x8omy0p9z.
 Tentative file, just for testing functionality
 */
+const buttonStyle = {
+  margin: "10px 10px 10px 10px"
+};
+
 class Tasks extends Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
+      isFetching: false,
       newTask: {
         name: "",
         taskDesc: ""
       },
-
-      genderOptions: ["Male", "Female", "Others"],
-      skillOptions: ["Programming", "Development", "Design", "Testing"]
+      curTasks: []
     };
     this.handleTextArea = this.handleTextArea.bind(this);
     this.handleFullName = this.handleFullName.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }
+
+  componentDidMount(){
+    this.fetchUsersWithFetchAPI();
+  }
+
+  fetchUsersWithFetchAPI = () => {
+    this.setState({...this.state, isFetching: true});
+    fetch('http://localhost:5000/db')
+        .then(response => response.json())
+        .then(result => {
+            this.setState({...this.state, isFetching: false, curTasks: result})
+        })
+        .catch(e => {
+            console.log(e);
+            this.setState({...this.state, isFetching: false});
+        });
+      };
+
+  //Bootleg way of querying our server
 
   handleFullName(e) {
      let value = e.target.value;
@@ -97,6 +120,7 @@ class Tasks extends Component {
       () => console.log(this.state.newTask)
     );
   }
+
     render() {
       return (
       <div className="App" id="app-div">
@@ -116,9 +140,9 @@ class Tasks extends Component {
             <div className="taskAddition">
               <h3 style={{color:'#2699FB'}}>Add Task:</h3>
             
-              <div className = "taskForm">
+              <div>
                 <Input
-                    inputType={"text"}
+                    inputtype={"text"}
                     title={"Task Name"}
                     name={"name"}
                     value={this.state.newTask.name}
@@ -143,21 +167,22 @@ class Tasks extends Component {
             </div>
             <div className = "curTasks"> 
             <h3 style={{color:'#2699FB'}}>Add Task:</h3>
+
+              { console.log('Displaying Dates')}
+              {console.log(this.state.curTasks)}
+                
             
-
-
-            </div>
           </div>
 
         </div>
-
+        </div>
       </div>
       );
+      
+      }
     }
-  }
+  
 
-  const buttonStyle = {
-  margin: "10px 10px 10px 10px"
-};
+
 
   export default Tasks;

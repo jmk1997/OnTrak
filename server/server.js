@@ -33,6 +33,22 @@ db.query('SELECT * FROM Users', function (err, rows, fields){
   console.log(rows)
 })
 
+//Following https://www.youtube.com/watch?v=HPIjjFGYSJ4 guide:
+
+app.get('/db/add', (req, res) =>{
+  //TODO: Query checking.
+  const {TaskName, TaskDesc} = req.query;
+  const INSERT_TASK_QUERY = `INSERT into TEMPTasks (TaskName, TaskDesc, CreateDate) VALUES('${TaskName}', '${TaskDesc}', CURDATE())`;
+  db.query(INSERT_TASK_QUERY, (err, results)=>{
+    if(err){
+      return res.send(err)
+    }
+    else{
+      return res.send('succesfully added product')
+    }
+
+  })
+});
 
 app.get('/db', (req, res) => {
   db.query('SELECT * FROM TEMPTasks', (err, results) =>{
