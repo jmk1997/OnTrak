@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import Groups from './Groups';
 import Dashboard from './Dashboard';
+import Tasks from './Tasks';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Dashboard />, document.getElementById('root'));
+ReactDOM.render(<Tasks />, document.getElementById('root'));
 registerServiceWorker();

@@ -30,12 +30,20 @@ form {
   position: relative;
 }
 
+.formControl {
+  padding: 11px;
+  box-sizing: border-box;
+  font-family: 'Arial';
+  font-weight: 500;
+  font-size: 13px;
+}
+
 label {
 	font-size: 14px;
 	font-weight: bold;
 	font-family: 'Arial';
 	margin-bottom: 2px;
-	display: block; 
+	display: block;
 }
 
 input {
@@ -72,6 +80,5 @@ input {
 }
 
 #submit:hover {
-  background-color: #cd5300; 
+  background-color: #cd5300;
 }
-
