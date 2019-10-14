@@ -1,20 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+
+import Groups from "./views/Groups"
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 
 class App extends Component {
-
+  constructor(props) {
+    super(props);
+  }
+  users = [1, 2, 3, 4];
   render() {
     return (
-      <div className="App" id="app-div">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <div>
+          <heading>Login to:</heading>
+          {this.users.map(u => (
+            <Link to={`/${u}`}><button>User {u}</button></Link>
+          ))}
+          <Switch>
+            {this.users.map(u => (
+              <Route path={`/${u}`}>
+                <Groups user={u} />
+              </Route>
+            ))}
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

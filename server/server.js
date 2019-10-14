@@ -30,7 +30,7 @@ db.connect( (err) => {
 // example query that will print out to the browser's console
 db.query('SELECT * FROM Users', function (err, rows, fields){
   if (err) throw err
-  console.log(rows)
+  // console.log(rows)
 })
 
 // usage: if username and password belong to same row on user table, let them log in a display the information relevant to them
