@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './OnTrak.png';
-import avatar from './avatar.png';
-import bell from './bell.png';
+import avatar from './User.svg';
+import bell from './Bell.svg';
 import lake from './lake.jpg';
 import './Dashboard.css';
 

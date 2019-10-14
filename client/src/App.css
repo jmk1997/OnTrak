@@ -8,8 +8,9 @@
 .logo {
   width: 25%;
   margin-top: 0;
-  margin-right: 5%;
+  right: 0;
   float: right;
+  position: absolute;
 }
 
 form {
