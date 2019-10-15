@@ -1,0 +1,80 @@
+[33mcommit 3d4c711e7f18c1f4e7d7bdee693db38d4172f85a[m[33m ([m[1;36mHEAD -> [m[1;32mrrejuso[m[33m, [m[1;31morigin/rrejuso[m[33m)[m
+Author: Rafael Rejuso <r.rejuso@gmail.com>
+Date:   Sun Oct 13 10:58:18 2019 -0500
+
+    Fetching issues
+
+[33mcommit d5d9beda8e30c54fac2f525b1c110a535bdad245[m
+Author: Rafael Rejuso <r.rejuso@gmail.com>
+Date:   Sat Oct 12 23:37:56 2019 -0500
+
+    database query returns JSON serverside
+
+[33mcommit b0e543832afab457204226577b7d7232be44b809[m
+Author: Rafael Rejuso <r.rejuso@gmail.com>
+Date:   Sat Oct 12 20:00:21 2019 -0500
+
+    Bare bones non functional page
+    
+    Branched off antonio's and worked on just creating a very simple input page. No current functionality
+
+[33mcommit 31e1d8c82d13bfed30a92c95bcfe8dc0de1fbabb[m
+Author: Rafael Rejuso <r.rejuso@gmail.com>
+Date:   Sat Oct 12 17:54:14 2019 -0500
+
+    Update Dashboard.js
+
+[33mcommit 416ff90b87c8c7bfe7f06f269de0dba0cd318af0[m[33m ([m[1;31morigin/antonio[m[33m, [m[1;32mantonio[m[33m)[m
+Author: Antonio Garcia <antoniojg21@gmail.com>
+Date:   Wed Oct 9 16:20:40 2019 -0500
+
+    Completed Groups and Dasboard front-end
+
+[33mcommit 0da055507807c2984d80bb886d6aebc556589fa4[m
+Author: Antonio Garcia <antoniojg21@gmail.com>
+Date:   Tue Oct 8 10:31:13 2019 -0500
+
+    Completed login page design
+
+[33mcommit 56e116afe8faaa9c43b91afe25789ab6f18b8d10[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 259d380 7e30c71
+Author: jmk1997 <jmkeras24@gmail.com>
+Date:   Mon Oct 7 18:07:39 2019 -0500
+
+    Merge branch 'master' of github.com:jmk1997/OnTrak
+
+[33mcommit 259d3802308860450a75cf892a0b3974db75b617[m
+Author: jmk1997 <jmkeras24@gmail.com>
+Date:   Mon Oct 7 18:07:28 2019 -0500
+
+    added /dev
+
+[33mcommit 7e30c71995221ae5630b51f4fd6b973504b8b83a[m
+Author: Julia <36942420+jmk1997@users.noreply.github.com>
+Date:   Mon Oct 7 17:56:58 2019 -0500
+
+    Update README.md
+
+[33mcommit 443812485bbefe4b0fe8d5032264e91a79273f5f[m
+Author: Julia <36942420+jmk1997@users.noreply.github.com>
+Date:   Mon Oct 7 17:55:08 2019 -0500
+
+    Update README.md
+
+[33mcommit 5ea07d184394e8b9af262ee0a7dfdb22cadc5045[m
+Author: jmk1997 <jmkeras24@gmail.com>
+Date:   Mon Oct 7 17:50:28 2019 -0500
+
+    Security fixes
+
+[33mcommit 38f9ba7137bc3161b527a7041309d0203f1251cc[m
+Author: jmk1997 <jmkeras24@gmail.com>
+Date:   Mon Oct 7 17:42:54 2019 -0500
+
+    Initial commit
+
+[33mcommit 209d05c738bc9763e1877afac5f795c20ddb5397[m
+Author: jmk1997 <36942420+jmk1997@users.noreply.github.com>
+Date:   Mon Sep 23 19:13:21 2019 -0500
+
+    Initial commit

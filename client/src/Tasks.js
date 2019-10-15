@@ -26,7 +26,7 @@ class Tasks extends Component {
         name: "",
         taskDesc: ""
       },
-      curTasks: []
+      data: []
     };
     this.handleTextArea = this.handleTextArea.bind(this);
     this.handleFullName = this.handleFullName.bind(this);
@@ -39,16 +39,9 @@ class Tasks extends Component {
   }
 
   fetchUsersWithFetchAPI = () => {
-    this.setState({...this.state, isFetching: true});
     fetch('http://localhost:5000/db')
-        .then(response => response.json())
-        .then(result => {
-            this.setState({...this.state, isFetching: false, curTasks: result})
-        })
-        .catch(e => {
-            console.log(e);
-            this.setState({...this.state, isFetching: false});
-        });
+    .then(res => res.json())
+    .then(result => this.setState({...this.state, data: result}))
       };
 
   //Bootleg way of querying our server
@@ -122,6 +115,7 @@ class Tasks extends Component {
   }
 
     render() {
+      const STUFF = this.state.data;
       return (
       <div className="App" id="app-div">
 
@@ -132,6 +126,8 @@ class Tasks extends Component {
 
 
         </header>
+
+        <div> { console.log(STUFF) } </div>
 
         <div className="mainContainer">
           <div className="content">
