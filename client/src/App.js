@@ -1,10 +1,57 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import logoBlue from './OnTrak_blue.png';
 import loginImg from './chi.jpg';
 import './App.css';
 import Groups from './Groups';
 
+
+
 class App extends Component {
+  
+  mysql = require('mysql');
+
+  con = this.mysql.createConnection({
+    host: 'localhost',
+    user: 'user',
+    password: 'password',
+  });
+
+  con.connect();
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      pass: '',
+    };
+  }
+
+
+  
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+    let userEmail = this.state.email;
+    let userPass = this.state.pass;
+    if (userEmail == "test@mail.com") {
+      console.log("Got email");
+      if (userPass == "test") {
+        console.log("Hello user test");
+      }
+      else {
+        console.log("Wrong pass");
+      }
+    }
+    else {
+      console.log("No email found")
+    }
+  }
+
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
+  }
   
 
   render() {
@@ -15,15 +62,15 @@ class App extends Component {
         <img src={loginImg} className="loginImage" />
 
         <div className="loginForm">
-          <img src={logoBlue} className="logo" />
+          <img src={logoBlue} className="logoLogin" />
 
-          <form  onSubmit={this.handleSubmit}>
+          <form  onSubmit={this.mySubmitHandler}>
             <div className="formGroup">
-              <input type="email" name="email" id="email" placeholder="Email" required />
+              <input type="text" name="email" id="email" placeholder="Email" onChange={this.myChangeHandler} required />
             </div>
 
             <div className="formGroup">
-              <input type="pass" name="pass" id="pass" placeholder="Password" required />
+              <input type="text" name="pass" id="pass" placeholder="Password" onChange={this.myChangeHandler} required />
             </div>
 
             <div className="formSubmit">

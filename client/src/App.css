@@ -5,12 +5,11 @@
   height: 100vh;
 }
 
-.logo {
+.logoLogin {
   width: 25%;
   margin-top: 0;
   right: 0;
   float: right;
-  position: absolute;
 }
 
 form {
