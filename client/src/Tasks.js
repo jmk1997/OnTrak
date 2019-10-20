@@ -7,6 +7,7 @@ import Button from "./components/Button";
 import Input from "./components/Input";
 import TextArea from "./components/TextArea";
 import TaskCard from './components/TaskCard';
+import { parse } from 'url';
 
 /*
 A lot of components used from https://codesandbox.io/embed/x8omy0p9z.
@@ -44,11 +45,7 @@ class Tasks extends Component {
     .then(res => res.json())
     //.then(result => this.setState({...this.state, data: result}))
     .then(result =>{ 
-      
-      console.log(result);
-      this.setState({...this.state, data: result})}
-    
-    )
+      this.setState({...this.state, data: result})})
       };
 
   //Bootleg way of querying our server
@@ -109,6 +106,7 @@ class Tasks extends Component {
 
     render() {
       const STUFF = this.state.data;
+      const JSONSTUFF = JSON.stringify(STUFF);
       return (
       <div className="App" id="app-div">
 
@@ -119,9 +117,6 @@ class Tasks extends Component {
 
 
         </header>
-
-        <div> { console.log(STUFF) } </div>
-
 
         <div className="mainContainer">
           <div className="content">
@@ -157,6 +152,11 @@ class Tasks extends Component {
             </div>
             <div className = "curTasks"> 
             <h3 style={{color:'#2699FB'}}>Current Task:</h3>
+
+            <div>
+            {JSON.stringify(STUFF)}
+
+            </div>
             
             <TaskCard title={"Task1"} desc = "description of Task 1."></TaskCard>
             <TaskCard title={"Task2"} desc = "description of Task 1."></TaskCard>

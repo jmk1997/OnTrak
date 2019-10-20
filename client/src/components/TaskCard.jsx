@@ -6,7 +6,7 @@ const TaskCard = props => {
       <label for={props.name} className="form-label">
         {props.title}
       </label>
-     <body>{props.desc}</body>
+     {props.desc}
 
   </div>
    );
