@@ -6,6 +6,7 @@ import './Tasks.css';
 import Button from "./components/Button";
 import Input from "./components/Input";
 import TextArea from "./components/TextArea";
+import TaskCard from './components/TaskCard';
 
 /*
 A lot of components used from https://codesandbox.io/embed/x8omy0p9z.
@@ -26,7 +27,7 @@ class Tasks extends Component {
         name: "",
         taskDesc: ""
       },
-      data: []
+      data: ""
     };
     this.handleTextArea = this.handleTextArea.bind(this);
     this.handleFullName = this.handleFullName.bind(this);
@@ -41,7 +42,13 @@ class Tasks extends Component {
   fetchUsersWithFetchAPI = () => {
     fetch('http://localhost:5000/db')
     .then(res => res.json())
-    .then(result => this.setState({...this.state, data: result}))
+    //.then(result => this.setState({...this.state, data: result}))
+    .then(result =>{ 
+      
+      console.log(result);
+      this.setState({...this.state, data: result})}
+    
+    )
       };
 
   //Bootleg way of querying our server
@@ -100,20 +107,6 @@ class Tasks extends Component {
     });
   }
 
-  handleTextArea(e) {
-    console.log("Inside handleTextArea");
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        newTask: {
-          ...prevState.newTask,
-          taskDesc: value
-        }
-      }),
-      () => console.log(this.state.newTask)
-    );
-  }
-
     render() {
       const STUFF = this.state.data;
       return (
@@ -128,6 +121,7 @@ class Tasks extends Component {
         </header>
 
         <div> { console.log(STUFF) } </div>
+
 
         <div className="mainContainer">
           <div className="content">
@@ -162,10 +156,10 @@ class Tasks extends Component {
               </div>
             </div>
             <div className = "curTasks"> 
-            <h3 style={{color:'#2699FB'}}>Add Task:</h3>
-
-              { console.log('Displaying Dates')}
-              {console.log(this.state.curTasks)}
+            <h3 style={{color:'#2699FB'}}>Current Task:</h3>
+            
+            <TaskCard title={"Task1"} desc = "description of Task 1."></TaskCard>
+            <TaskCard title={"Task2"} desc = "description of Task 1."></TaskCard>
                 
             
           </div>
