@@ -41,7 +41,7 @@ class Tasks extends Component {
   }
 
   fetchUsersWithFetchAPI = () => {
-    fetch('http://localhost:5000/db')
+    fetch('db')
     .then(res => res.json())
     //.then(result => this.setState({...this.state, data: result}))
     .then(result =>{ 
