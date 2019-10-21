@@ -58,16 +58,16 @@ app.get('/db/add', (req, res) =>{
 });
 
 app.get('/db', (req, res) => {
-  db.query('SELECT * FROM TEMPTasks', (err, results) =>{
+  db.query({sql:'SELECT * FROM TEMPTasks'}, (err, results) =>{
     if(err){
       return res.send(err)
     }
-    else{
+    else{   
       return res.json({
         status: "ok",
         code: 200,
         data: results
-      })
+            })
     }
   });
 });

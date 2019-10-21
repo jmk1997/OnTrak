@@ -28,7 +28,7 @@ class Tasks extends Component {
         name: "",
         taskDesc: ""
       },
-      data: ""
+      taskArray: []
     };
     this.handleTextArea = this.handleTextArea.bind(this);
     this.handleFullName = this.handleFullName.bind(this);
@@ -45,7 +45,7 @@ class Tasks extends Component {
     .then(res => res.json())
     //.then(result => this.setState({...this.state, data: result}))
     .then(result =>{ 
-      this.setState({...this.state, data: result})})
+      this.setState({taskArray: result.data})})
       };
 
   //Bootleg way of querying our server
@@ -105,8 +105,18 @@ class Tasks extends Component {
   }
 
     render() {
-      const STUFF = this.state.data;
-      const JSONSTUFF = JSON.stringify(STUFF);
+      const STUFF = this.state.taskArray;
+      const printedStuff = [];
+      Object.keys(STUFF).forEach(function(key){
+        var row = STUFF[key]
+        printedStuff.push(row.TaskName)
+      }) 
+      // for(var key in STUFF){
+      //   if(STUFF.hasOwnProperty(key)){
+      //     console.log(key + " - >" + STUFF[key]);
+      //   }
+      // }
+      //const JSONSTUFF = JSON.stringify(STUFF);
       return (
       <div className="App" id="app-div">
 
@@ -154,7 +164,7 @@ class Tasks extends Component {
             <h3 style={{color:'#2699FB'}}>Current Task:</h3>
 
             <div>
-            {JSON.stringify(STUFF)}
+            {printedStuff.map(p => <p>{p}</p>)}
 
             </div>
             
