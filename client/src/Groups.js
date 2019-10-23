@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import logo from './OnTrak.png';
-import avatar from './avatar.png';
-import bell from './bell.png';
+import avatar from './User.svg';
+import bell from './Bell.svg';
 import './Groups.css';
+import { Link, Route, HashRouter, Router, Switch, Redirect } from 'react-router-dom';
 
 class Group extends Component {
 
     render() {
       return (
+       
+
       <div className="App" id="app-div">
       
         <header>
@@ -17,7 +20,7 @@ class Group extends Component {
             
             
         </header>
-        
+      
         <div className="mainContainer">
           <div className="content">
 
@@ -36,6 +39,7 @@ class Group extends Component {
         </div>
         
       </div>
+      
       );
     }
   }

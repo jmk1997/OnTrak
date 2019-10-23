@@ -1,0 +1,55 @@
+.rightTasksSection {
+    width: 59%;
+    height: 90vh;
+    border: solid #000 1px;
+    float: right;
+}
+
+.seperatedParts {
+    float: left;
+    border-right: solid lightgrey 1px;
+    width: 24.8%;
+    height: 100%;
+}
+
+.seperatedParts h2 {
+    padding-left: 5%;
+    color: grey;
+}
+
+.leftOverview {
+    width: 39%;
+    height: 100%;
+    float: left;
+}
+
+.topOverview {
+    height: 50%;
+    width: 100%;
+}
+
+.topOverview img {
+    margin-left: -35%;
+}
+
+.bottomOverview {
+    height: 50%;
+    width: 100%;
+}
+
+.userTasksC {
+    margin-left: -10%;
+    clear: both;
+    padding: 2%;
+}
+
+.userTasksC img {
+    width: 10%;
+    float: left;
+    
+}
+
+.userTasksC p {
+    float: left;
+    padding: 1%;
+}

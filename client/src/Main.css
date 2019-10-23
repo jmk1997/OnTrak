@@ -1,0 +1,101 @@
+.App {
+    height: 100vh;
+    
+}
+
+header {
+    background: #2699FB;
+    height: 6%;
+}
+
+nav {
+    margin-left: 4%;
+    float: left;
+    width: 70%;
+    margin-top: 1%;
+    font-size: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+li {
+    float: left;
+    padding-left: 10%;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    
+    text-decoration: none;
+}
+  
+li a:hover {
+    text-decoration: underline;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.logo {
+    width:5%;
+    float: left;
+    margin-top: .5%;
+    margin-left: .6%;
+}
+
+.userInfo {
+    color: #FFF;
+    padding: 0;
+    float: left;
+    margin-top: -.5%;
+    font-size: 90%;
+    margin-left: 5%;
+}
+
+.bell {
+    width: .75%;
+    float: right;
+    margin-top: 1%;
+    margin-right: .8%;
+}
+
+.avatar {
+    width: 1.5%;
+    float: right;
+    margin-right: .6%;
+    margin-top: .7%;
+}
+
+header:after {
+    content: "";
+    display: table;
+    clear: both;
+    
+}
+
+.mainContainer {
+    position: relative;
+    
+    background: #FFF;
+    width: 100%;
+    min-height: 95%;;
+    float: left;
+}
+
+.content {
+    height: 100%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    /*background: black; */
+    position: relative;
+}
