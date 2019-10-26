@@ -82,8 +82,11 @@ header:after {
     
     background: #FFF;
     width: 100%;
-    min-height: 95%;;
+    min-height: 95%;
+    height: 100%;
+    margin:0;
     float: left;
+    overflow: scroll;
 }
 
 .content {

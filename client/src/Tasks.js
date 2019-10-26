@@ -36,60 +36,61 @@ class Tasks extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchUsersWithFetchAPI();
   }
 
   fetchUsersWithFetchAPI = () => {
     fetch('db')
-    .then(res => res.json())
-    //.then(result => this.setState({...this.state, data: result}))
-    .then(result =>{ 
-      this.setState({taskArray: result.data})})
-      };
+      .then(res => res.json())
+      //.then(result => this.setState({...this.state, data: result}))
+      .then(result => {
+        this.setState({ taskArray: result.data })
+      })
+  };
 
   //Bootleg way of querying our server
 
   handleFullName(e) {
-     let value = e.target.value;
-     this.setState(
-       prevState => ({
-         newTask: {
-           ...prevState.newTask,
-           name: value
-         }
-       }),
-       () => console.log(this.state.newTask)
-     );
-   }
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newTask: {
+          ...prevState.newTask,
+          name: value
+        }
+      }),
+      () => console.log(this.state.newTask)
+    );
+  }
 
   handleInput(e) {
-      let value = e.target.value;
-      let name = e.target.name;
-      this.setState(
-        prevState => ({
-          newTask: {
-            ...prevState.newTask,
-            [name]: value
-          }
-        }),
-        () => console.log(this.state.newTask)
-      );
-    }
+    let value = e.target.value;
+    let name = e.target.name;
+    this.setState(
+      prevState => ({
+        newTask: {
+          ...prevState.newTask,
+          [name]: value
+        }
+      }),
+      () => console.log(this.state.newTask)
+    );
+  }
 
   handleTextArea(e) {
-        console.log("Inside handleTextArea");
-        let value = e.target.value;
-        this.setState(
-          prevState => ({
-            newTask: {
-              ...prevState.newTask,
-              about: value
-            }
-          }),
-          () => console.log(this.state.newTask)
-        );
-      }
+    console.log("Inside handleTextArea");
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newTask: {
+          ...prevState.newTask,
+          about: value
+        }
+      }),
+      () => console.log(this.state.newTask)
+    );
+  }
 
   handleClearForm(e) {
     e.preventDefault();
@@ -104,26 +105,26 @@ class Tasks extends Component {
     });
   }
 
-    render() {
-      const STUFF = this.state.taskArray;
-      const printedStuff = [];
-      Object.keys(STUFF).forEach(function(key){
-        var row = STUFF[key]
-        printedStuff.push(row.TaskName)
-      }) 
-      // for(var key in STUFF){
-      //   if(STUFF.hasOwnProperty(key)){
-      //     console.log(key + " - >" + STUFF[key]);
-      //   }
-      // }
-      //const JSONSTUFF = JSON.stringify(STUFF);
-      return (
+  render() {
+    const STUFF = this.state.taskArray;
+    const printedStuff = [];
+    Object.keys(STUFF).forEach(function (key) {
+      var row = STUFF[key]
+      printedStuff.push(row)
+    })
+    // for(var key in STUFF){
+    //   if(STUFF.hasOwnProperty(key)){
+    //     console.log(key + " - >" + STUFF[key]);
+    //   }
+    // }
+    //const JSONSTUFF = JSON.stringify(STUFF);
+    return (
       <div className="App" id="app-div">
 
         <header>
-            <img src={logo} className="logo" />
-            <a href="#"><img src={avatar} className="avatar" /></a>
-            <a href="#"><img src={bell} className="bell" /></a>
+          <img src={logo} className="logo" />
+          <a href="#"><img src={avatar} className="avatar" /></a>
+          <a href="#"><img src={bell} className="bell" /></a>
 
 
         </header>
@@ -133,56 +134,56 @@ class Tasks extends Component {
 
             <h1>Tasks</h1>
             <div className="taskAddition">
-              <h3 style={{color:'#2699FB'}}>Add Task:</h3>
-            
+              <h3 style={{ color: '#2699FB' }}>Add Task:</h3>
+
               <div>
                 <Input
-                    inputtype={"text"}
-                    title={"Task Name"}
-                    name={"name"}
-                    value={this.state.newTask.name}
-                    placeholder={"Task name"}
-                    handleChange={this.handleInput}
-                  />{" "}
+                  inputtype={"text"}
+                  title={"Task Name"}
+                  name={"name"}
+                  value={this.state.newTask.name}
+                  placeholder={"Task name"}
+                  handleChange={this.handleInput}
+                />{" "}
 
-                  <TextArea
-                      title={"Task Descsription"}
-                      rows = {10}
-                      value={this.state.newTask.taskDesc}
-                      placeholder={"Describe the Task."}
-                      handleChange={this.handleTextArea}
-                    />{/* About the Task*/}
-                    <Button
-                    // action =  This is where we will work with the DB
-                    type={"primary"}
-                    title={"Submit"}
-                    style={buttonStyle}
-                    /> {" "} {/*Submit */}
+                <TextArea
+                  title={"Task Descsription"}
+                  rows={10}
+                  value={this.state.newTask.taskDesc}
+                  placeholder={"Describe the Task."}
+                  handleChange={this.handleTextArea}
+                />{/* About the Task*/}
+                <Button
+                  // action =  This is where we will work with the DB
+                  type={"primary"}
+                  title={"Submit"}
+                  style={buttonStyle}
+                /> {" "} {/*Submit */}
               </div>
             </div>
-            <div className = "curTasks"> 
-            <h3 style={{color:'#2699FB'}}>Current Task:</h3>
+            <div className="curTasks">
+              <h3 style={{ color: '#2699FB' }}>Current Task:</h3>
 
-            <div>
-            {printedStuff.map(p => <p>{p}</p>)}
+              <div>
+                {printedStuff.map(p => <TaskCard title={p.TaskName} desc={p.TaskDesc}></TaskCard>)}
+
+              </div>
+
+              <TaskCard title={"Task1"} desc="description of Task 1."></TaskCard>
+              <TaskCard title={"Task2"} desc="description of Task 1."></TaskCard>
+
 
             </div>
-            
-            <TaskCard title={"Task1"} desc = "description of Task 1."></TaskCard>
-            <TaskCard title={"Task2"} desc = "description of Task 1."></TaskCard>
-                
-            
-          </div>
 
-        </div>
+          </div>
         </div>
       </div>
-      );
-      
-      }
-    }
-  
+    );
+
+  }
+}
 
 
 
-  export default Tasks;
+
+export default Tasks;
