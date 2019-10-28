@@ -15,11 +15,11 @@ class App extends Component {
         <div>
           <heading>Login to:</heading>
           {this.users.map(u => (
-            <Link to={`/${u}`}><button>User {u}</button></Link>
+            <Link to="/groups"><button>User {u}</button></Link>
           ))}
           <Switch>
             {this.users.map(u => (
-              <Route path={`/${u}`}>
+              <Route path="/groups">
                 <Groups user={u} />
               </Route>
             ))}

@@ -22,19 +22,19 @@ class Dashboard extends Component {
         <BrowserRouter>
           <div>
             {/* <Link to={'../'}>My Groups</Link> */}
-            <Link to={`/${this.props.user}/${this.props.group}/dashboard`}>
+            <Link to="/dashboard">
               Dashboard
             </Link>
-            <Link to={`/${this.props.user}/${this.props.group}/calendar`}>
+            <Link to="/calendar">
               Calendar
             </Link>
-            <Link to={`/${this.props.user}/${this.props.group}/tasks`}>
+            <Link to="/tasks">
               Tasks
             </Link>
-            <Link to={`/${this.props.user}/${this.props.group}/files`}>
+            <Link to="/files">
               Files
             </Link>
-            <Link to={`/${this.props.user}/${this.props.group}/chat`}>
+            <Link to="/chat">
               Chat
             </Link>
             <Switch>
@@ -42,18 +42,18 @@ class Dashboard extends Component {
                 <Groups user={this.props.user} />
               </Route> */}
               <Route
-                path={`/${this.props.user}/${this.props.group}/dashboard`}
+                path="/dashboard"
               ></Route>
-              <Route path={`/${this.props.user}/${this.props.group}/calendar`}>
+              <Route path="/calendar">
                 <Calendar user={this.props.user} group={this.props.group} />
               </Route>
-              <Route path={`/${this.props.user}/${this.props.group}/tasks`}>
+              <Route path="/tasks">
                 <Tasks user={this.props.user} group={this.props.group} />
               </Route>
-              <Route path={`/${this.props.user}/${this.props.group}/files`}>
+              <Route path="/files">
                 <Files user={this.props.user} group={this.props.group} />
               </Route>
-              <Route path={`/${this.props.user}/${this.props.group}/chat`}>
+              <Route path="/chat">
                 <Chat user={this.props.user} group={this.props.group} />
               </Route>
             </Switch>

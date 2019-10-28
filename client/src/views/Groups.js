@@ -16,11 +16,11 @@ class Groups extends Component {
         <div>
           <heading>Select group</heading>
           {this.groups.map(g => (
-            <Link to={`/${this.props.user}/${g}/dashboard`}><button>Group {g}</button></Link>
+            <Link to="/dashboard"><button>Group {g}</button></Link>
           ))}
           <Switch>
             {this.groups.map(g => (
-              <Route path={`/${this.props.user}/${g}/dashboard`}>
+              <Route path="/dashboard">
                 <Dashboard user={this.props.user} group={g} />
               </Route>
             ))}
