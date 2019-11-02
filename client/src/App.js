@@ -16,7 +16,7 @@ class App extends Component {
       <HashRouter>
       <div>
         
-            <Route exact path="/" component={ Login }  />
+            <Route path="/" component={ Login }  />
             <Route path="/Groups" component={ Groups } />
             <Route path="/Main" component={ Main } />
           

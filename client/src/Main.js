@@ -3,6 +3,7 @@ import {
     Route,
     NavLink,
     HashRouter,
+    Switch
 } from 'react-router-dom';
 import logo from './OnTrak.png';
 import avatar from './User.svg';
@@ -48,12 +49,13 @@ class Main extends Component {
         </header>
         
         <div className="mainContainer">
-        <Route exact path="/Dashboard" component={Dashboard}/>
+        
+        <Route path="/Dashboard" component={Dashboard}/>
         <Route path="/Calendar" component={Calendar}/>
         <Route path="/Tasks" component={Tasks}/>
         <Route path="/Files" component={Files}/>
         <Route path="/Chat" component={Chat}/>
-          
+        
         </div>
         
       </div>

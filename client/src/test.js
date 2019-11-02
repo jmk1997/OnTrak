@@ -7,7 +7,7 @@ class test extends Component {
 
             
             <h1>Hello</h1>
-
+            
         );
     }
 }
