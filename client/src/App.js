@@ -10,8 +10,8 @@ import API from "./utils/API";
 // import StudentGroups from './pages/Student_Groups';
 // import ProfessorCourses from './pages/Professor_Courses';
 // import AdminManage from './pages/Admin_Manage';
-import ManageGroups from "./pages/ManageGroups";
-import ManageUsers from "./pages/ManageUsers"
+import ManageGroups from "./pages/Admin/ManageGroups";
+import ManageUsers from "./pages/Admin/ManageUsers"
 import LandingAll from "./pages/Landing_All";
 import Login from "./pages/Login";
 import About from "./pages/About";

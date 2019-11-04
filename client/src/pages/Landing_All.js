@@ -1,7 +1,34 @@
 import React from "react";
 import RenderIfAId from "../components/RenderIfAId";
 import UserContext from "../UserContext";
+var Highcharts = require("highcharts");
 
+// var chart = new Highcharts.chart("container", {
+//   chart: {
+//     type: "bar"
+//   },
+//   title: {
+//     text: "Fruit Consumption"
+//   },
+//   xAxis: {
+//     categories: ["Apples", "Bananas", "Oranges"]
+//   },
+//   yAxis: {
+//     title: {
+//       text: "Fruit eaten"
+//     }
+//   },
+//   series: [
+//     {
+//       name: "Jane",
+//       data: [1, 0, 4]
+//     },
+//     {
+//       name: "John",
+//       data: [5, 7, 3]
+//     }
+//   ]
+// });
 export default class LandingAll extends React.Component {
   render() {
     return (
@@ -19,7 +46,10 @@ export default class LandingAll extends React.Component {
             ) : user.access_id === 2 ? (
               <h1>Here are your courses</h1>
             ) : user.access_id === 3 ? (
-              <h1>Manage stuff here</h1>
+              <div>
+                <h1>Analytics</h1>
+                {/* <div>{chart}</div> */}
+              </div>
             ) : (
               <h1 />
             )}
