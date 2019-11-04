@@ -6,7 +6,7 @@ import UserContext from '../UserContext';
 const RenderIfAId = (props) =>  
   <UserContext.Consumer>
     { 
-      ({user}) => ( user.access_id >= props.aId ? (
+      ({user}) => ( user.access_id === props.aId ? (
         <div>{props.children}</div>
       ) : (null) 
       )

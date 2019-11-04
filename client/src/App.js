@@ -1,17 +1,25 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import API from './utils/API';
-import Dashboard from './pages/Dashboard';
-import ProfessorDashboard from './pages/ProfessorDashboard';
-import AdminDashboard from './pages/AdminDashboard';
-import Login from './pages/Login';
-import About from './pages/About';
-import NoMatch from './pages/NoMatch';
-import TopNavbar from './components/TopNavbar'; //WrappedWithRouter
-import UserContext from './UserContext';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import API from "./utils/API";
+// import StudentGroups from './pages/Student_Groups';
+// import ProfessorCourses from './pages/Professor_Courses';
+// import AdminManage from './pages/Admin_Manage';
+import ManageGroups from "./pages/ManageGroups";
+import ManageUsers from "./pages/ManageUsers"
+import LandingAll from "./pages/Landing_All";
+import Login from "./pages/Login";
+import About from "./pages/About";
+import NoMatch from "./pages/NoMatch";
+import TopNavbar from "./components/TopNavbar"; //WrappedWithRouter
+import UserContext from "./UserContext";
 /* eslint-disable no-console */
-import PrivateAccessRoute from './components/PrivateAccessRoute';
+import PrivateAccessRoute from "./components/PrivateAccessRoute";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +27,7 @@ class App extends React.Component {
       if (userData) {
         API.postUserLogin(userData, (err, res) => {
           if (err === true) {
-            return console.log('an error occurred failed to log user in.');
+            return console.log("an error occurred failed to log user in.");
           }
           this.setState({ user: res.user });
         });
@@ -39,9 +47,9 @@ class App extends React.Component {
     this.state = {
       user: {
         access_id: 0,
-        type: 'Guest',
+        type: "Guest",
         user_id: 0,
-        username: 'guest'
+        username: "guest"
       },
       getUserStatus: this.getUserStatus,
       getUserLogout: this.getUserLogout,
@@ -57,29 +65,37 @@ class App extends React.Component {
     let { user } = this.state;
     return (
       <UserContext.Provider value={this.state}>
-        <Router> 
-          { user.access_id === 0 ? 
-          (
+        <Router>
+          {user.access_id === 0 ? (
             <Container className="mx-0" fluid>
-              <Login />  
+              <Login />
               <Redirect to="/" />
             </Container>
-          ) : 
-            (
-              <div>
-                <TopNavbar />
-                <Container className="mx-0" fluid>
-                  <Switch>
-                    <PrivateAccessRoute strict exact path="/" component={Dashboard} aId={1}  />
-                    <PrivateAccessRoute strict exact path="/about" component={About} aId={1} />
-                    <PrivateAccessRoute strict exact path="/professor" component={ProfessorDashboard} aId={2} />
-                    <PrivateAccessRoute strict exact path="/admin" component={AdminDashboard} aId={3} />
-                    <Route component={NoMatch} />
-                  </Switch>
-                </Container>
-              </div>
-            )
-          }
+          ) : (
+            <div>
+              <TopNavbar />
+              <Container className="mx-0" fluid>
+                <Switch>
+                  <PrivateAccessRoute
+                    strict exact path="/"
+                    component={LandingAll}
+                    aId={user.access_id}
+                  />
+                  <PrivateAccessRoute
+                    strict exact path="/ManageUsers"
+                    component={ManageUsers}
+                    aId={3}
+                  />
+                  <PrivateAccessRoute
+                    strict exact path="/ManageGroups"
+                    component={ManageGroups}
+                    aId={3}
+                  />
+                  <Route component={NoMatch} />
+                </Switch>
+              </Container>
+            </div>
+          )}
         </Router>
       </UserContext.Provider>
     );

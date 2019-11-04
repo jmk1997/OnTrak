@@ -8,7 +8,7 @@ const PrivateAccessRoute = ({ component: Component, aId, ...rest }) => (
       <Route
         {...rest}
         render={props =>
-          user.access_id >= aId ? (
+          user.access_id === aId ? (
             <Component {...props} />
           ) : (
             <Redirect

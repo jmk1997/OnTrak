@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "ontrakdb",
+            "dialect": "MySQL",
+            "name": "OnTrak",
+            "password": "Csc394team5*!",
+            "port": 3306,
+            "server": "keepontrak.ddns.net",
+            "username": "ontrak"
+        }
+    ]
+}
