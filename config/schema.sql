@@ -6,7 +6,7 @@ set foreign_key_checks=0;
 
 -- --------------------------------------------------------
 
-CREATE TABLE users_test (
+CREATE TABLE Users (
     user_id int(6) NOT NULL AUTO_INCREMENT,
     username varchar(20) NOT NULL UNIQUE,
     password varchar(255) NOT NULL,
