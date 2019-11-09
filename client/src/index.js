@@ -14,7 +14,7 @@ import { Route, HashRouter, BrowserRouter, Switch, Redirect } from 'react-router
 
 ReactDOM.render(
     <HashRouter>
-        <Test />
+        <App />
     </HashRouter>, document.getElementById('root'));
 registerServiceWorker();
 

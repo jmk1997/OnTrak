@@ -20,7 +20,6 @@ class Login extends Component {
   
   mySubmitHandler = (event) => {
     event.preventDefault();
-
     
     
     let userEmail = this.state.email;
@@ -55,7 +54,7 @@ class Login extends Component {
       const { redirectToReferrer } = this.state
 
       if (redirectToReferrer === true) {
-        return <Redirect to='/test' />
+        return <Redirect to='/Groups' />
       }
     return (
       
