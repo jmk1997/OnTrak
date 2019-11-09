@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vincent440/passport-mern-sql"
+    "url": "git+https://github.com/jmk1997/OnTrak"
   },
   "author": "Vincent Shury",
   "license": "ISC",

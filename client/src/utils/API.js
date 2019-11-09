@@ -72,5 +72,20 @@ export default {
     } catch (err) {
       return console.log(err);
     }
+  },
+  //NEW STUFF attempt BELOW
+  groupsByUserById: async id => {
+    try {
+      const res = await axios.get(`api/group/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
   }
+
+
+
+
+  
 };
