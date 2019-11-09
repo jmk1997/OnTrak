@@ -1,5 +1,6 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
+import Pane from './Pane';
 import Table from 'react-bootstrap/Table'
 import API from '../utils/API';
 
@@ -18,28 +19,13 @@ import API from '../utils/API';
     render(){
         return (
           <Row className="justify-content-center">
-            <h1 className="text-center text-capitalize">Viewing all groups</h1>
-            <Table striped bordered hover variant="light">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Title</th>
-                  <th>Desc</th>
-                </tr>
-              </thead>
-              <tbody>
                 {this.state.groups.map(group => (
-                    <tr key={group.group_id}>
-                      <td>{group.group_id}</td>
-                      <td>{group.group_title}</td>
-                      <td>{group.group_desc}</td>
-                    </tr>
+                    <Pane groupTitle = {group.group_title} desc = {group.group_desc}> </Pane>
                   ))
                 }
-              </tbody>
-            </Table>
-          </Row>
+            </Row>
         );
+        
       }
 
 
