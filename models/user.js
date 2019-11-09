@@ -1,55 +1,61 @@
-const connection = require('../config/connection');// import the connection from the config to the database to make db queries
+const connection = require("../config/connection"); // import the connection from the config to the database to make db queries
 
-// Build a user Model to export to the controllers 
+// Build a user Model to export to the controllers
 const User = {
-  selectAll: (cb) => {
-    const queryString = 'SELECT u.user_id, u.username, u.access_id, u.type FROM Users AS u ORDER BY u.user_id ASC;';
+  selectAll: cb => {
+    const queryString =
+      "SELECT user_id, username, access_id, type FROM Users ORDER BY user_id ASC;";
     connection.query(queryString, (err, results) => {
       if (err) throw err;
       cb(results);
     });
   },
   getUserByUsernameWithPassword: (username, done) => {
-    const queryString = 'SELECT u.user_id, u.username,u.password, u.access_id, u.type FROM Users AS u WHERE username=? LIMIT 1;';
+    const queryString =
+      "SELECT user_id, username,password, access_id, type FROM Users WHERE username=? LIMIT 1;";
     connection.execute(queryString, [username], (err, user) => {
       if (err) {
-        return done(err,user);
+        return done(err, user);
       }
-      return done(null,user[0]);
+      return done(null, user[0]);
     });
   },
   getUserById: (id, done) => {
-    const queryString = 'SELECT u.user_id, u.username, u.access_id, u.type FROM Users AS u WHERE user_id=? LIMIT 1;';
+    const queryString =
+      "SELECT user_id, username, access_id, type FROM Users WHERE user_id=? LIMIT 1;";
     connection.execute(queryString, [id], (err, user) => {
       if (err) {
-        return done(err,user);
+        return done(err, user);
       }
-      return done(null,user[0]);
+      return done(null, user[0]);
     });
   },
   selectOneById: (id, cb) => {
-    const queryString = 'SELECT u.user_id, u.username, u.access_id, u.type FROM Users AS u WHERE user_id=? LIMIT 1;';
+    const queryString =
+      "SELECT user_id, username, access_id, type FROM Users WHERE user_id=? LIMIT 1;";
     connection.execute(queryString, [id], (err, results) => {
       if (err) throw err;
       cb(results);
     });
   },
   selectOneByUsername: (username, cb) => {
-    const queryString = 'SELECT u.user_id, u.username, u.access_id, u.type FROM Users AS u WHERE username=? LIMIT 1;';
+    const queryString =
+      "SELECT user_id, username, access_id, type FROM Users WHERE username=? LIMIT 1;";
     connection.execute(queryString, [username], (err, results) => {
       if (err) throw err;
       cb(results);
     });
   },
   deleteOne: (id, cb) => {
-    const queryString = 'DELETE FROM Users WHERE user_id=?;';
+    const queryString = "DELETE FROM Users WHERE user_id=?;";
     connection.execute(queryString, [id], (err, result) => {
       if (err) throw err;
       cb(result);
     });
   },
   insertOne: (vals, cb) => {
-    const queryString = 'INSERT INTO Users (username, password, access_id) VALUES (?,?,?)';
+    const queryString =
+      "INSERT INTO Users (username, password, access_id, user_id, type) VALUES (?,?,?,?,?)";
     connection.execute(queryString, vals, (err, result) => {
       if (err) throw err;
       cb(result);
@@ -57,7 +63,8 @@ const User = {
   },
   updateOne: (vals, id, cb) => {
     vals.push(id);
-    const queryString = 'UPDATE Users SET username=?, password=?, access_id=? WHERE user_id=?;';
+    const queryString =
+      "UPDATE Users SET username=?, password=?, access_id=? WHERE user_id=?;";
     connection.execute(queryString, vals, (err, result) => {
       if (err) throw err;
       cb(result);
