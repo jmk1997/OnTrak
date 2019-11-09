@@ -1,7 +1,7 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
-import Table from 'react-bootstrap/Table'
-import API from '../utils/API';
+    const cardStyle = {
+        color : 'black'
+    };
 
  export default class Pane extends React.Component {
     constructor(props){
@@ -13,9 +13,9 @@ import API from '../utils/API';
             <div class="col-sm-6">
               <div class="card">
                 <div class="card-body">
-                <h5 class="card-title">{this.props.groupTitle}</h5>
-                  <p class="card-text">{this.props.desc}</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5>{this.props.groupTitle}</h5>
+                  <p class="card-text" style={cardStyle}>{this.props.desc}</p>
+                  <a href="#" class="btn btn-primary">Group Dashboard</a>
                 </div>
               </div>
             </div>
