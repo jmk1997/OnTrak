@@ -1,4 +1,8 @@
 import React from 'react';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import GroupPage from './GroupPage';
+
     const cardStyle = {
         color : 'black'
     };
@@ -15,7 +19,13 @@ import React from 'react';
                 <div class="card-body">
                 <h5>{this.props.groupTitle}</h5>
                   <p class="card-text" style={cardStyle}>{this.props.desc}</p>
-                  <a href="#" class="btn btn-primary">Group Dashboard</a>
+                  <Router>
+
+                    <Link to ="/group" class="btn btn-primary"> group </Link>
+
+                    <Route path="/group" component={GroupPage} /> 
+                  </Router>
+                  {/* <a href="#" class="btn btn-primary">Group page</a> */}
                 </div>
               </div>
             </div>

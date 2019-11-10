@@ -20,7 +20,7 @@ import API from '../utils/API';
         return (
           <Row className="justify-content-center">
                 {this.state.groups.map(group => (
-                    <Pane groupTitle = {group.group_title} desc = {group.group_desc}> </Pane>
+                    <Pane groupTitle = {group.group_title} desc = {group.group_desc} GiD = {group.group_id}> </Pane>
                   ))
                 }
             </Row>
