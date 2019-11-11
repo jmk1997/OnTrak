@@ -12,4 +12,8 @@ router.route('/:id')
 // GET "/api/user/:id"
   .get(groupController.getGroupsByUser)// get user data by ID
 
+router.route('/course/:id')
+// GET "/api/user/:id"
+  .get(groupController.getGroupsByCourse)// get user data by ID
+
 module.exports = router;

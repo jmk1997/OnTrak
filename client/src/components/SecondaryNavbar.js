@@ -24,14 +24,24 @@ class SecondaryNavbar extends React.Component {
   constructor(props) {
     super(props);
   }
-  state = { groups: [], courses: [] };
+  //   state = { groups: [], courses: [] };
+  state = { itemsToMap: [] };
   componentDidMount() {
-    API.groupsByUserById(this.props.id).then(res =>
-      this.setState({ groups: res })
-    );
-    // API.coursesByUserById(this.props.id).then(res =>
-    //   this.setState({ courses: res })
-    // );
+    if (this.props.studentID) {
+      API.groupsByUserById(this.props.studentID).then(res =>
+        this.setState({ itemsToMap: res })
+      );
+    }
+    if (this.props.courseID) {
+      API.groupsByCourseById(this.props.courseID).then(res =>
+        this.setState({ itemsToMap: res })
+      );
+    }
+    if (this.props.profID) {
+      API.coursesByUserById(this.props.profID).then(res =>
+        this.setState({ itemsToMap: res })
+      );
+    }
   }
   render() {
     return (
@@ -43,60 +53,76 @@ class SecondaryNavbar extends React.Component {
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}
                 <Nav>
-                  {this.props.access_id === 1
-                    ? this.state.groups.map(group => (
-                        <NavLink
-                          exact
-                          to={`/${group.group_id}`}
-                          className="nav-link"
-                          activeClassName="active"
-                        >
-                          {group.group_title}
-                        </NavLink>
-                      ))
-                    : this.state.courses.map(course => (
-                        <NavLink
-                          exact
-                          to={`/${course.course_id}`}
-                          className="nav-link"
-                          activeClassName="active"
-                        >
-                          {course.course_name}
-                        </NavLink>
-                      ))}
+                  {this.props.studentID ? (
+                    this.state.itemsToMap.map(group => (
+                      <NavLink
+                        exact
+                        to={`/group=${group.group_id}`}
+                        className="nav-link"
+                        activeClassName="active"
+                      >
+                        {group.group_title}
+                      </NavLink>
+                    ))
+                  ) : this.props.profID ? (
+                    this.state.itemsToMap.map(course => (
+                      <NavLink
+                        exact
+                        to={`/course=${course.course_id}`}
+                        className="nav-link"
+                        activeClassName="active"
+                      >
+                        {course.course_name}
+                      </NavLink>
+                    ))
+                  ) : this.props.courseID ? (
+                    this.state.itemsToMap.map(group => (
+                      <NavLink
+                        exact
+                        to={`/course=${this.props.courseID}/group=${group.group_id}`}
+                        className="nav-link"
+                        activeClassName="active"
+                      >
+                        {group.group_title}
+                      </NavLink>
+                    ))
+                  ) : (
+                    <div>Hmmm</div>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
             <Switch>
-              {this.props.access_id === 1
-                ? this.state.groups.map(group => (
-                    <Route
-                      exact
-                      path={`/${group.group_id}`}
-                      render={() => (
-                        <TertiaryNavbar/>
-                        // <Pane
-                        //   title={group.group_title}
-                        //   desc={group.group_desc}
-                        //   id={group.group_id}
-                        // />
-                      )}
-                    />
-                  ))
-                : this.state.courses.map(course => (
-                    <Route
-                      exact
-                      path={`/${course.course_id}`}
-                      render={() => (
-                          <TertiaryNavbar/>
-                        // <Pane
-                        //   title={course.course_name}
-                        //   desc={course.course_desc}
-                        //   id={course.course_id}
-                        // />
-                      )}
-                    />
-                  ))}
+              {this.props.studentID ? (
+                this.state.itemsToMap.map(group => (
+                  <Route
+                    exact
+                    path={`/group=${group.group_id}`}
+                    render={() => <TertiaryNavbar />}
+                  />
+                ))
+              ) : this.props.profID ? (
+                this.state.itemsToMap.map(course => (
+                  <Route
+                    exact
+                    path={`/course=${course.course_id}`}
+                    render={() => (
+                        // <div>Courses Here</div>
+                      <SecondaryNavbar courseID={course.course_id} />
+                    )}
+                  />
+                ))
+              ) : this.props.courseID ? (
+                this.state.itemsToMap.map(group => (
+                  <Route
+                    exact
+                    path={`/course=${this.props.courseID}/group=${group.group_id}`}
+                    render={() => <TertiaryNavbar />}
+                  />
+                ))
+              ) : (
+                <div />
+              )}
             </Switch>
           </Router>
         )}

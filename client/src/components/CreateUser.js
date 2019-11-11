@@ -33,7 +33,7 @@ export default class AdminCreateUser extends React.Component {
     this.state = {
       username: '',
       password: '',
-      access_id: 1
+      access_id: 0
       // type: 'Student'
     };
   }
