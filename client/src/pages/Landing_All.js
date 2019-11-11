@@ -2,6 +2,8 @@ import React from "react";
 import RenderIfAId from "../components/RenderIfAId";
 import UserContext from "../UserContext";
 import GroupPane from "../components/GroupPane";
+import API from "../utils/API"
+import SecondaryNavbar from "../components/SecondaryNavbar";
 var Highcharts = require("highcharts");
 
 // var chart = new Highcharts.chart("container", {
@@ -43,9 +45,9 @@ export default class LandingAll extends React.Component {
             <h1>Access Level:</h1>
             <h2>{user.access_id}</h2> </>} */}
             {user.access_id === 1 ? (
-              <h1>Here are your groups</h1>
+              <h1>Select a group to view</h1>
             ) : user.access_id === 2 ? (
-              <h1>Here are your courses</h1>
+              <h1>Select a course to view</h1>
             ) : user.access_id === 3 ? (
               <div>
                 <h1>Analytics</h1>
@@ -55,10 +57,11 @@ export default class LandingAll extends React.Component {
               <h1 />
             )}
             {/*BIG NOTE TO SELF: Landing page can be changed based on access levels  for below:*/}
-            {user.access_id === 1 ? (
-             <GroupPane id= {user.user_id}></GroupPane>
-            ) : user.access_id === 2 ? (
-              <h1>Here are your courses</h1>
+            {user.access_id === (1 || 2) ? (
+              <SecondaryNavbar id = {user.user_id} access_id = {user.access_id}/>
+            //  <GroupPane id= {user.user_id}></GroupPane>
+            // ) : user.access_id === 2 ? (
+            //   <h1>Here are your courses</h1>
             ) : user.access_id === 3 ? (
               <div>
                 <h1>Analytics</h1>

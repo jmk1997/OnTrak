@@ -18,17 +18,16 @@ import RenderIfAId from "./RenderIfAId";
 import API from "../utils/API";
 
 import Pane from "./Pane";
-import TertiaryNavbar from "./TertiaryNavbar";
 
-class SecondaryNavbar extends React.Component {
+class TertiaryNavbar extends React.Component {
   constructor(props) {
     super(props);
   }
-  state = { groups: [], courses: [] };
+  //   state = { groups: [], courses: [] };
   componentDidMount() {
-    API.groupsByUserById(this.props.id).then(res =>
-      this.setState({ groups: res })
-    );
+    //     API.groupsByUserById(this.props.id).then(res =>
+    //       this.setState({ groups: res })
+    //     );
     // API.coursesByUserById(this.props.id).then(res =>
     //   this.setState({ courses: res })
     // );
@@ -43,7 +42,16 @@ class SecondaryNavbar extends React.Component {
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}
                 <Nav>
-                  {this.props.access_id === 1
+                  <NavLink className="nav-link" activeClassName="active">
+                    Dashboard
+                  </NavLink>
+                  <NavLink className="nav-link" activeClassName="active">
+                    Tasks
+                  </NavLink>
+                  <NavLink className="nav-link" activeClassName="active">
+                    Chat
+                  </NavLink>
+                  {/* {this.props.access_id === 1
                     ? this.state.groups.map(group => (
                         <NavLink
                           exact
@@ -63,23 +71,23 @@ class SecondaryNavbar extends React.Component {
                         >
                           {course.course_name}
                         </NavLink>
-                      ))}
+                      ))} */}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
             <Switch>
-              {this.props.access_id === 1
+              {/* <Route></Route> */}
+              {/* {this.props.access_id === 1
                 ? this.state.groups.map(group => (
                     <Route
                       exact
                       path={`/${group.group_id}`}
                       render={() => (
-                        <TertiaryNavbar/>
-                        // <Pane
-                        //   title={group.group_title}
-                        //   desc={group.group_desc}
-                        //   id={group.group_id}
-                        // />
+                        <Pane
+                          title={group.group_title}
+                          desc={group.group_desc}
+                          id={group.group_id}
+                        />
                       )}
                     />
                   ))
@@ -88,15 +96,14 @@ class SecondaryNavbar extends React.Component {
                       exact
                       path={`/${course.course_id}`}
                       render={() => (
-                          <TertiaryNavbar/>
-                        // <Pane
-                        //   title={course.course_name}
-                        //   desc={course.course_desc}
-                        //   id={course.course_id}
-                        // />
+                        <Pane
+                          title={course.course_name}
+                          desc={course.course_desc}
+                          id={course.course_id}
+                        />
                       )}
                     />
-                  ))}
+                  ))} */}
             </Switch>
           </Router>
         )}
@@ -105,4 +112,4 @@ class SecondaryNavbar extends React.Component {
   }
 }
 
-export default withRouter(SecondaryNavbar);
+export default withRouter(TertiaryNavbar);
