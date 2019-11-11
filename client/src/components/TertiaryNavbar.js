@@ -1,25 +1,23 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import {
-  NavLink,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link
-} from "react-router-dom";
-import { withRouter } from "react-router";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
-import Badge from "react-bootstrap/Badge";
-import UserContext from "../UserContext";
-import RenderIfAId from "./RenderIfAId";
-import API from "../utils/API";
-
 import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Table from "react-bootstrap/Table";
+import HighchartsReact from "highcharts-react-official";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Route,
+  Switch
+} from "react-router-dom";
+import UserContext from "../UserContext";
 
-import Pane from "./Pane";
+import { withRouter } from "react-router";
+
+var Highcharts = require("highcharts");
+
+var chart = <HighchartsReact highcharts={Highcharts} options={{}} />;
 
 class TertiaryNavbar extends React.Component {
   constructor(props) {
@@ -70,7 +68,14 @@ class TertiaryNavbar extends React.Component {
                       Chat
                     </NavLink>
                   ) : (
-                    <div />
+                    <NavLink
+                      exact
+                      to={`/group=${this.props.groupID}/manage`}
+                      className="nav-link"
+                      activeClassName="active"
+                    >
+                      Manage
+                    </NavLink>
                   )}
                 </Nav>
               </Navbar.Collapse>
@@ -82,6 +87,58 @@ class TertiaryNavbar extends React.Component {
                 render={() => (
                   <Container className="mx-0" fluid>
                     <h1>{this.props.groupName} - Dashboard</h1>
+                    <h2>Group description goes here</h2>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between"
+                      }}
+                    >
+                      <div>
+                        <h3>Updates</h3>
+                        <Table>
+                          <tbody>
+                            <tr>
+                              <td>User1 commented on Task4</td>
+                            </tr>
+                            <tr>
+                              <td>User2 upload a file to Task8</td>
+                            </tr>
+                            <tr>
+                              <td>Reminder: Task 10 is due tomorrow</td>
+                            </tr>
+                          </tbody>
+                        </Table>
+                        <Button>View Past Notifications</Button>
+                      </div>
+                      <div>
+                        <h3>Pinned Items</h3>
+                        <Table>
+                          <tbody>
+                            <tr>
+                              <td>Assignment.pdf</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Required Software
+                                <br />
+                                https://link.here
+                                <br />
+                                https://link.here
+                                <br />
+                                https://link.here
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Note from professor: Remember to comment your
+                                code!
+                              </td>
+                            </tr>
+                          </tbody>
+                        </Table>
+                      </div>
+                    </div>
                   </Container>
                 )}
               />
@@ -91,6 +148,30 @@ class TertiaryNavbar extends React.Component {
                 render={() => (
                   <Container className="mx-0" fluid>
                     <h1>{this.props.groupName} - Tasks</h1>
+                    <div style={{ display: "flex" }}>
+                      <div>
+                        <h2>Overview</h2>
+                        {/* < */}
+                      </div>
+                      <div>
+                        <Table>
+                          <thead>
+                            <tr>
+                              <td>Part 1</td>
+                              <td>Part 2</td>
+                              <td>Part 3</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Task 1</td>
+                              <td>Task 7</td>
+                              <td>Task 12</td>
+                            </tr>
+                          </tbody>
+                        </Table>
+                      </div>
+                    </div>
                   </Container>
                 )}
               />
@@ -105,7 +186,15 @@ class TertiaryNavbar extends React.Component {
                   )}
                 />
               ) : (
-                <div />
+                <Route
+                  exact
+                  path={`/group=${this.props.groupID}/manage`}
+                  render={() => (
+                    <Container className="mx-0" fluid>
+                      <h1>{this.props.groupName} - Manage</h1>
+                    </Container>
+                  )}
+                />
               )}
             </Switch>
           </Router>
