@@ -98,7 +98,7 @@ class SecondaryNavbar extends React.Component {
                   <Route
                     exact
                     path={`/group=${group.group_id}`}
-                    render={() => <TertiaryNavbar />}
+                    render={() => <TertiaryNavbar group={group.group_id} viewChat={true}/>}
                   />
                 ))
               ) : this.props.profID ? (
@@ -117,7 +117,7 @@ class SecondaryNavbar extends React.Component {
                   <Route
                     exact
                     path={`/course=${this.props.courseID}/group=${group.group_id}`}
-                    render={() => <TertiaryNavbar />}
+                    render={() => <TertiaryNavbar group={group.group_id} viewChat={false}/>}
                   />
                 ))
               ) : (
