@@ -1,44 +1,95 @@
+import HighchartsReact from "highcharts-react-official";
 import React from "react";
-import RenderIfAId from "../components/RenderIfAId";
-import UserContext from "../UserContext";
-import GroupPane from "../components/GroupPane";
-import API from "../utils/API";
 import SecondaryNavbar from "../components/SecondaryNavbar";
+import UserContext from "../UserContext";
+var moment = require("moment");
 var Highcharts = require("highcharts");
 
-// var chart = new Highcharts.chart("container", {
-//   chart: {
-//     type: "bar"
-//   },
-//   title: {
-//     text: "Fruit Consumption"
-//   },
-//   xAxis: {
-//     categories: ["Apples", "Bananas", "Oranges"]
-//   },
-//   yAxis: {
-//     title: {
-//       text: "Fruit eaten"
-//     }
-//   },
-//   series: [
-//     {
-//       name: "Jane",
-//       data: [1, 0, 4]
-//     },
-//     {
-//       name: "John",
-//       data: [5, 7, 3]
-//     }
-//   ]
-// });
+var chart1 = (
+  <HighchartsReact
+    highcharts={Highcharts}
+    options={{
+      chart: {
+        type: "column"
+      },
+      title: {
+        text: "Daily Task Usage"
+      },
+      xAxis: {
+        categories: ["New", "Completed", "Rated"]
+      },
+      yAxis: {
+        title: {
+          text: "Tasks"
+        }
+      },
+      series: [
+        // {
+        //   name: "Jane",
+        //   data: [1, 0, 4]
+        // },
+        {
+          name: "Today",
+          data: [30, 15, 20]
+        },
+        {
+          name: "Yesterday",
+          data: [35, 18, 29]
+        }
+      ]
+    }}
+  />
+);
+// console.log([...new Array(30)].map((i, idx) => moment().startOf("day").subtract(idx, "days").toISOString().substr(5,5)))
+var chart2 = (
+  <HighchartsReact
+    highcharts={Highcharts}
+    options={{
+      chart: { type: "line" },
+      title: { text: "Daily Logins" },
+      xAxis: {
+        title: {
+          text: "Date"
+        }
+        // labels: [...new Array(30)].map((i, idx) => moment().startOf("day").subtract(idx, "days").toISOString().substr(5,5))
+        // dateTimeLabelFormats:
+      },
+      yAxis: {
+        title: {
+          text: "Logins"
+        }
+      },
+      series: [
+        {
+          name: "Student",
+          data: Array.from({ length: 31 }, () =>
+            Math.floor(Math.random() * 1000)
+          )
+        },
+        {
+          name: "Professor",
+          data: Array.from({ length: 31 }, () =>
+            Math.floor(Math.random() * 1000)
+          )
+        },
+        {
+          name: "Admin",
+          data: Array.from({ length: 31 }, () =>
+            Math.floor(Math.random() * 1000)
+          )
+        }
+      ]
+    }}
+  />
+);
+
 export default class LandingAll extends React.Component {
   render() {
     return (
       <UserContext.Consumer>
         {({ user }) => (
           <div className="text-center text-white">
-            <h1 className="display-4">Welcome {user.username}</h1>
+            {/* <h1 className="display-4">Welcome {user.username}</h1> */}
             {/* {<> <h2>User-ID: {user.user_id}</h2>
             <h1>Access Type:</h1>
             <h2>{user.type}</h2>
@@ -50,7 +101,7 @@ export default class LandingAll extends React.Component {
               <h1>Select a course to view</h1>
             ) : user.access_id === 3 ? (
               <div>
-                <h1>Analytics</h1>
+                <h1>System Analytics</h1>
                 {/* <div>{chart}</div> */}
               </div>
             ) : (
@@ -70,8 +121,9 @@ export default class LandingAll extends React.Component {
               />
             ) : user.access_id === 3 ? (
               <div>
-                <h1>Analytics</h1>
-                {/* <div>{chart}</div> */}
+                {/* <h1>Analytics</h1> */}
+                <div>{chart1}</div>
+                <div>{chart2}</div>
               </div>
             ) : (
               <h1 />

@@ -86,11 +86,11 @@ class App extends React.Component {
                     component={ManageUsers}
                     aId={3}
                   />
-                  <PrivateAccessRoute
+                  {/* <PrivateAccessRoute
                     strict exact path="/ManageGroups"
                     component={ManageGroups}
                     aId={3}
-                  />
+                  /> */}
                   <Route component={NoMatch} />
                 </Switch>
               </Container>

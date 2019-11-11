@@ -17,6 +17,8 @@ import UserContext from "../UserContext";
 import RenderIfAId from "./RenderIfAId";
 import API from "../utils/API";
 
+import Container from "react-bootstrap/Container";
+
 import Pane from "./Pane";
 
 class TertiaryNavbar extends React.Component {
@@ -74,10 +76,34 @@ class TertiaryNavbar extends React.Component {
               </Navbar.Collapse>
             </Navbar>
             <Switch>
-              <Route exact path={`/group=${this.props.group}`} />
-              <Route exact path={`/group=${this.props.group}/tasks`} />
+              <Route
+                exact
+                path={`/group=${this.props.group}`}
+                render={() => (
+                  <Container className="mx-0" fluid>
+                    <h1>{this.props.groupName} - Dashboard</h1>
+                  </Container>
+                )}
+              />
+              <Route
+                exact
+                path={`/group=${this.props.group}/tasks`}
+                render={() => (
+                  <Container className="mx-0" fluid>
+                    <h1>{this.props.groupName} - Tasks</h1>
+                  </Container>
+                )}
+              />
               {this.props.viewChat === true ? (
-                <Route exact path={`/group=${this.props.group}/chat`} />
+                <Route
+                  exact
+                  path={`/group=${this.props.group}/chat`}
+                  render={() => (
+                    <Container className="mx-0" fluid>
+                      <h1>{this.props.groupName} - Chat</h1>
+                    </Container>
+                  )}
+                />
               ) : (
                 <div />
               )}
