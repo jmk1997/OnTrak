@@ -12,6 +12,7 @@ import {
   Switch
 } from "react-router-dom";
 import UserContext from "../UserContext";
+import fakeChat from "../images/chat.png";
 
 import { withRouter } from "react-router";
 
@@ -182,6 +183,7 @@ class TertiaryNavbar extends React.Component {
                   render={() => (
                     <Container className="mx-0" fluid>
                       <h1>{this.props.groupName} - Chat</h1>
+                      <img src={fakeChat}></img>
                     </Container>
                   )}
                 />
