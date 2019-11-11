@@ -46,7 +46,7 @@ class TertiaryNavbar extends React.Component {
                 <Nav>
                   <NavLink
                     exact
-                    to={`/group=${this.props.group}`}
+                    to={`/group=${this.props.groupID}`}
                     className="nav-link"
                     activeClassName="active"
                   >
@@ -54,7 +54,7 @@ class TertiaryNavbar extends React.Component {
                   </NavLink>
                   <NavLink
                     exact
-                    to={`/group=${this.props.group}/tasks`}
+                    to={`/group=${this.props.groupID}/tasks`}
                     className="nav-link"
                     activeClassName="active"
                   >
@@ -63,7 +63,7 @@ class TertiaryNavbar extends React.Component {
                   {this.props.viewChat === true ? (
                     <NavLink
                       exact
-                      to={`/group=${this.props.group}/chat`}
+                      to={`/group=${this.props.groupID}/chat`}
                       className="nav-link"
                       activeClassName="active"
                     >
@@ -78,7 +78,7 @@ class TertiaryNavbar extends React.Component {
             <Switch>
               <Route
                 exact
-                path={`/group=${this.props.group}`}
+                path={`/group=${this.props.groupID}`}
                 render={() => (
                   <Container className="mx-0" fluid>
                     <h1>{this.props.groupName} - Dashboard</h1>
@@ -87,7 +87,7 @@ class TertiaryNavbar extends React.Component {
               />
               <Route
                 exact
-                path={`/group=${this.props.group}/tasks`}
+                path={`/group=${this.props.groupID}/tasks`}
                 render={() => (
                   <Container className="mx-0" fluid>
                     <h1>{this.props.groupName} - Tasks</h1>
@@ -97,7 +97,7 @@ class TertiaryNavbar extends React.Component {
               {this.props.viewChat === true ? (
                 <Route
                   exact
-                  path={`/group=${this.props.group}/chat`}
+                  path={`/group=${this.props.groupID}/chat`}
                   render={() => (
                     <Container className="mx-0" fluid>
                       <h1>{this.props.groupName} - Chat</h1>
