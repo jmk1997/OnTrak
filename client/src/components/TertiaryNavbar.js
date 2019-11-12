@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import UserContext from "../UserContext";
 import fakeChat from "../images/chat.png";
+import API from "../utils/API"
 
 import { withRouter } from "react-router";
 
@@ -51,11 +52,11 @@ class TertiaryNavbar extends React.Component {
   constructor(props) {
     super(props);
   }
-  //   state = { groups: [], courses: [] };
+    state = { tasks: [] };
   componentDidMount() {
-    //     API.groupsByUserById(this.props.id).then(res =>
-    //       this.setState({ groups: res })
-    //     );
+        API.getAllTasks().then(res =>
+          this.setState({ tasks: res })
+        );
     // API.coursesByUserById(this.props.id).then(res =>
     //   this.setState({ courses: res })
     // );
@@ -198,27 +199,14 @@ class TertiaryNavbar extends React.Component {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>Task 2</td>
-                              <td>User 1</td>
-                              <td>11/30/19</td>
-                              <td>To Do</td>
-                              <td>></td>
-                            </tr>
-                            <tr>
-                              <td>Task 8</td>
-                              <td>User 1</td>
-                              <td>12/02/19</td>
-                              <td>In Progress</td>
-                              <td>></td>
-                            </tr>
-                            <tr>
-                              <td>Task 14</td>
-                              <td>User 1</td>
-                              <td>01/02/20</td>
-                              <td>Done</td>
-                              <td>></td>
-                            </tr>
+                            {this.state.tasks.map(task => (
+                              <tr>
+                                <td>{task.taskName}</td>
+                                <td>{task.userId}</td>
+                                <td>{task.deadline}</td>
+                                <td>{task.status}</td>
+                              </tr>
+                            ))}
                           </tbody>
                         </Table>
                       </div>

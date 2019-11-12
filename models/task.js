@@ -3,7 +3,7 @@ const connection = require("../config/connection"); // import the connection fro
 const Task = {
     selectAll: cb =>{
         const queryString =
-        "SELECT taskId, groupId, description, deadline, taskName, userId, creationDatetime FROM Tasks ORDER BY deadline ASC;"
+        "SELECT taskId, groupId, description, deadline, taskName, userId, creationDate, status FROM Tasks ORDER BY deadline ASC;"
         connection.query(queryString, (err,results) => {
             if(err) throw err;
             cb(results);
