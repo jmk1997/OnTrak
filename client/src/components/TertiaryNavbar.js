@@ -191,93 +191,33 @@ class TertiaryNavbar extends React.Component {
                         <Table>
                           <thead>
                             <tr>
-                              <td>
-                                <bold>Part 1</bold>
-                              </td>
-                              <td>
-                                <bold>Part 2</bold>
-                              </td>
-                              <td>
-                                <bold>Part 3</bold>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <bold>Due 12/01/19</bold>
-                              </td>
-                              <td>
-                                <bold>Due 01/02/20</bold>
-                              </td>
-                              <td>
-                                <bold>Due 01/10/20</bold>
-                              </td>
+                              <td>Name</td>
+                              <td>Assignee</td>
+                              <td>Due</td>
+                              <td>Status</td>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>
-                                <table>
-                                  <tbody>
-                                    <tr>
-                                      <td>Task 1</td>
-                                      <td>Done</td>
-                                      <td>></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Task 7</td>
-                                      <td>To Do</td>
-                                      <td>></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Task 13</td>
-                                      <td>In Progress</td>
-                                      <td>></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                              <td>
-                                <table>
-                                  <tbody>
-                                    <tr>
-                                      <td>Task 2</td>
-                                      <td>To Do</td>
-                                      <td>></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Task 8</td>
-                                      <td>In Progress</td>
-                                      <td>></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Task 14</td>
-                                      <td>Done</td>
-                                      <td>></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                              <td>
-                                <table>
-                                  <tbody>
-                                    <tr>
-                                      <td>Task 3</td>
-                                      <td>To Do</td>
-                                      <td>></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Task 9</td>
-                                      <td>In Progress</td>
-                                      <td>></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Task 15</td>
-                                      <td>Done</td>
-                                      <td>></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
+                              <td>Task 2</td>
+                              <td>User 1</td>
+                              <td>11/30/19</td>
+                              <td>To Do</td>
+                              <td>></td>
+                            </tr>
+                            <tr>
+                              <td>Task 8</td>
+                              <td>User 1</td>
+                              <td>12/02/19</td>
+                              <td>In Progress</td>
+                              <td>></td>
+                            </tr>
+                            <tr>
+                              <td>Task 14</td>
+                              <td>User 1</td>
+                              <td>01/02/20</td>
+                              <td>Done</td>
+                              <td>></td>
                             </tr>
                           </tbody>
                         </Table>
@@ -293,7 +233,7 @@ class TertiaryNavbar extends React.Component {
                   render={() => (
                     <Container className="mx-0" fluid>
                       <h1>{this.props.groupName} - Chat</h1>
-                      <img src={fakeChat}></img>
+                      <img style={{ width: "100%" }} src={fakeChat}></img>
                     </Container>
                   )}
                 />

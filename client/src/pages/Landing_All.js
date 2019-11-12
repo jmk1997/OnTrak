@@ -96,9 +96,11 @@ export default class LandingAll extends React.Component {
             <h1>Access Level:</h1>
             <h2>{user.access_id}</h2> </>} */}
             {user.access_id === 1 ? (
-              <h1>Select a group to view</h1>
+              <div/>
+              // <h1>Select a group to view</h1>
             ) : user.access_id === 2 ? (
-              <h1>Select a course to view</h1>
+              <div/>
+              // <h1>Select a course to view</h1>
             ) : user.access_id === 3 ? (
               <div>
                 <h1>System Analytics</h1>
