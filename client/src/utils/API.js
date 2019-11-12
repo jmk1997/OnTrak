@@ -40,11 +40,11 @@ export default {
           password,
           access_id,
           Math.random() * 9999999,
-          access_id === 1
+          access_id === '1'
             ? "Student"
-            : access_id === 2
+            : access_id === '2'
             ? "Professor"
-            : access_id === 3
+            : access_id === '3'
             ? "Admin"
             : "Student"
         ]
@@ -82,10 +82,23 @@ export default {
     } catch (err) {
       return console.log(err);
     }
+  },
+  coursesByUserById: async id => {
+    try {
+      const res = await axios.get(`api/course/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  groupsByCourseById: async id => {
+    try {
+      const res = await axios.get(`api/group/course/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
   }
-
-
-
-
-  
 };

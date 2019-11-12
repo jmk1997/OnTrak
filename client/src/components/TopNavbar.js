@@ -47,7 +47,7 @@ const TopNavbar = () => (
                 System Analytics
               </NavLink>
             </RenderIfAId>
-            <RenderIfAId aId={3}>
+            {/* <RenderIfAId aId={3}>
               <NavLink
                 exact
                 to="/ManageGroups"
@@ -56,7 +56,7 @@ const TopNavbar = () => (
               >
                 Manage Groups
               </NavLink>
-            </RenderIfAId>
+            </RenderIfAId> */}
             <RenderIfAId aId={3}>
               <NavLink
                 exact
@@ -82,7 +82,7 @@ const TopNavbar = () => (
             variant="outline-light"
             className="text-capitalize px-1"
           >
-            {user.username}{" "}
+            Welcome {user.username}{" "}
             <Badge pill variant="light" className="p-1">
               {user.type}
             </Badge>

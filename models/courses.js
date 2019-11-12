@@ -1,7 +1,7 @@
 const connection = require("../config/connection"); // import the connection from the config to the database to make db queries
 
 // Build a user Model to export to the controllers
-const Group = {
+const Course = {
   // getUserByUsernameWithPassword: (username, done) => {
   //   const queryString =
   //     "SELECT user_id, username, password, access_id, type FROM Users WHERE username=? LIMIT 1;";
@@ -22,30 +22,22 @@ const Group = {
   },
   selectOneById: (id, cb) => {
     const queryString =
-      "SELECT group_id, group_title, group_desc FROM Groups WHERE group_id=? LIMIT 1;";
+      "SELECT course_id, course_name, course_desc FROM Courses WHERE course_id=? LIMIT 1;";
     connection.execute(queryString, [id], (err, results) => {
       if (err) throw err;
       cb(results);
     });
   },
-  selectGroupsByUser: (user_id, cb) => {
+  selectCoursesByUser: (user_id, cb) => {
      const queryString =
-       "SELECT g.group_id, g.group_title, g.group_desc FROM UserGroupRelation ugr INNER JOIN Groups g ON g.group_id = ugr.group_id where ugr.user_id = ?;";
+       "SELECT c.course_id, c.course_name, c.course_desc FROM UserCourseRelation ucr INNER JOIN Courses c ON c.course_id = ucr.course_id where ucr.user_id = ?;";
      connection.execute(queryString, [user_id], (err, results) => {
        if (err) throw err;
        cb(results);
      });
   },
-  selectGroupsByCourse: (course_id, cb) => {
-    const queryString =
-      "SELECT g.group_id, g.group_title, g.group_desc FROM GroupCourseRelation gcr INNER JOIN Groups g ON g.group_id = gcr.group_id where gcr.course_id = ?;";
-    connection.execute(queryString, [course_id], (err, results) => {
-      if (err) throw err;
-      cb(results);
-    });
- },
   deleteOne: (id, cb) => {
-    const queryString = "DELETE FROM Groups WHERE group_id=?;";
+    const queryString = "DELETE FROM Courses WHERE course_id=?;";
     connection.execute(queryString, [id], (err, result) => {
       if (err) throw err;
       cb(result);
@@ -53,7 +45,7 @@ const Group = {
   },
   insertOne: (vals, cb) => {
     const queryString =
-      "INSERT INTO Groups (group_title, group_desc) VALUES (?,?)";
+      "INSERT INTO Courses (course_name, course_desc) VALUES (?,?)";
     connection.execute(queryString, vals, (err, result) => {
       if (err) throw err;
       cb(result);
@@ -62,11 +54,11 @@ const Group = {
   updateOne: (vals, id, cb) => {
     vals.push(id);
     const queryString =
-      "UPDATE Groups SET  group_title=?, group_desc=? WHERE group_id=?;";
+      "UPDATE Courses SET  course_name=?, course_desc=? WHERE course_id=?;";
     connection.execute(queryString, vals, (err, result) => {
       if (err) throw err;
       cb(result);
     });
   }
 };
-module.exports = Group;
+module.exports = Course;

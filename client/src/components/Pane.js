@@ -14,17 +14,17 @@ import GroupPage from './GroupPage';
 
     render(){
         return (
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                <h5>{this.props.groupTitle}</h5>
-                  <p class="card-text" style={cardStyle}>{this.props.desc}</p>
-                  <Router>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                <h5>{this.props.title}</h5>
+                  <p className="card-text" style={cardStyle}>{this.props.desc}</p>
+                  {/* <Router>
 
                     <Link to ="/group" class="btn btn-primary"> group </Link>
 
                     <Route path="/group" component={GroupPage} /> 
-                  </Router>
+                  </Router> */}
                   {/* <a href="#" class="btn btn-primary">Group page</a> */}
                 </div>
               </div>
