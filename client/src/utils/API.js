@@ -100,5 +100,14 @@ export default {
     } catch (err) {
       return console.log(err);
     }
-  }
+  },
+  getAllTasks: async () => {
+    try {
+      const res = await axios.get("/api/task");
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
 };
