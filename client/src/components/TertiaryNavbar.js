@@ -17,7 +17,34 @@ import { withRouter } from "react-router";
 
 var Highcharts = require("highcharts");
 
-var chart = <HighchartsReact highcharts={Highcharts} options={{}} />;
+var chart = (
+  <HighchartsReact
+    highcharts={Highcharts}
+    options={{
+      chart: { type: "pie" },
+      title: { text: "Tasks Completed" },
+      series: [
+        {
+          name: "Tasks",
+          data: [
+            {
+              name: "User 1",
+              y: 50
+            },
+            {
+              name: "User 2",
+              y: 20
+            },
+            {
+              name: "User 3",
+              y: 30
+            }
+          ]
+        }
+      ]
+    }}
+  />
+);
 
 class TertiaryNavbar extends React.Component {
   constructor(props) {
@@ -148,25 +175,108 @@ class TertiaryNavbar extends React.Component {
                 render={() => (
                   <Container className="mx-0" fluid>
                     <h1>{this.props.groupName} - Tasks</h1>
-                    <div style={{ display: "flex" }}>
-                      <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center"
+                      }}
+                    >
+                      <div style={{ flexGrow: 1 }}>
                         <h2>Overview</h2>
-                        {/* < */}
+                        {chart}
                       </div>
                       <div>
                         <Table>
                           <thead>
                             <tr>
-                              <td>Part 1</td>
-                              <td>Part 2</td>
-                              <td>Part 3</td>
+                              <td>
+                                <bold>Part 1</bold>
+                              </td>
+                              <td>
+                                <bold>Part 2</bold>
+                              </td>
+                              <td>
+                                <bold>Part 3</bold>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <bold>Due 12/01/19</bold>
+                              </td>
+                              <td>
+                                <bold>Due 01/02/20</bold>
+                              </td>
+                              <td>
+                                <bold>Due 01/10/20</bold>
+                              </td>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>Task 1</td>
-                              <td>Task 7</td>
-                              <td>Task 12</td>
+                              <td>
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <td>Task 1</td>
+                                      <td>Done</td>
+                                      <td>></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Task 7</td>
+                                      <td>To Do</td>
+                                      <td>></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Task 13</td>
+                                      <td>In Progress</td>
+                                      <td>></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td>
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <td>Task 2</td>
+                                      <td>To Do</td>
+                                      <td>></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Task 8</td>
+                                      <td>In Progress</td>
+                                      <td>></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Task 14</td>
+                                      <td>Done</td>
+                                      <td>></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td>
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <td>Task 3</td>
+                                      <td>To Do</td>
+                                      <td>></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Task 9</td>
+                                      <td>In Progress</td>
+                                      <td>></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Task 15</td>
+                                      <td>Done</td>
+                                      <td>></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
                             </tr>
                           </tbody>
                         </Table>
