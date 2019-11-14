@@ -110,4 +110,38 @@ export default {
       return console.log(err);
     }
   },
+  updateTaskById: async id => {
+    try {
+      const res = await axios.delete(`api/task/${id}`);
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  postNewTask: async newTask => {
+    // Example POST: { "vals": ["test_user", "111111", 1] }
+
+    console.log(newTask);
+    try {
+      let { taskId, groupId, description, deadline, taskName, userId, creationDate, status } = newTask;
+      const res = await axios.post("/api/task", {
+        //If we want to autogenerate a value, change one of the values here
+        vals: [
+          taskId, //Ex: instead of taskId here, we could have a random number generated.
+          groupId,
+          description,
+          deadline,
+          taskName,
+          userId,
+          creationDate,
+          status
+        ]
+      });
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
 };

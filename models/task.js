@@ -8,9 +8,24 @@ const Task = {
             if(err) throw err;
             cb(results);
         });
-
-    }
-    //More statements here...
+    },
+    insertOne: (vals, cb) => {
+        const queryString =
+        "INSERT INTO Tasks(taskId, groupId, description, deadline, taskName, userId, creationDate, status) VALUES(?,?,?,?,?,?,?,?)"
+        connection.execute(queryString, vals, (err, result) => {
+            if (err) throw err;
+            cb(result);
+          });
+    },
+    updateOneByTask: (vals, id, cb) => {
+        vals.push(id);
+        const queryString =
+          "UPDATE Tasks SET description=?, deadline=?, taskName=? WHERE taskId=?;";
+        connection.execute(queryString, vals, (err, result) => {
+          if (err) throw err;
+          cb(result);
+        });
+      }
 }
 
 module.exports = Task;

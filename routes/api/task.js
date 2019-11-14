@@ -5,7 +5,9 @@ const taskController = require('../../controllers/taskController');
 router.route('/')
 // GET "/api/task"
   .get(taskController.getAllTasks) //Gets all the users
+  .post(taskController.createNewTask)
 //=======================================================
-
+router.route('/:id')
+  .put(taskController.updateTaskById)
 
 module.exports = router;
