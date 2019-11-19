@@ -9,6 +9,5 @@ router.route('/')
 //=======================================================
 router.route('/:id')
   .put(taskController.updateTaskById)
-  .get(taskController.getTaskByCourse)
 
 module.exports = router;

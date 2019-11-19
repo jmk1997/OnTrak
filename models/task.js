@@ -9,14 +9,6 @@ const Task = {
             cb(results);
         });
     },
-    selectByGroup: (id, cb) =>{
-      const queryString =
-      "SELECT taskId, groupId, description, deadline, taskName, userId, creationDate, status FROM Tasks WHERE groupId = ? ORDER BY deadline ASC;"
-      connection.query(queryString, [id], (err,results) => {
-          if(err) throw err;
-          cb(results);
-      });
-  },
     insertOne: (vals, cb) => {
         const queryString =
         "INSERT INTO Tasks(taskId, groupId, description, deadline, taskName, userId, creationDate, status) VALUES(?,?,?,?,?,?,?,?)"
