@@ -25,7 +25,32 @@ const Task = {
           if (err) throw err;
           cb(result);
         });
-      }
+      },
+      deleteByTask: (id, cb) => {
+        vals.push(id);
+        const queryString =
+          "DELETE FROM Tasks WHERE taskId=?;";
+        connection.execute(queryString, vals, (err, result) => {
+          if (err) throw err;
+          cb(result);
+        });
+      },
+      selectIndividualTaskId: cb =>{
+        const queryString =
+        "SELECT SUM(count) FROM (SELECT COUNT(taskId) FROM Tasks GROUP BY UserId ORDER BY taskID);"
+        connection.query(queryString, (err,results) => {
+            if(err) throw err;
+            cb(results);
+        });
+    },
+    selectTaskIdNotDone: cb =>{
+      const queryString =
+      "SELECT SUM(count) FROM (SELECT COUNT(taskId) FROM Tasks WHERE LOWER(status) IS NOT 'DONE' GROUP BY UserId ORDER BY taskID);"
+      connection.query(queryString, (err,results) => {
+          if(err) throw err;
+          cb(results);
+      });
+  },
 }
 
 module.exports = Task;

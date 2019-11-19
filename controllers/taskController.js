@@ -30,4 +30,37 @@ module.exports = {
             }
           });
       },
+      deleteTaskById: (req, res) => {
+        console.log(req.isAuthenticated());
+        const userData = req.body.vals; // grab onto the new user array of values
+          db.task.deleteByTask(userData, req.params.id, result => {
+            if (result.changedRows === 0) {
+              res.status(204).end();
+            } else {
+              res.status(200).end();
+            }
+          });
+      },
+      getIndividualTasksById: (req, res) => {
+        console.log(req.isAuthenticated());
+        const userData = req.body.vals; // grab onto the new user array of values
+          db.task.selectIndividualTaskId(userData, req.params.id, result => {
+            if (result.changedRows === 0) {
+              res.status(204).end();
+            } else {
+              res.status(200).end();
+            }
+          });
+      },
+      getIndividualTasksNotDoneById: (req, res) => {
+        console.log(req.isAuthenticated());
+        const userData = req.body.vals; // grab onto the new user array of values
+          db.task.selectTaskIdNotDone(userData, req.params.id, result => {
+            if (result.changedRows === 0) {
+              res.status(204).end();
+            } else {
+              res.status(200).end();
+            }
+          });
+      },
 }
