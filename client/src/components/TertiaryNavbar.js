@@ -13,7 +13,8 @@ import {
 } from "react-router-dom";
 import UserContext from "../UserContext";
 import fakeChat from "../images/chat.png";
-import API from "../utils/API"
+import API from "../utils/API";
+import Popup from "reactjs-popup";
 
 import { withRouter } from "react-router";
 
@@ -52,11 +53,9 @@ class TertiaryNavbar extends React.Component {
   constructor(props) {
     super(props);
   }
-    state = { tasks: [] };
+  state = { tasks: [] };
   componentDidMount() {
-        API.getAllTasks().then(res =>
-          this.setState({ tasks: res })
-        );
+    API.getAllTasks().then(res => this.setState({ tasks: res }));
     // API.coursesByUserById(this.props.id).then(res =>
     //   this.setState({ courses: res })
     // );
@@ -196,6 +195,7 @@ class TertiaryNavbar extends React.Component {
                               <td>Assignee</td>
                               <td>Due</td>
                               <td>Status</td>
+                              <td></td>
                             </tr>
                           </thead>
                           <tbody>
@@ -205,6 +205,28 @@ class TertiaryNavbar extends React.Component {
                                 <td>{task.userId}</td>
                                 <td>{task.deadline}</td>
                                 <td>{task.status}</td>
+                                <td>
+                                  <Popup
+                                    trigger={<Button>View</Button>}
+                                    modal
+                                    // position="right center"
+                                  >
+                                    <h1>Task: {task.taskName}</h1>
+                                    <h2>Due: {task.deadline}</h2>
+                                    <h3>Links:</h3>
+                                    {task.userID === user.user_id ? (
+                                      <Button>Add Link</Button>
+                                    ) : (
+                                      <div />
+                                    )}
+                                    <h3>Comments:</h3>
+                                    {task.userID !== user.user_id ? (
+                                      <Button>Add Comment</Button>
+                                    ) : (
+                                      <div />
+                                    )}
+                                  </Popup>
+                                </td>
                               </tr>
                             ))}
                           </tbody>
