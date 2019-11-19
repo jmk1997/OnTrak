@@ -25,15 +25,6 @@ const Task = {
             cb(result);
           });
     },
-    updateOneByTask: (vals, id, cb) => {
-        vals.push(id);
-        const queryString =
-          "UPDATE Tasks SET description=?, deadline=?, taskName=? WHERE taskId=?;";
-        connection.execute(queryString, vals, (err, result) => {
-          if (err) throw err;
-          cb(result);
-        });
-      }
 }
 
 module.exports = Task;

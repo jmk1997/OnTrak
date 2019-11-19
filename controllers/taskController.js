@@ -43,7 +43,7 @@ module.exports = {
       },
       getTaskByGroupId: (req, res) => {
         console.log(req.isAuthenticated());
-        db.Task.getTaskByGroupId(req.params.id, data => {
+        db.Task.selectByGroup(req.params.id, data => {
           res.status(200).json(data);
         });
       },

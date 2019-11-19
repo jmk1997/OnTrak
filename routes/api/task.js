@@ -8,7 +8,6 @@ router.route('/')
   .post(taskController.createNewTask)
 //=======================================================
 router.route('/:id')
-  .put(taskController.updateTaskById)
-  .get(taskController.getTaskByGroup)
+  .get(taskController.getTaskByGroupId)
 
 module.exports = router;
