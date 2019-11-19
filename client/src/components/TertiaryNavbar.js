@@ -54,7 +54,7 @@ class TertiaryNavbar extends React.Component {
   }
     state = { tasks: [] };
   componentDidMount() {
-        API.getAllTasks().then(res =>
+        API.getTaskByGroup(this.props.groupID).then(res =>
           this.setState({ tasks: res })
         );
     // API.coursesByUserById(this.props.id).then(res =>
