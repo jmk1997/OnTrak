@@ -166,7 +166,16 @@ export default {
         ]
       });
       console.log(res);
-      return res;
+      return res; 
+      } catch (err){
+        return console.log(err);
+      }
+  },
+  getTaskByGroup: async id => {
+    try {
+      const res = await axios.get(`api/task/${id}`);
+      console.log(res);
+      return res.data;
     } catch (err) {
       return console.log(err);
     }
