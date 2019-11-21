@@ -5,6 +5,7 @@ const courseController = require('../../controllers/courseController');
 router.route('/')
 // GET "/api/user"
   .get(courseController.getAllCourses) //Gets all the users
+  .post(courseController.createNewCourse)
 //=======================================================
 
 // Matches with "/api/course/:id"

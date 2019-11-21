@@ -1,6 +1,9 @@
 import axios from "axios";
 /* eslint-disable no-console */
 export default {
+
+  //USER RELATED
+
   getLoginStatus: async () => {
     try {
       const res = await axios.get("/api/login/status");
@@ -66,26 +69,21 @@ export default {
   },
   deleteUserById: async id => {
     try {
-      const res = await axios.delete(`api/user/${id}`);
+      const res = await axios.delete(`/api/user/${id}`);
       console.log(res);
       return res;
     } catch (err) {
       return console.log(err);
     }
   },
-  //NEW STUFF attempt BELOW
+
+
+  //GROUPS RELATED
+
+
   groupsByUserById: async id => {
     try {
-      const res = await axios.get(`api/group/${id}`);
-      console.log(res);
-      return res.data;
-    } catch (err) {
-      return console.log(err);
-    }
-  },
-  coursesByUserById: async id => {
-    try {
-      const res = await axios.get(`api/course/${id}`);
+      const res = await axios.get(`/api/group/${id}`);
       console.log(res);
       return res.data;
     } catch (err) {
@@ -94,13 +92,50 @@ export default {
   },
   groupsByCourseById: async id => {
     try {
-      const res = await axios.get(`api/group/course/${id}`);
+      const res = await axios.get(`/api/group/course/${id}`);
       console.log(res);
       return res.data;
     } catch (err) {
       return console.log(err);
     }
   },
+
+
+  //COURSES RELATED
+
+
+  coursesByUserById: async id => {
+    try {
+      const res = await axios.get(`/api/course/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  postNewCourse: async newCourse => {
+    // Example POST: { "vals": ["test_user", "111111", 1] }
+    console.log(newCourse);
+    try {
+      let { course_id, course_name, course_desc, } = newCourse;
+      const res = await axios.post("/api/course", {
+        vals: [
+          course_id,
+          course_name,
+          course_desc
+        ]
+      });
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+
+
+  //TASKS RELATED
+
+
   getAllTasks: async () => {
     try {
       const res = await axios.get("/api/task");
@@ -109,6 +144,32 @@ export default {
     } catch (err) {
       return console.log(err);
     }
+  },
+  deleteTask: async id => {
+    try {
+      const res = await axios.delete(`/api/task/${id}`);
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  updateTaskById: async updatedTask => {
+    try {
+      let {id, description, deadline, taskName, status} = updatedTask
+      const res = await axios.put(`/api/task/${id}`, {
+        vals: [
+          description,
+          deadline,
+          taskName,
+          status
+        ]
+      });
+      console.log(res);
+      return res; 
+      } catch (err){
+        return console.log(err);
+      }
   },
   getTaskByGroup: async id => {
     try {
@@ -124,7 +185,7 @@ export default {
 
     console.log(newTask);
     try {
-      let { taskId, groupId, description, deadline, taskName, userId, creationDate, status } = newTask;
+      let { taskId, groupId, description, deadline, taskName, userId, status } = newTask;
       const res = await axios.post("/api/task", {
         //If we want to autogenerate a value, change one of the values here
         vals: [
@@ -134,10 +195,89 @@ export default {
           deadline,
           taskName,
           userId,
-          creationDate,
           status
         ]
       });
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+
+
+  //COMMENTS RELATED
+
+  
+  getAllComments: async () => {
+    try {
+      const res = await axios.get("/api/comment");
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getCommentById: async id => {
+    console.log(id)
+    try {
+      const res = await axios.get(`/api/comment/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getCommentByTaskId: async id => {
+    try {
+      const res = await axios.get(`/api/comment/task/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getCommentByUserId: async id => {
+    try {
+      const res = await axios.get(`/api/comment/user/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  postNewComment: async newComment => {
+    try{
+      let {taskId, userId, text, score} = newComment
+      const res = await axios.post("/api/comment", {
+        vals: [taskId,userId,text,score]
+    });
+    console.log(res);
+    return res;
+  } catch (err) {
+    return console.log(err);
+  }
+  },
+  updateCommentById: async updatedComment => {
+    try {
+      let {id, taskId, userId, text, score} = updatedComment
+      const res = await axios.put(`/api/comment/${id}`, {
+        vals: [
+          taskId,
+          userId,
+          text,
+          score
+        ]
+      });
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  deleteComment: async id => {
+    try {
+      const res = await axios.delete(`/api/comment/${id}`);
       console.log(res);
       return res;
     } catch (err) {

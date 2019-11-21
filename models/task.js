@@ -25,6 +25,22 @@ const Task = {
             cb(result);
           });
     },
+    updateOneByTask: (vals, id, cb) => {
+        vals.push(id);
+        const queryString =
+          "UPDATE Tasks SET description=?, deadline=?, taskName=?, status=? WHERE taskId=?;";
+        connection.execute(queryString, vals, (err, result) => {
+          if (err) throw err;
+          cb(result);
+        });
+      },
+    deleteOne: (id, cb) => {
+      const queryString = "DELETE FROM Tasks WHERE taskId=?;";
+      connection.execute(queryString, [id], (err, result) => {
+        if (err) throw err;
+        cb(result);
+      });
+    }
 }
 
 module.exports = Task;

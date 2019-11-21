@@ -21,8 +21,8 @@ module.exports = {
       },
     updateTaskById: (req, res) => {
         console.log(req.isAuthenticated());
-        const userData = req.body.vals; // grab onto the new user array of values
-          db.task.updateOneByTask(userData, req.params.id, result => {
+        const taskData = req.body.vals; // grab onto the new user array of values
+          db.task.updateOneByTask(taskData, req.params.id, result => {
             if (result.changedRows === 0) {
               res.status(204).end();
             } else {
@@ -30,6 +30,17 @@ module.exports = {
             }
           });
       },
+    deleteById: (req, res) => {
+      console.log(req.isAuthenticated());
+      if(req.isAuthenticated){
+          db.Task.deleteOne(req.params.id, data =>{
+              res.status(200).json(data);
+          })
+      }
+      else {
+          res.status(400).end();
+      }
+  },
       getTaskById: (req, res) => {
         console.log(req.isAuthenticated());
         const userData = req.body.vals; // grab onto the new user array of values

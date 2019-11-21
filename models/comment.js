@@ -1,20 +1,10 @@
 const connection = require("../config/connection"); // import the connection from the config to the database to make db queries
 
-// Build a user Model to export to the controllers
-const Course = {
-  // getUserByUsernameWithPassword: (username, done) => {
-  //   const queryString =
-  //     "SELECT user_id, username, password, access_id, type FROM Users WHERE username=? LIMIT 1;";
-  //   connection.execute(queryString, [username], (err, user) => {
-  //     if (err) {
-  //       return done(err, user);
-  //     }
-  //     return done(null, user[0]);
-  //   });
-  // },
-  selectAll: cb => {
+// Build a comment Model to export to the controllers
+const Comment = {
+  selectAll: (cb) => {
     const queryString =
-      "SELECT course_id, course_name, course_desc, FROM Courses ORDER BY course_id ASC;";
+      "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments ORDER BY commentId ASC;";
     connection.query(queryString, (err, results) => {
       if (err) throw err;
       cb(results);
@@ -22,22 +12,30 @@ const Course = {
   },
   selectOneById: (id, cb) => {
     const queryString =
-      "SELECT course_id, course_name, course_desc FROM Courses WHERE course_id=? LIMIT 1;";
+      "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments WHERE commentId=? LIMIT 1;";
     connection.execute(queryString, [id], (err, results) => {
       if (err) throw err;
       cb(results);
     });
   },
-  selectCoursesByUser: (user_id, cb) => {
+  selectByUser: (user_id, cb) => {
      const queryString =
-       "SELECT c.course_id, c.course_name, c.course_desc FROM UserCourseRelation ucr INNER JOIN Courses c ON c.course_id = ucr.course_id where ucr.user_id = ?;";
+       "SELECT c.commentId, c.taskId, c.creationDate, c.text, c.score FROM Comments c where userId = ?;";
      connection.execute(queryString, [user_id], (err, results) => {
        if (err) throw err;
        cb(results);
      });
   },
+  selectByTask: (taskId, cb) => {
+      const queryString =
+        "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments WHERE commentId=? LIMIT 1;";
+      connection.execute(queryString, [taskId], (err, results) => {
+        if (err) throw err;
+        cb(results);
+      });
+  },
   deleteOne: (id, cb) => {
-    const queryString = "DELETE FROM Courses WHERE course_id=?;";
+    const queryString = "DELETE FROM Comments WHERE commentId=?;";
     connection.execute(queryString, [id], (err, result) => {
       if (err) throw err;
       cb(result);
@@ -45,7 +43,7 @@ const Course = {
   },
   insertOne: (vals, cb) => {
     const queryString =
-      "INSERT INTO Courses (course_name, course_desc) VALUES (?,?)";
+      "INSERT INTO Comments (taskId, userId, text, score) VALUES (?,?,?,?)";
     connection.execute(queryString, vals, (err, result) => {
       if (err) throw err;
       cb(result);
@@ -54,11 +52,11 @@ const Course = {
   updateOne: (vals, id, cb) => {
     vals.push(id);
     const queryString =
-      "UPDATE Courses SET  course_name=?, course_desc=? WHERE course_id=?;";
+      "UPDATE Comments SET taskId=?, userId=?, text=?, score=? WHERE commentId=?;";
     connection.execute(queryString, vals, (err, result) => {
       if (err) throw err;
       cb(result);
     });
   }
 };
-module.exports = Course;
+module.exports = Comment;
