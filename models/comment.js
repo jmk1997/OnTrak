@@ -20,7 +20,7 @@ const Comment = {
   },
   selectByUser: (user_id, cb) => {
      const queryString =
-       "SELECT c.commentId, c.creationDate, c.text, c.score FROM Comments c where userId = ?;";
+       "SELECT c.commentId, c.taskId, c.creationDate, c.text, c.score FROM Comments c where userId = ?;";
      connection.execute(queryString, [user_id], (err, results) => {
        if (err) throw err;
        cb(results);

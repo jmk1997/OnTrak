@@ -9,5 +9,6 @@ router.route('/')
 //=======================================================
 router.route('/:id')
   .put(taskController.updateTaskById)
+  .delete(taskController.deleteById)
 
 module.exports = router;

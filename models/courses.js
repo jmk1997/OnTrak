@@ -14,7 +14,7 @@ const Course = {
   // },
   selectAll: cb => {
     const queryString =
-      "SELECT user_id, username, access_id, type FROM Users ORDER BY user_id ASC;";
+      "SELECT course_id, course_name, course_desc, FROM Courses ORDER BY course_id ASC;";
     connection.query(queryString, (err, results) => {
       if (err) throw err;
       cb(results);

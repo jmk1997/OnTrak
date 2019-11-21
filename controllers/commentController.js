@@ -16,7 +16,7 @@ module.exports = {
     },
     getAllByUser: (req,res) => {
         console.log(req.isAuthenticated());
-        db.Comment.selectByUser( data =>{
+        db.Comment.selectByUser(req.params.id, data =>{
             res.status(200).json(data);
         })
     },
@@ -40,7 +40,8 @@ module.exports = {
     createNewComment: (req, res) => {
         console.log(req.isAuthenticated());
         if(true || req.isAuthenticated()){
-          const commentData = req.body;
+          const commentData = req.body.vals;
+          console.log(commentData);
             db.Comment.insertOne(commentData, result => {
               res.status(200).json({ id: result.insertId });
             });
@@ -51,8 +52,8 @@ module.exports = {
       },
     updateCommentById: (req, res) => {
         console.log(req.isAuthenticated());
-        const commentData = req.body.vals; // grab onto the new comment array of values
-          db.task.updateOne(commentData, req.params.id, result => {
+        const commentData = req.body.vals; 
+          db.Comment.updateOne(commentData, req.params.id, result => {
             if (result.changedRows === 0) {
               res.status(204).end();
             } else {

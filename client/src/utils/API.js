@@ -1,6 +1,9 @@
 import axios from "axios";
 /* eslint-disable no-console */
 export default {
+
+  //USER RELATED
+
   getLoginStatus: async () => {
     try {
       const res = await axios.get("/api/login/status");
@@ -73,19 +76,14 @@ export default {
       return console.log(err);
     }
   },
-  //NEW STUFF attempt BELOW
+
+
+  //GROUPS RELATED
+
+
   groupsByUserById: async id => {
     try {
       const res = await axios.get(`/api/group/${id}`);
-      console.log(res);
-      return res.data;
-    } catch (err) {
-      return console.log(err);
-    }
-  },
-  coursesByUserById: async id => {
-    try {
-      const res = await axios.get(`/api/course/${id}`);
       console.log(res);
       return res.data;
     } catch (err) {
@@ -101,6 +99,43 @@ export default {
       return console.log(err);
     }
   },
+
+
+  //COURSES RELATED
+
+
+  coursesByUserById: async id => {
+    try {
+      const res = await axios.get(`/api/course/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  postNewCourse: async newCourse => {
+    // Example POST: { "vals": ["test_user", "111111", 1] }
+    console.log(newCourse);
+    try {
+      let { course_id, course_name, course_desc, } = newCourse;
+      const res = await axios.post("/api/course", {
+        vals: [
+          course_id,
+          course_name,
+          course_desc
+        ]
+      });
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+
+
+  //TASKS RELATED
+
+
   getAllTasks: async () => {
     try {
       const res = await axios.get("/api/task");
@@ -110,9 +145,26 @@ export default {
       return console.log(err);
     }
   },
-  updateTaskById: async id => {
+  deleteTask: async id => {
     try {
       const res = await axios.delete(`/api/task/${id}`);
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  updateTaskById: async updatedTask => {
+    try {
+      let {id, description, deadline, taskName, status} = updatedTask
+      const res = await axios.put(`/api/task/${id}`, {
+        vals: [
+          description,
+          deadline,
+          taskName,
+          status
+        ]
+      });
       console.log(res);
       return res;
     } catch (err) {
@@ -143,6 +195,11 @@ export default {
       return console.log(err);
     }
   },
+
+
+  //COMMENTS RELATED
+
+  
   getAllComments: async () => {
     try {
       const res = await axios.get("/api/comment");
