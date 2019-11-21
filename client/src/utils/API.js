@@ -189,13 +189,11 @@ export default {
       const res = await axios.post("/api/task", {
         //If we want to autogenerate a value, change one of the values here
         vals: [
-          taskId, //Ex: instead of taskId here, we could have a random number generated.
           groupId,
           description,
           deadline,
           taskName,
-          userId,
-          status
+          userId 
         ]
       });
       console.log(res);
