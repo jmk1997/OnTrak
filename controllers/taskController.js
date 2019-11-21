@@ -10,13 +10,14 @@ module.exports = {
     createNewTask: (req, res) => {
         console.log(req.isAuthenticated());
         if(req.isAuthenticated()){
-          const userData = req.body.vals;
-            db.Task.insertOne(userData, result => {
+          const taskData = req.body.vals;
+          console.log(taskData);
+            db.Task.insertOne(taskData, result => {
               res.status(200).json({ id: result.insertId });
             });
         }
         else {
-          res.status(400);
+          res.status(400).end();
         }
       },
     updateTaskById: (req, res) => {

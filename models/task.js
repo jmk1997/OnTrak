@@ -19,7 +19,7 @@ const Task = {
   },
     insertOne: (vals, cb) => {
         const queryString =
-        "INSERT INTO Tasks(taskId, groupId, description, deadline, taskName, userId, creationDate, status) VALUES(?,?,?,?,?,?,?,?)"
+        "INSERT INTO Tasks(groupId, description, deadline, taskName, userId) VALUES(?,?,?,?,?)"
         connection.execute(queryString, vals, (err, result) => {
             if (err) throw err;
             cb(result);

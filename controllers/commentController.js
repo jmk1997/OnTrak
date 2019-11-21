@@ -39,7 +39,7 @@ module.exports = {
     },
     createNewComment: (req, res) => {
         console.log(req.isAuthenticated());
-        if(true || req.isAuthenticated()){
+        if(req.isAuthenticated()){
           const commentData = req.body.vals;
           console.log(commentData);
             db.Comment.insertOne(commentData, result => {
