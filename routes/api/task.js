@@ -15,4 +15,8 @@ router.route('/:id')
 //=======================================================
 router.route('/recent/:id')
   .get(taskController.getRecentTasksByGroupId)
+
+  router.route('/graph/users')
+  .get(taskController.getTesting)
+
 module.exports = router;

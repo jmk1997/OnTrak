@@ -65,6 +65,15 @@ module.exports = {
           res.status(200).json(data);
         });
       },
+      getTesting: (req,res) => {
+        console.log(req.isAuthenticated());
+        db.Task.selectAll( data1 =>{
+          db.User.selectAll(data2 => {
+            
+            res.status(200).json({task:data1, user:data2});
+          });
+        })
+      },
       markTaskAsDone: (req, res) => {
         db.Task.markTaskAsDone(req.params.id, data =>{
           res.status(200).json(data);

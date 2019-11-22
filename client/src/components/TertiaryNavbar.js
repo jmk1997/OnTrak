@@ -52,7 +52,7 @@ class TertiaryNavbar extends React.Component {
   constructor(props) {
     super(props);
   }
-    state = { tasks: [], recent:[] };
+  state = { tasks: [], recent:[]};
   componentDidMount() {
         API.getTaskByGroup(this.props.groupID).then(res =>
           this.setState({ tasks: res })
@@ -64,6 +64,9 @@ class TertiaryNavbar extends React.Component {
     //   this.setState({ courses: res })
     // );
   }
+
+  
+  
   render() {
     return (
       <UserContext.Consumer>
