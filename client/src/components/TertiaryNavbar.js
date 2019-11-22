@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Table from "react-bootstrap/Table";
 import HighchartsReact from "highcharts-react-official";
+import TaskPage from './pages/TaskPage'
 import {
   BrowserRouter as Router,
   NavLink,
@@ -17,7 +18,7 @@ import API from "../utils/API"
 
 import { withRouter } from "react-router";
 
-var Highcharts = require("highcharts");
+
 
 
 class TertiaryNavbar extends React.Component {
@@ -161,60 +162,12 @@ class TertiaryNavbar extends React.Component {
                   </Container>
                 )}
               />
+              
+              {/* This is where tasks are bound to the component! */}
               <Route
                 exact
                 path={`/group=${this.props.groupID}/tasks`}
-                render={() => (
-                  <Container className="mx-0" fluid>
-                    <h1>{this.props.groupName} - Tasks</h1>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center"
-                      }}
-                    >
-                      <div style={{ flexGrow: 1 }}>
-                        <h2>Overview</h2>
-                        <HighchartsReact
-                          highcharts={Highcharts}
-                          options={{
-                            chart: { type: "pie" },
-                            title: { text: "Tasks Distribution" },
-                            series: [
-                              {
-                                name: "Tasks",
-                                data: this.state.graphData
-                              }
-                            ]
-                          }}
-                        />
-                      </div>
-                      <div>
-                        <Table>
-                          <thead>
-                            <tr>
-                              <td>Name</td>
-                              <td>Assignee</td>
-                              <td>Due</td>
-                              <td>Status</td>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {this.state.tasks.map(task => (
-                              <tr>
-                                <td>{task.taskName}</td>
-                                <td>{task.userId}</td>
-                                <td>{task.deadline}</td>
-                                <td>{task.status}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </Table>
-                      </div>
-                    </div>
-                  </Container>
-                )}
+                render = {()=> <TaskPage groupID={this.props.groupID} groupName={this.props.groupName} />}
               />
               {this.props.viewChat === true ? (
                 <Route
