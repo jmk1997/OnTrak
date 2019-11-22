@@ -65,12 +65,23 @@ module.exports = {
           res.status(200).json(data);
         });
       },
-      getTesting: (req,res) => {
+      getCompletionData: (req, res) => {
         console.log(req.isAuthenticated());
-        db.Task.selectAll( data1 =>{
-          db.User.selectAll(data2 => {
-            
-            res.status(200).json({task:data1, user:data2});
+        db.Task.getCompletionData(req.params.id, data => {
+          res.status(200).json(data);
+        });
+      },
+      getUnCompletionData: (req, res) => {
+        console.log(req.isAuthenticated());
+        db.Task.getUnCompletionData(req.params.id, data => {
+          res.status(200).json(data);
+        });
+      },
+      getTaskData: (req,res) => {
+        console.log(req.isAuthenticated());
+        db.Task.getCompletionData( req.params.id, completed =>{
+          db.Task.getUnCompletionData(req.params.id, unfinished => {
+            res.status(200).json(completed.concat(unfinished));
           });
         })
       },

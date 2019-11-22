@@ -16,7 +16,10 @@ router.route('/:id')
 router.route('/recent/:id')
   .get(taskController.getRecentTasksByGroupId)
 
-  router.route('/graph/users')
-  .get(taskController.getTesting)
+  router.route('/doneGraph/:id')
+  .get(taskController.getTaskData)
+
+  router.route('/notDoneGraph/:id')
+  .get(taskController.getUnCompletionData)
 
 module.exports = router;

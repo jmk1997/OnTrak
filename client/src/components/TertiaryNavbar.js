@@ -19,40 +19,12 @@ import { withRouter } from "react-router";
 
 var Highcharts = require("highcharts");
 
-var chart = (
-  <HighchartsReact
-    highcharts={Highcharts}
-    options={{
-      chart: { type: "pie" },
-      title: { text: "Tasks Completed" },
-      series: [
-        {
-          name: "Tasks",
-          data: [
-            {
-              name: "User 1",
-              y: 50
-            },
-            {
-              name: "User 2",
-              y: 20
-            },
-            {
-              name: "User 3",
-              y: 30
-            }
-          ]
-        }
-      ]
-    }}
-  />
-);
 
 class TertiaryNavbar extends React.Component {
   constructor(props) {
     super(props);
   }
-  state = { tasks: [], recent:[]};
+  state = { tasks: [], recent:[], graphData:[]};
   componentDidMount() {
         API.getTaskByGroup(this.props.groupID).then(res =>
           this.setState({ tasks: res })
@@ -60,6 +32,9 @@ class TertiaryNavbar extends React.Component {
         API.getRecentTaskByGroup(this.props.groupID).then(res =>
           this.setState({recent: res})
           );
+          API.getTaskData(this.props.groupID).then(res =>
+            this.setState({graphData: res})
+            );  
     // API.coursesByUserById(this.props.id).then(res =>
     //   this.setState({ courses: res })
     // );
@@ -201,7 +176,19 @@ class TertiaryNavbar extends React.Component {
                     >
                       <div style={{ flexGrow: 1 }}>
                         <h2>Overview</h2>
-                        {chart}
+                        <HighchartsReact
+                          highcharts={Highcharts}
+                          options={{
+                            chart: { type: "pie" },
+                            title: { text: "Tasks Distribution" },
+                            series: [
+                              {
+                                name: "Tasks",
+                                data: this.state.graphData
+                              }
+                            ]
+                          }}
+                        />
                       </div>
                       <div>
                         <Table>

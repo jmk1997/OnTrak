@@ -180,6 +180,24 @@ export default {
       return console.log(err);
     }
   },
+  getTaskData: async id => {
+    try {
+      const res = await axios.get(`api/task/doneGraph/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getTaskNotDoneData: async id => {
+    try {
+      const res = await axios.get(`api/task/notDoneGraph/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
   getRecentTaskByGroup: async id => {
     try {
       const res = await axios.get(`api/task/recent/${id}`);

@@ -19,7 +19,7 @@ const Task = {
     },
     selectRecentByGroup: (id, cb) =>{
       const queryString =
-      "SELECT taskId, groupId, description, deadline, taskName, userId, updatedDate, status FROM Tasks WHERE groupId = ? and updatedDate>CURDATE()-5 ORDER BY status, deadline ASC LIMIT 5;"
+      "SELECT taskId, groupId, description, deadline, taskName, userId, updatedDate, status FROM Tasks WHERE groupId = ? and updatedDate>CURDATE()-5 ORDER BY updatedDate DESC LIMIT 5;"
       connection.query(queryString, [id], (err,results) => {
           if(err) throw err;
           cb(results);
@@ -50,7 +50,22 @@ const Task = {
           cb(result);
         }
         );
-
+    },
+    getCompletionData: (id, cb) =>{
+      const queryString =
+      "SELECT s.username as name, count(userId) as y from Tasks t join Users s on t.userId=s.user_id where groupId = ? and status='Done' group by userId;"
+      connection.query(queryString, [id], (err,results) => {
+          if(err) throw err;
+          cb(results);
+      });
+    },
+    getUnCompletionData: (id, cb) =>{
+      const queryString =
+      "SELECT 'Not Done' as name, count(userId) as y from Tasks t join Users s on t.userId=s.user_id where groupId = ? and status='Not done';"
+      connection.query(queryString, [id], (err,results) => {
+          if(err) throw err;
+          cb(results);
+      });
     },
     deleteOne: (id, cb) => {
       const queryString = "DELETE FROM Tasks WHERE taskId=?;";
