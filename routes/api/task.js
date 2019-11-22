@@ -12,4 +12,7 @@ router.route('/:id')
   .delete(taskController.deleteById)
   .get(taskController.getTaskByGroupId)
   .post(taskController.markTaskAsDone)
+//=======================================================
+router.route('/recent/:id')
+  .get(taskController.getRecentTasksByGroupId)
 module.exports = router;

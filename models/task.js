@@ -3,7 +3,7 @@ const connection = require("../config/connection"); // import the connection fro
 const Task = {
     selectAll: cb =>{
         const queryString =
-        "SELECT taskId, groupId, description, deadline, taskName, userId, creationDate, status FROM Tasks ORDER BY deadline ASC;"
+        "SELECT taskId, groupId, description, deadline, taskName, userId, creationDate, status FROM Tasks ORDER BY status, deadline ASC;"
         connection.query(queryString, (err,results) => {
             if(err) throw err;
             cb(results);
@@ -11,12 +11,20 @@ const Task = {
     },
     selectByGroup: (id, cb) =>{
       const queryString =
-      "SELECT taskId, groupId, description, deadline, taskName, userId, creationDate, status FROM Tasks WHERE groupId = ? ORDER BY deadline ASC;"
+      "SELECT taskId, groupId, description, deadline, taskName, userId, creationDate, status FROM Tasks WHERE groupId = ? ORDER BY status, deadline ASC;"
       connection.query(queryString, [id], (err,results) => {
           if(err) throw err;
           cb(results);
       });
-  },
+    },
+    selectRecentByGroup: (id, cb) =>{
+      const queryString =
+      "SELECT taskId, groupId, description, deadline, taskName, userId, updatedDate, status FROM Tasks WHERE groupId = ? and updatedDate>CURDATE()-5 ORDER BY status, deadline ASC LIMIT 5;"
+      connection.query(queryString, [id], (err,results) => {
+          if(err) throw err;
+          cb(results);
+      });
+    },
     insertOne: (vals, cb) => {
         const queryString =
         "INSERT INTO Tasks(groupId, description, deadline, taskName, userId, updatedDate) VALUES(?,?,?,?,?, CURDATE())"

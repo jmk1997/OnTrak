@@ -52,11 +52,14 @@ class TertiaryNavbar extends React.Component {
   constructor(props) {
     super(props);
   }
-    state = { tasks: [] };
+    state = { tasks: [], recent:[] };
   componentDidMount() {
         API.getTaskByGroup(this.props.groupID).then(res =>
           this.setState({ tasks: res })
         );
+        API.getRecentTaskByGroup(this.props.groupID).then(res =>
+          this.setState({recent: res})
+          );
     // API.coursesByUserById(this.props.id).then(res =>
     //   this.setState({ courses: res })
     // );
@@ -126,16 +129,25 @@ class TertiaryNavbar extends React.Component {
                       <div>
                         <h3>Updates</h3>
                         <Table>
+                          <thead>
+                            <tr>
+                              <td>Name</td>
+                              <td>Updated</td>
+                              <td>Status</td>
+                            </tr>
+                          </thead>
                           <tbody>
-                            <tr>
-                              <td>User1 commented on Task4</td>
-                            </tr>
-                            <tr>
-                              <td>User2 upload a file to Task8</td>
-                            </tr>
-                            <tr>
-                              <td>Reminder: Task 10 is due tomorrow</td>
-                            </tr>
+                            {this.state.recent.map(task => (
+                              <tr>
+                                <td>{task.taskName}</td>
+                                <td>{new Intl.DateTimeFormat('en-GB', { 
+                                      year: 'numeric', 
+                                      month: 'long', 
+                                      day: '2-digit' 
+                                    }).format(new Date(task.updatedDate))}</td>
+                                <td>{task.status}</td>
+                              </tr>
+                            ))}
                           </tbody>
                         </Table>
                         <Button>View Past Notifications</Button>

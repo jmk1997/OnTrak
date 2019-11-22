@@ -59,6 +59,12 @@ module.exports = {
           res.status(200).json(data);
         });
       },
+      getRecentTasksByGroupId: (req, res) => {
+        console.log(req.isAuthenticated());
+        db.Task.selectRecentByGroup(req.params.id, data => {
+          res.status(200).json(data);
+        });
+      },
       markTaskAsDone: (req, res) => {
         db.Task.markTaskAsDone(req.params.id, data =>{
           res.status(200).json(data);

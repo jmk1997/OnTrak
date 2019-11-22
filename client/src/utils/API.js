@@ -180,6 +180,15 @@ export default {
       return console.log(err);
     }
   },
+  getRecentTaskByGroup: async id => {
+    try {
+      const res = await axios.get(`api/task/recent/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
   markTaskAsDone: async id =>{
     try{
       const res = await axios.post(`api/task/${id}`);
