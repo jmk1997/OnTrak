@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
@@ -9,20 +10,25 @@ import Badge from "react-bootstrap/Badge";
 import UserContext from "../UserContext";
 import RenderIfAId from "./RenderIfAId";
 
+import logoName from "./OnTrak.png";
+
 const TopNavbar = () => (
+
   <UserContext.Consumer>
     {({ user, getUserLogout }) => (
-      <Navbar expand="md" bg="dark" variant="dark">
-        <Navbar.Toggle aria-controls="responsive-top-navbar" />
-        <Navbar.Collapse id="responsive-top-navbar">
-          <Navbar.Brand>OnTrak</Navbar.Brand>
-          <Nav>
+      <Navbar expand="md" bg="primary" variant="dark" className="TopNav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <img src={logoName} style={{width: '5%'}}/>
+          <Nav className="mr-auto">
+            
             <RenderIfAId aId={1}>
               <NavLink
                 exact
                 to="/"
                 className="nav-link"
                 activeClassName="active"
+                onClick={{SecNav: 'display: block'}}
               >
                 Groups
               </NavLink>
@@ -33,6 +39,7 @@ const TopNavbar = () => (
                 to="/"
                 className="nav-link"
                 activeClassName="active"
+                
               >
                 Courses
               </NavLink>
@@ -70,6 +77,7 @@ const TopNavbar = () => (
             {/* <NavLink exact to="/about" className="nav-link" activeClassName="active">
               About
             </NavLink> */}
+            
           </Nav>
         </Navbar.Collapse>
         <ButtonGroup

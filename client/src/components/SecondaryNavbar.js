@@ -20,6 +20,8 @@ import API from "../utils/API";
 import Pane from "./Pane";
 import TertiaryNavbar from "./TertiaryNavbar";
 
+import NavDropdown from "react-bootstrap/NavDropdown";
+
 class SecondaryNavbar extends React.Component {
   constructor(props) {
     super(props);
@@ -48,11 +50,12 @@ class SecondaryNavbar extends React.Component {
       <UserContext.Consumer>
         {({ user }) => (
           <Router>
-            <Navbar expand="md" bg="dark" variant="dark">
+            <Navbar expand="md" bg="primary" variant="dark" style={{width: '25%'}}>
               <Navbar.Toggle aria-controls="responsive-top-navbar" />
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}
                 <Nav>
+                
                   {this.props.studentID ? (
                     this.state.itemsToMap.map(group => (
                       <NavLink
@@ -89,6 +92,7 @@ class SecondaryNavbar extends React.Component {
                   ) : (
                     <div>Hmmm</div>
                   )}
+                  
                 </Nav>
               </Navbar.Collapse>
             </Navbar>

@@ -17,6 +17,8 @@ import API from "../utils/API"
 
 import { withRouter } from "react-router";
 
+import NavDropdown from "react-bootstrap/NavDropdown";
+
 var Highcharts = require("highcharts");
 
 
@@ -47,7 +49,7 @@ class TertiaryNavbar extends React.Component {
       <UserContext.Consumer>
         {({ user }) => (
           <Router>
-            <Navbar expand="md" bg="dark" variant="dark">
+            <Navbar expand="md" bg="primary" variant="dark" style={{width: '25%'}}>
               <Navbar.Toggle aria-controls="responsive-top-navbar" />
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}

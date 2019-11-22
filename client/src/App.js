@@ -20,6 +20,7 @@ import TopNavbar from "./components/TopNavbar"; //WrappedWithRouter
 import UserContext from "./UserContext";
 /* eslint-disable no-console */
 import PrivateAccessRoute from "./components/PrivateAccessRoute";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -73,6 +74,7 @@ class App extends React.Component {
             </Container>
           ) : (
             <div>
+      
               <TopNavbar />
               <Container className="mx-0" fluid>
                 <Switch>
