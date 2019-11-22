@@ -11,5 +11,5 @@ router.route('/:id')
   .put(taskController.updateTaskById)
   .delete(taskController.deleteById)
   .get(taskController.getTaskByGroupId)
-
+  .post(taskController.markTaskAsDone)
 module.exports = router;

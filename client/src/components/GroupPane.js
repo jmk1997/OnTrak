@@ -67,12 +67,6 @@ export default class GroupPane extends React.Component {
         {/* </Container> */}
       </Router>
 
-      //   <Row className="justify-content-center">
-      //         {this.state.groups.map(group => (
-      //             <Pane groupTitle = {group.group_title} desc = {group.group_desc} GiD = {group.group_id}> </Pane>
-      //           ))
-      //         }
-      //     </Row>
     );
   }
 }

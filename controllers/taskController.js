@@ -59,4 +59,9 @@ module.exports = {
           res.status(200).json(data);
         });
       },
+      markTaskAsDone: (req, res) => {
+        db.Task.markTaskAsDone(req.params.id, data =>{
+          res.status(200).json(data);
+        });
+      }
 }

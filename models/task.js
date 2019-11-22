@@ -19,7 +19,7 @@ const Task = {
   },
     insertOne: (vals, cb) => {
         const queryString =
-        "INSERT INTO Tasks(groupId, description, deadline, taskName, userId) VALUES(?,?,?,?,?)"
+        "INSERT INTO Tasks(groupId, description, deadline, taskName, userId, updatedDate) VALUES(?,?,?,?,?, CURDATE())"
         connection.execute(queryString, vals, (err, result) => {
             if (err) throw err;
             cb(result);
@@ -28,12 +28,22 @@ const Task = {
     updateOneByTask: (vals, id, cb) => {
         vals.push(id);
         const queryString =
-          "UPDATE Tasks SET description=?, deadline=?, taskName=?, status=? WHERE taskId=?;";
+          "UPDATE Tasks SET description=?, deadline=?, taskName=?, status=?, updatedDate=CURDATE() WHERE taskId=?;";
         connection.execute(queryString, vals, (err, result) => {
           if (err) throw err;
           cb(result);
         });
       },
+    markTaskAsDone: (id,cb) =>{
+      const queryString = 
+        "Update Tasks SET status='Done', updatedDate = CURDATE() where taskId = ?;";
+        connection.execute(queryString, id, (err, result) => {
+          if(err) throw err;
+          cb(result);
+        }
+        );
+
+    },
     deleteOne: (id, cb) => {
       const queryString = "DELETE FROM Tasks WHERE taskId=?;";
       connection.execute(queryString, [id], (err, result) => {
