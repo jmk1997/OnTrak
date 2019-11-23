@@ -19,6 +19,7 @@ import API from "../utils/API"
 import { withRouter } from "react-router";
 
 import NavDropdown from "react-bootstrap/NavDropdown";
+import DashboardPage from "./pages/DashboardPage";
 
 var Highcharts = require("highcharts");
 
@@ -32,9 +33,6 @@ class TertiaryNavbar extends React.Component {
         API.getTaskByGroup(this.props.groupID).then(res =>
           this.setState({ tasks: res })
         );
-        API.getRecentTaskByGroup(this.props.groupID).then(res =>
-          this.setState({recent: res})
-          );
           API.getTaskData(this.props.groupID).then(res =>
             this.setState({graphData: res})
             );
@@ -97,72 +95,7 @@ class TertiaryNavbar extends React.Component {
               <Route
                 exact
                 path={`/group=${this.props.groupID}`}
-                render={() => (
-                  <Container className="mx-0" fluid>
-                    <h1>{this.props.groupName} - Dashboard</h1>
-                    <h2>Group description goes here</h2>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between"
-                      }}
-                    >
-                      <div>
-                        <h3>Updates</h3>
-                        <Table>
-                          <thead>
-                            <tr>
-                              <td>Name</td>
-                              <td>Updated</td>
-                              <td>Status</td>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {this.state.recent.map(task => (
-                              <tr>
-                                <td>{task.taskName}</td>
-                                <td>{new Intl.DateTimeFormat('en-GB', {
-                                      year: 'numeric',
-                                      month: 'long',
-                                      day: '2-digit'
-                                    }).format(new Date(task.updatedDate))}</td>
-                                <td>{task.status}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </Table>
-                        <Button>View Past Notifications</Button>
-                      </div>
-                      <div>
-                        <h3>Pinned Items</h3>
-                        <Table>
-                          <tbody>
-                            <tr>
-                              <td>Assignment.pdf</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Required Software
-                                <br />
-                                https://link.here
-                                <br />
-                                https://link.here
-                                <br />
-                                https://link.here
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Note from professor: Remember to comment your
-                                code!
-                              </td>
-                            </tr>
-                          </tbody>
-                        </Table>
-                      </div>
-                    </div>
-                  </Container>
-                )}
+                render={() => <DashboardPage groupID={this.props.groupID} groupName={this.props.groupName}/>}
               />
 
               {/* This is where tasks are bound to the component! */}
