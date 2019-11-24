@@ -23,7 +23,7 @@ class TaskPage extends React.Component{
 
   }
   render() { return (
-    <Container className="mx-0" fluid>
+    <Container className="mx-0" style={{width: '85%'}} fluid>
       <h1>{this.props.groupName} - Tasks</h1>
       <div
         style={{
@@ -35,6 +35,7 @@ class TaskPage extends React.Component{
         <div style={{ flexGrow: 1 }}>
           <h2>Overview</h2>
           <HighchartsReact
+
             highcharts={Highcharts}
             options={{
               chart: { type: "pie" },

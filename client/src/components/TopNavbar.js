@@ -16,19 +16,42 @@ const TopNavbar = () => (
 
   <UserContext.Consumer>
     {({ user, getUserLogout }) => (
-      <Navbar expand="md" bg="primary" variant="dark" className="TopNav">
+      <Navbar expand="md" bg="primary" variant="dark" className="TopNav" style={{float: 'left'}} >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <img src={logoName} style={{width: '5%'}}/>
+          <img src={logoName} style={{width: '15%', padding: '5px'}}/>
+          
           <Nav className="mr-auto">
-            
+          <ButtonGroup
+          size="sm"
+          aria-label="Navbar action buttons"
+          className="p-0"
+        >
+          <Button
+            disabled
+            variant="outline-light"
+            className="text-capitalize px-1"
+          >
+            Welcome {user.username}{" "}
+            <Badge pill variant="light" className="p-1">
+              {user.type}
+            </Badge>
+          </Button>
+          <Button
+            type="submit"
+            onClick={e => getUserLogout(e)}
+            variant="danger"
+          >
+            Log-out
+          </Button>
+        </ButtonGroup>
             <RenderIfAId aId={1}>
               <NavLink
                 exact
                 to="/"
                 className="nav-link"
                 activeClassName="active"
-                onClick={{SecNav: 'display: block'}}
+                
               >
                 Groups
               </NavLink>
@@ -80,29 +103,7 @@ const TopNavbar = () => (
             
           </Nav>
         </Navbar.Collapse>
-        <ButtonGroup
-          size="sm"
-          aria-label="Navbar action buttons"
-          className="p-0"
-        >
-          <Button
-            disabled
-            variant="outline-light"
-            className="text-capitalize px-1"
-          >
-            Welcome {user.username}{" "}
-            <Badge pill variant="light" className="p-1">
-              {user.type}
-            </Badge>
-          </Button>
-          <Button
-            type="submit"
-            onClick={e => getUserLogout(e)}
-            variant="danger"
-          >
-            Log-out
-          </Button>
-        </ButtonGroup>
+        
       </Navbar>
     )}
   </UserContext.Consumer>
