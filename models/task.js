@@ -11,7 +11,7 @@ const Task = {
     },
     selectByGroup: (id, cb) =>{
       const queryString =
-      "SELECT taskId, groupId, description, deadline, taskName, userId, creationDate, status FROM Tasks WHERE groupId = ? ORDER BY status, deadline ASC;"
+      "SELECT taskId, groupId, description, deadline, taskName, userId, username , creationDate, status FROM Tasks t join Users k on t.userId=k.user_id WHERE groupId = ? ORDER BY status, deadline ASC;"
       connection.query(queryString, [id], (err,results) => {
           if(err) throw err;
           cb(results);
