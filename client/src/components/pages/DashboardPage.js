@@ -20,6 +20,9 @@ class DashboardPage extends React.Component{
   }
   render() {
        return (
+         <div>
+           <hr/>
+        
         <Container className="mx-0" fluid>
           <h1>{this.props.groupName} - Dashboard</h1>
           <h2>Group description goes here</h2>
@@ -84,6 +87,7 @@ class DashboardPage extends React.Component{
             </div>
           </div>
         </Container>
+        </div>
       )
   }
 }

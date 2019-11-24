@@ -20,7 +20,7 @@ import API from "../utils/API";
 import Pane from "./Pane";
 import TertiaryNavbar from "./TertiaryNavbar";
 
-import NavDropdown from "react-bootstrap/NavDropdown";
+import "./navs.css";
 
 class SecondaryNavbar extends React.Component {
   constructor(props) {
@@ -50,7 +50,8 @@ class SecondaryNavbar extends React.Component {
       <UserContext.Consumer>
         {({ user }) => (
           <Router>
-            <Navbar expand="md" bg="primary" variant="dark" style={{width: '18%', float: 'left'}}>
+            <div >
+            <Navbar expand="lg" bg="primary" variant="dark" className="SecNav" style={{width: '10%', float:"left", position: 'relative'}}>
               <Navbar.Toggle aria-controls="responsive-top-navbar" />
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}
@@ -97,6 +98,8 @@ class SecondaryNavbar extends React.Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
+            </div>
+            
             <Switch>
               {this.props.studentID ? (
                 this.state.itemsToMap.map(group => (
@@ -129,8 +132,11 @@ class SecondaryNavbar extends React.Component {
                 <div />
               )}
             </Switch>
+            
           </Router>
+          
         )}
+        
       </UserContext.Consumer>
     );
   }
