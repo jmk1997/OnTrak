@@ -1,7 +1,6 @@
 import axios from "axios";
 /* eslint-disable no-console */
 export default {
-
   //USER RELATED
 
   getLoginStatus: async () => {
@@ -43,11 +42,11 @@ export default {
           password,
           access_id,
           Math.random() * 9999999,
-          access_id === '1'
+          access_id === "1"
             ? "Student"
-            : access_id === '2'
+            : access_id === "2"
             ? "Professor"
-            : access_id === '3'
+            : access_id === "3"
             ? "Admin"
             : "Student"
         ]
@@ -76,10 +75,17 @@ export default {
       return console.log(err);
     }
   },
-
+  getUserDataById: async id => {
+    try {
+      const res = await axios.get(`/api/user/${id}`);
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
 
   //GROUPS RELATED
-
 
   groupsByUserById: async id => {
     try {
@@ -100,9 +106,7 @@ export default {
     }
   },
 
-
   //COURSES RELATED
-
 
   coursesByUserById: async id => {
     try {
@@ -126,13 +130,9 @@ export default {
     // Example POST: { "vals": ["test_user", "111111", 1] }
     console.log(newCourse);
     try {
-      let { course_id, course_name, course_desc, } = newCourse;
+      let { course_id, course_name, course_desc } = newCourse;
       const res = await axios.post("/api/course", {
-        vals: [
-          course_id,
-          course_name,
-          course_desc
-        ]
+        vals: [course_id, course_name, course_desc]
       });
       console.log(res);
       return res;
@@ -141,9 +141,7 @@ export default {
     }
   },
 
-
   //TASKS RELATED
-
 
   getAllTasks: async () => {
     try {
@@ -165,20 +163,15 @@ export default {
   },
   updateTaskById: async updatedTask => {
     try {
-      let {id, description, deadline, taskName, status} = updatedTask
+      let { id, description, deadline, taskName, status } = updatedTask;
       const res = await axios.put(`/api/task/${id}`, {
-        vals: [
-          description,
-          deadline,
-          taskName,
-          status
-        ]
+        vals: [description, deadline, taskName, status]
       });
       console.log(res);
-      return res; 
-      } catch (err){
-        return console.log(err);
-      }
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
   },
   getTaskByGroup: async id => {
     try {
@@ -216,12 +209,12 @@ export default {
       return console.log(err);
     }
   },
-  markTaskAsDone: async id =>{
-    try{
+  markTaskAsDone: async id => {
+    try {
       const res = await axios.post(`api/task/${id}`);
       console.log(res);
       return res.data;
-    } catch(err){
+    } catch (err) {
       return console.log(err);
     }
   },
@@ -230,16 +223,18 @@ export default {
 
     console.log(newTask);
     try {
-      let { taskId, groupId, description, deadline, taskName, userId, status } = newTask;
+      let {
+        taskId,
+        groupId,
+        description,
+        deadline,
+        taskName,
+        userId,
+        status
+      } = newTask;
       const res = await axios.post("/api/task", {
         //If we want to autogenerate a value, change one of the values here
-        vals: [
-          groupId,
-          description,
-          deadline,
-          taskName,
-          userId 
-        ]
+        vals: [groupId, description, deadline, taskName, userId]
       });
       console.log(res);
       return res;
@@ -248,10 +243,8 @@ export default {
     }
   },
 
-
   //COMMENTS RELATED
 
-  
   getAllComments: async () => {
     try {
       const res = await axios.get("/api/comment");
@@ -262,7 +255,7 @@ export default {
     }
   },
   getCommentById: async id => {
-    console.log(id)
+    console.log(id);
     try {
       const res = await axios.get(`/api/comment/${id}`);
       console.log(res);
@@ -290,27 +283,22 @@ export default {
     }
   },
   postNewComment: async newComment => {
-    try{
-      let {taskId, userId, text, score} = newComment
+    try {
+      let { taskId, userId, text, score } = newComment;
       const res = await axios.post("/api/comment", {
-        vals: [taskId,userId,text,score]
-    });
-    console.log(res);
-    return res;
-  } catch (err) {
-    return console.log(err);
-  }
+        vals: [taskId, userId, text, score]
+      });
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
   },
   updateCommentById: async updatedComment => {
     try {
-      let {id, taskId, userId, text, score} = updatedComment
+      let { id, taskId, userId, text, score } = updatedComment;
       const res = await axios.put(`/api/comment/${id}`, {
-        vals: [
-          taskId,
-          userId,
-          text,
-          score
-        ]
+        vals: [taskId, userId, text, score]
       });
       console.log(res);
       return res;
@@ -326,5 +314,5 @@ export default {
     } catch (err) {
       return console.log(err);
     }
-  },
+  }
 };
