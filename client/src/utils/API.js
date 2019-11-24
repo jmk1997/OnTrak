@@ -113,6 +113,15 @@ export default {
       return console.log(err);
     }
   },
+  groupInfo: async id => {
+    try {
+      const res = await axios.post(`/api/group/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
   postNewCourse: async newCourse => {
     // Example POST: { "vals": ["test_user", "111111", 1] }
     console.log(newCourse);

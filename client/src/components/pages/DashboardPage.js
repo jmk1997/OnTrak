@@ -11,18 +11,21 @@ class DashboardPage extends React.Component{
     constructor(props) {
         super(props);
       }
-      state = { recent: []};
+      state = { recent: [], courseInfo: []};
 
       componentWillMount() {
         API.getRecentTaskByGroup(this.props.groupID).then(res =>
             this.setState({recent: res})
         );
+        API.groupInfo(this.props.groupID).then(res =>
+            this.setState({courseInfo: res})
+            );
   }
   render() {
        return (
         <Container className="mx-0" fluid>
           <h1>{this.props.groupName} - Dashboard</h1>
-          <h2>Group description goes here</h2>
+          
           <div
             style={{
               display: "flex",
@@ -55,6 +58,7 @@ class DashboardPage extends React.Component{
               </Table>
               <Button>View Past Notifications</Button>
             </div>
+            <div>{this.state.courseInfo.map(course => (<h6 class="text-dark">{course.group_desc}</h6>))}</div>
             <div>
               <h3>Pinned Items</h3>
               <Table>
