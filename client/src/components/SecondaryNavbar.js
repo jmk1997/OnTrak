@@ -51,7 +51,7 @@ class SecondaryNavbar extends React.Component {
         {({ user }) => (
           <Router>
             <div >
-            <Navbar expand="lg" bg="primary" variant="dark" className="SecNav" style={{height: '50%', width: '100%', float:"left", position: 'relative'}}>
+            <Navbar expand="md" bg="primary" variant="dark" className="SecNav" style={{width: '20%', float:"left"}}>
               <Navbar.Toggle aria-controls="responsive-top-navbar" />
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}

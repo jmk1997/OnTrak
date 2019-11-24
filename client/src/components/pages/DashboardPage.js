@@ -27,7 +27,7 @@ class DashboardPage extends React.Component{
         
         <Container className="mx-0" fluid>
           <h1>{this.props.groupName} - Dashboard</h1>
-          
+          <hr/>
           <div
             style={{
               display: "flex",

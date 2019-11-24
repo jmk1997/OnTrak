@@ -48,7 +48,7 @@ class TertiaryNavbar extends React.Component {
         {({ user }) => (
           <Router>
             <div className="TerNav">
-            <Navbar expand="lg" bg="primary" variant="dark" style={{height: '100%', width: '100%', position: 'relative', background: 'black'}}>
+            <Navbar expand="md" bg="primary" variant="dark" style={{width: '20%', float: 'left'}}>
               <Navbar.Toggle aria-controls="responsive-top-navbar" />
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}

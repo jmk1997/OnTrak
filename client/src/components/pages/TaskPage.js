@@ -23,8 +23,9 @@ class TaskPage extends React.Component{
 
   }
   render() { return (
-    <Container className="mx-0" style={{width: '85%'}} fluid>
+    <Container>
       <h1>{this.props.groupName} - Tasks</h1>
+      <hr/>
       <div
         style={{
           display: "flex",
