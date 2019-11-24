@@ -22,7 +22,14 @@ class TaskPage extends React.Component{
         );  
 
   }
-  render() { return (
+  toggleCreateTask = () => {
+    this.setState(state => ({
+      createNewTask: state.createNewTask === true ? false : true
+    }));
+  };
+  render() { 
+    let {createNewTask} = this.state;
+    return (
     <Container>
       <h1>{this.props.groupName} - Tasks</h1>
       <hr/>
