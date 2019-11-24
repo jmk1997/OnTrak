@@ -28,7 +28,7 @@ const Comment = {
   },
   selectByTask: (taskId, cb) => {
       const queryString =
-        "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments WHERE commentId=? LIMIT 1;";
+        "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments WHERE taskId=?;";
       connection.execute(queryString, [taskId], (err, results) => {
         if (err) throw err;
         cb(results);

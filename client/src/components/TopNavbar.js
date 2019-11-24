@@ -28,7 +28,7 @@ const TopNavbar = () => (
                 to="/"
                 className="nav-link"
                 activeClassName="active"
-                onClick={{SecNav: 'display: block'}}
+                // onClick={{SecNav: 'display: block'}}
               >
                 Groups
               </NavLink>

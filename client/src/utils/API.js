@@ -218,6 +218,15 @@ export default {
       return console.log(err);
     }
   },
+  markTaskAsNotDone: async id => {
+    try {
+      const res = await axios.post(`api/task/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
   postNewTask: async newTask => {
     // Example POST: { "vals": ["test_user", "111111", 1] }
 

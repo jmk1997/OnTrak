@@ -17,9 +17,9 @@ class DashboardPage extends React.Component {
     API.getRecentTaskByGroup(this.props.groupID).then(res =>
       this.setState({ recent: res })
     );
-    API.groupInfo(this.props.groupID).then(res =>
-      this.setState({ courseInfo: res })
-    );
+    API.groupInfo(this.props.groupID).then(res => {
+      this.setState({ courseInfo: res[0] });
+    });
   }
   render() {
     return (
@@ -44,7 +44,7 @@ class DashboardPage extends React.Component {
               </thead>
               <tbody>
                 {this.state.recent.map(task => (
-                  <tr>
+                  <tr key={task.taskId}>
                     <td>{task.taskName}</td>
                     <td>{convertDT(task.updatedDate)}</td>
                     <td>{task.status}</td>
@@ -55,9 +55,9 @@ class DashboardPage extends React.Component {
             <Button>View Past Notifications</Button>
           </div>
           <div>
-            {this.state.courseInfo.map(course => (
-              <h6 class="text-dark">{course.group_desc}</h6>
-            ))}
+            {/* {this.state.courseInfo.map(course => ( */}
+            <h6 className="text-dark">{this.state.courseInfo.group_desc}</h6>
+            {/* ))} */}
           </div>
           <div>
             <h3>Pinned Items</h3>

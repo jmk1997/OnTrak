@@ -59,6 +59,7 @@ class SecondaryNavbar extends React.Component {
                   {this.props.studentID ? (
                     this.state.itemsToMap.map(group => (
                       <NavLink
+                        key={`/group=${group.group_id}`}
                         exact
                         to={`/group=${group.group_id}`}
                         className="nav-link"
@@ -70,6 +71,7 @@ class SecondaryNavbar extends React.Component {
                   ) : this.props.profID ? (
                     this.state.itemsToMap.map(course => (
                       <NavLink
+                        key={`/course=${course.course_id}`}
                         exact
                         to={`/course=${course.course_id}`}
                         className="nav-link"
@@ -81,6 +83,7 @@ class SecondaryNavbar extends React.Component {
                   ) : this.props.courseID ? (
                     this.state.itemsToMap.map(group => (
                       <NavLink
+                        key={`/course=${this.props.courseID}/group=${group.group_id}`}
                         exact
                         to={`/course=${this.props.courseID}/group=${group.group_id}`}
                         className="nav-link"
@@ -100,6 +103,7 @@ class SecondaryNavbar extends React.Component {
               {this.props.studentID ? (
                 this.state.itemsToMap.map(group => (
                   <Route
+                    key={`/group=${group.group_id}`}
                     exact
                     path={`/group=${group.group_id}`}
                     render={() => <TertiaryNavbar groupID={group.group_id} groupName={group.group_title} viewChat={true}/>}
@@ -108,6 +112,7 @@ class SecondaryNavbar extends React.Component {
               ) : this.props.profID ? (
                 this.state.itemsToMap.map(course => (
                   <Route
+                    key={`/course=${course.course_id}`}
                     exact
                     path={`/course=${course.course_id}`}
                     render={() => (
@@ -119,6 +124,7 @@ class SecondaryNavbar extends React.Component {
               ) : this.props.courseID ? (
                 this.state.itemsToMap.map(group => (
                   <Route
+                    key={`/course=${this.props.courseID}/group=${group.group_id}`}
                     exact
                     path={`/course=${this.props.courseID}/group=${group.group_id}`}
                     render={() => <TertiaryNavbar groupID={group.group_id} groupName={group.group_title} viewChat={false}/>}
