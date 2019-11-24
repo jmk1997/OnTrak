@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import HighchartsReact from "highcharts-react-official";
 import API from "../../utils/API"
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import CreateTask from "../../components/CreateTask";
 
 import { withRouter } from "react-router";
 var Highcharts = require("highcharts");
@@ -11,7 +13,12 @@ class TaskPage extends React.Component{
     constructor(props) {
         super(props);
       }
-      state = { tasks: [], graphData:[]};
+      state = { tasks: [], createNewTask: false, graphData:[]};
+      toggleCreateTask = () => {
+        this.setState(state => ({
+          createNewTask: state.createNewTask === true ? false : true
+        }));
+      };
 
       componentWillMount() {
         API.getTaskByGroup(this.props.groupID).then(res =>
@@ -22,9 +29,19 @@ class TaskPage extends React.Component{
         );  
 
   }
-  render() { return (
+  toggleCreateTask = () => {
+    this.setState(state => ({
+      createNewTask: state.createNewTask === true ? false : true
+    }));
+  };
+  render() {
+  let {createNewTask} = this.state;
+   return (
+
     <Container className="mx-0" fluid>
       <h1>{this.props.groupName} - Tasks</h1>
+
+              
       <div
         style={{
           display: "flex",
@@ -49,6 +66,14 @@ class TaskPage extends React.Component{
           />
         </div>
         <div>
+        <Button 
+          onClick={this.toggleCreateTask}
+          variant="primary">
+          {createNewTask ? "Cancel" : "Create New Task"}
+        </Button>
+        {createNewTask ? (
+          <CreateTask toggleCreateComponent={this.toggleCreateTask} /> 
+          ) : null}
           <Table>
             <thead>
               <tr>
