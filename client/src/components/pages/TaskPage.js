@@ -87,7 +87,7 @@ class TaskPage extends React.Component{
               {this.state.tasks.map(task => (
                 <tr>
                   <td>{task.taskName}</td>
-                  <td>{task.userId}</td>
+                  <td>{task.username}</td>
                   <td>{task.deadline}</td>
                   <td>{task.status}</td>
                 </tr>
