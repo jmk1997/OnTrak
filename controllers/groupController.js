@@ -13,6 +13,12 @@ module.exports = {
       res.status(200).json(data);
     });
   },
+  getGroupInfo: (req, res) => {
+    console.log(req.isAuthenticated());
+    db.Group.getGroupInfo(req.params.id, data => {
+      res.status(200).json(data);
+    });
+  },
   getGroupsByCourse: (req, res) => {
     console.log(req.isAuthenticated());
     db.Group.selectGroupsByCourse(req.params.id, data => {

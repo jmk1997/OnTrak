@@ -11,6 +11,7 @@ router.route('/')
 router.route('/:id')
 // GET "/api/user/:id"
   .get(groupController.getGroupsByUser)// get user data by ID
+  .post(groupController.getGroupInfo)
 
 router.route('/course/:id')
 // GET "/api/user/:id"

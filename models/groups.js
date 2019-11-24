@@ -44,6 +44,14 @@ const Group = {
       cb(results);
     });
  },
+   getGroupInfo: (id, cb) => {
+    const queryString =
+      "SELECT  group_title, group_desc FROM Groups where group_id = ? LIMIT 1;";
+    connection.execute(queryString, [id], (err, results) => {
+      if (err) throw err;
+      cb(results);
+    });
+ },
   deleteOne: (id, cb) => {
     const queryString = "DELETE FROM Groups WHERE group_id=?;";
     connection.execute(queryString, [id], (err, result) => {
