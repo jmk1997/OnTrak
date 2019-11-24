@@ -1,0 +1,77 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.loginForm {
+    width: 35%;
+    float: right;
+    background: #FFF;
+    height: 100vh;
+  }
+  
+.logoLogin {
+    width: 25%;
+    margin-top: 0;
+    right: 0;
+    float: right;
+}
+  
+form {
+    width: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 60%;
+}
+  
+.loginImage {
+    width: 65%;
+    height: 100vh;
+    float: left;
+}
+  
+  
+label {
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Arial';
+      margin-bottom: 2px;
+      display: block; 
+}
+  
+input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ebebeb;
+    padding: 11px;
+    box-sizing: border-box;
+    font-family: 'Arial';
+    font-weight: 500;
+    font-size: 13px;
+}
+  
+.formSubmit {
+    text-align: right;
+    margin-top: 5%;
+}
+  
+.submit {
+    width: 140px;
+    height: 40px;
+    display: inline-block;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 13px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+  
+#submit {
+    background: #ff6801;
+    color: #fff;
+}
+  
+#submit:hover {
+    background-color: #cd5300; 
+}
