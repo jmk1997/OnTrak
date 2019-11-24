@@ -5,10 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import UserContext from '../UserContext';
 
-import loginImage from './chi.jpg';
-import loginLogo from './OnTrak_blue.png';
-import './login.css';
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -36,15 +32,9 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div className="App" id="app-div">
-        <img src={loginImage} className="loginImage" />
-      <div className="loginForm">
-      <img src={loginLogo} className="logoLogin" />
       <Row className="justify-content-center">
         <Col xs="10">
-          {/*
           <h1 className="text-center display-3 text-capitalize">Welcome {this.state.username ? this.state.username : 'User'}</h1>
-          */}
           <Form disabled={!this.isValidInput()} onSubmit={e => this.handleSubmit(e)} className="text-center border p-3">
             <Form.Row className="justify-content-center">
               <Form.Group controlId="loginUsername">
@@ -64,8 +54,6 @@ class Login extends React.Component {
           </Form>
         </Col>
       </Row>
-      </div>
-      </div>
     );
   }
 }
