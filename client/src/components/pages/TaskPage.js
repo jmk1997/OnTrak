@@ -34,14 +34,12 @@ class TaskPage extends React.Component{
       createNewTask: state.createNewTask === true ? false : true
     }));
   };
-  render() {
-  let {createNewTask} = this.state;
-   return (
-
-    <Container className="mx-0" fluid>
+  render() { 
+    let {createNewTask} = this.state;
+    return (
+    <Container>
       <h1>{this.props.groupName} - Tasks</h1>
-
-              
+      <hr/>
       <div
         style={{
           display: "flex",
@@ -52,6 +50,7 @@ class TaskPage extends React.Component{
         <div style={{ flexGrow: 1 }}>
           <h2>Overview</h2>
           <HighchartsReact
+
             highcharts={Highcharts}
             options={{
               chart: { type: "pie" },

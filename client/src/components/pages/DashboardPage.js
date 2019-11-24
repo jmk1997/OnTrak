@@ -23,9 +23,11 @@ class DashboardPage extends React.Component{
   }
   render() {
        return (
+         
+        
         <Container className="mx-0" fluid>
           <h1>{this.props.groupName} - Dashboard</h1>
-          
+          <hr/>
           <div
             style={{
               display: "flex",
@@ -88,6 +90,7 @@ class DashboardPage extends React.Component{
             </div>
           </div>
         </Container>
+        
       )
   }
 }
