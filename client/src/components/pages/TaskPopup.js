@@ -37,11 +37,6 @@ class TaskPopup extends React.Component {
   };
 
   componentWillMount() {
-    API.getCommentByTaskId(this.props.task.taskId).then(res => {
-      this.setState({
-        comments: res
-      });
-    });
     this.setState({
       checked: this.props.task.status === "Not Done" ? false : true
     });

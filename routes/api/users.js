@@ -18,4 +18,7 @@ router.route('/:id')
 // DELETE "/api/user/:id"
   .delete(userController.deleteUserById);// delete a user by ID
 
+router.route('/group/:id')
+  .get(userController.getUsersByGroup)
+
 module.exports = router;

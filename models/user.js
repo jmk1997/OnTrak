@@ -46,6 +46,14 @@ const User = {
       cb(results);
     });
   },
+  selectAllByGroup: (group, cb) => {
+    const queryString =
+      "SELECT username, ugr.user_id FROM UserGroupRelation ugr join Users u on ugr.user_id=u.user_id where group_id=?;";
+    connection.execute(queryString, [group], (err, results) => {
+      if (err) throw err;
+      cb(results);
+    });
+  },
   deleteOne: (id, cb) => {
     const queryString = "DELETE FROM Users WHERE user_id=?;";
     connection.execute(queryString, [id], (err, result) => {

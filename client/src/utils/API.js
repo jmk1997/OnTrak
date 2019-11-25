@@ -84,6 +84,15 @@ export default {
       return console.log(err);
     }
   },
+  getUsersByGroup: async id => {
+    try {
+      const res = await axios.get(`/api/user/group/${id}`);
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
 
   //GROUPS RELATED
 
@@ -233,17 +242,17 @@ export default {
     console.log(newTask);
     try {
       let {
-        taskId,
         groupId,
         description,
         deadline,
         taskName,
-        userId,
+        username,
+        groupId2,
         status
       } = newTask;
       const res = await axios.post("/api/task", {
         //If we want to autogenerate a value, change one of the values here
-        vals: [groupId, description, deadline, taskName, userId]
+        vals: [groupId, description, deadline, taskName, username, groupId2]
       });
       console.log(res);
       return res;

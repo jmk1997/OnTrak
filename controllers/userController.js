@@ -35,6 +35,12 @@ module.exports = {
       res.status(200).json(data);
     });
   },
+  getUsersByGroup: (req, res) => {
+    console.log(req.isAuthenticated());
+    db.User.selectAllByGroup(req.params.id, data => {
+      res.status(200).json(data);
+    });
+  },
   updateUserById: (req, res) => {
     console.log(req.isAuthenticated());
     const userData = req.body.vals; // grab onto the new user array of values

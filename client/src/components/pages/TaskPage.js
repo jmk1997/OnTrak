@@ -6,6 +6,7 @@ import { withRouter } from "react-router";
 import API from "../../utils/API";
 import convertDT from "../functions";
 import TaskPopup from "./TaskPopup";
+import CreateTaskPage from "./CreateTaskPage";
 
 import UserContext from "../../UserContext";
 
@@ -14,7 +15,7 @@ class TaskPage extends React.Component {
   constructor(props) {
     super(props);
   }
-  state = { tasks: [], graphData: [] };
+  state = { tasks: [], graphData: [] , members: []};
 
   componentWillMount() {
     API.getTaskByGroup(this.props.groupID).then(res => {
@@ -23,9 +24,13 @@ class TaskPage extends React.Component {
     API.getTaskData(this.props.groupID).then(res =>
       this.setState({ graphData: res })
     );
+    API.getUsersByGroup(this.props.groupID).then(res => {
+      this.setState({ members: res.data });
+    });
   }
   render() {
     return (
+      
       <UserContext.Consumer>
         {({ user }) => (
           <Container className="mx-0" fluid>
@@ -53,6 +58,7 @@ class TaskPage extends React.Component {
                 />
               </Container>
               <Container className="mx-0" fluid>
+                <CreateTaskPage groupID = {this.props.groupID} user = {user.user_id}/>
                 <Table>
                   <thead>
                     <tr>
@@ -73,7 +79,7 @@ class TaskPage extends React.Component {
                         <td>{convertDT(task.deadline)}</td>
                         <td>{task.status}</td>
                         <td>
-                          <TaskPopup group = {this.props.groupID} task={task} />
+                          <TaskPopup groupID = {this.props.groupID} task={task} members= {this.state.groupUser}/>
                         </td>
                       </tr>
                     ))}
