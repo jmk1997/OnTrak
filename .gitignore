@@ -69,5 +69,5 @@ typings/
 # ignore the client/build folder 
 build/
 
-.package-lock.json
-.yarn.lock
+package-lock.json
+yarn.lock
