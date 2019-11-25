@@ -6,6 +6,7 @@ const groupRoute = require('./groups');
 const courseRoute = require('./courses');
 const taskRoute = require('./task');
 const commentRoute = require('./comment');
+const loginHistoryRoute = require('./loginHistory');
 
 // login route for Users
 router.use('/login', loginRoute);
@@ -24,6 +25,7 @@ router.use('/task', taskRoute);
 
 router.use('/comment', commentRoute);
 
+router.use('/loginHistory', loginHistoryRoute);
 // '/api' for any ongoing testing the root of /api route GOOD place for mounting middleware in router.use
 router.get('/', (req, res) => {
   res.status(200).send('Succesful get to /api route');

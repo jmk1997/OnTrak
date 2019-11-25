@@ -3,5 +3,6 @@ module.exports = {
   Group: require('./groups'),
   Course: require('./courses'),
   Task: require('./task'),
-  Comment: require('./comment')
+  Comment: require('./comment'),
+  LoginHistory: require('./loginHistory')
 };

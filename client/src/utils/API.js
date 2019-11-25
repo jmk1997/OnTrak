@@ -66,6 +66,15 @@ export default {
       return console.log(err);
     }
   },
+  getUserByUsernameWithPassword: async username => {
+    try {
+      const res = await axios.get(`/api/user/username/${username}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
   deleteUserById: async id => {
     try {
       const res = await axios.delete(`/api/user/${id}`);
@@ -331,5 +340,57 @@ export default {
     } catch (err) {
       return console.log(err);
     }
+  },
+
+
+  //LOGINS HISTORY RELATED
+
+
+  getAllLogins: async () => {
+    try {
+      const res = await axios.get("/api/loginHistory");
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getLoginsByUserId: async id => {
+    console.log(id)
+    try {
+      const res = await axios.get(`/api/loginHistory/user/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getLoginsBetweenDates: async dates => {
+    try {
+      let {startDate, endDate} = dates;
+      const res = await axios.get(`/api/loginHistory/dates`, {
+        vals: [
+          startDate,
+          endDate
+        ]
+      });
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  logNewLogin: async newLoginLog => {
+    try{
+      let {userId} = newLoginLog
+      console.log(newLoginLog);
+      const res = await axios.post("/api/loginHistory", {
+        vals: [userId]
+    });
+    console.log(res);
+    return res;
+  } catch (err) {
+    return console.log(err);
+  }
   }
 };
