@@ -16,7 +16,7 @@ const TopNavbar = () => (
 
   <UserContext.Consumer>
     {({ user, getUserLogout }) => (
-      <Navbar expand="xl" bg="primary" variant="dark" style={{ width: 'auto', float: 'left'}} >
+      <Navbar expand="xl" bg="primary" variant="dark" style={{ width: 'auto', float:'center'}} >
         <Navbar.Toggle aria-controls="responsive-top-navbar" />
         <Navbar.Collapse id="responsive-top-navbar">
           <img src={logoName} style={{width: '10%'}}/>

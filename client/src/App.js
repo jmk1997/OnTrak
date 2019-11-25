@@ -77,7 +77,7 @@ class App extends React.Component {
               
               <TopNavbar />
               
-              <Container className="mx-0" fluid>
+              <React.Fragment>
                 <Switch>
                   <PrivateAccessRoute
                     strict exact path="/"
@@ -96,7 +96,7 @@ class App extends React.Component {
                   /> */}
                   <Route component={NoMatch} />
                 </Switch>
-              </Container>
+              </React.Fragment>
             </div>
           )}
         </Router>
