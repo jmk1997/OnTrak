@@ -44,15 +44,7 @@ class DashboardPage extends React.Component {
                     <td>Updated</td>
                     <td>Status</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {this.state.recent.map(task => (
-                    <tr>
-                      <td>Name</td>
-                      <td>Updated</td>
-                      <td>Status</td>
-                    </tr>
-                  </thead>
+                </thead>          
                   <tbody>
                     {this.state.recent.map(task => (
                       <tr key={task.taskId}>
@@ -99,7 +91,6 @@ class DashboardPage extends React.Component {
                 </Table>
               </div>
             </div>
-          </div>
         </Container>
 
       )

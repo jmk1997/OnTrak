@@ -36,7 +36,7 @@ class TaskPage extends React.Component {
                 justifyContent: "space-between"
               }}
             >
-              <div>
+              <Container className="mx-0" fluid>
                 <h2>Overview</h2>
                 <HighchartsReact
                   highcharts={Highcharts}
@@ -51,8 +51,8 @@ class TaskPage extends React.Component {
                     ]
                   }}
                 />
-              </div>
-              <div>
+              </Container>
+              <Container className="mx-0" fluid>
                 <Table>
                   <thead>
                     <tr>
@@ -79,7 +79,7 @@ class TaskPage extends React.Component {
                     ))}
                   </tbody>
                 </Table>
-              </div>
+              </Container>
             </div>
           </Container>
         )}
