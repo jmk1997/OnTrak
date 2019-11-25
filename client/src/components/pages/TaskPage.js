@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 import { withRouter } from "react-router";
 import API from "../../utils/API";
 import convertDT from "../functions";
-import TaskPopup from "../TaskPopup";
+import TaskPopup from "./TaskPopup";
 
 import UserContext from "../../UserContext";
 

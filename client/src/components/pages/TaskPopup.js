@@ -2,12 +2,12 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
-import convertDT from "./functions";
+import convertDT from "../functions";
 import Switch from "react-switch";
 import Form from "react-bootstrap/Form";
 
-import UserContext from "../UserContext";
-import API from "../utils/API";
+import UserContext from "../../UserContext";
+import API from "../../utils/API";
 
 class TaskPopup extends React.Component {
   constructor(props) {
