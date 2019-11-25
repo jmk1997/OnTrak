@@ -340,7 +340,6 @@ export default {
     } catch (err) {
       return console.log(err);
     }
-<<<<<<< HEAD
   },
 
 
@@ -393,7 +392,61 @@ export default {
   } catch (err) {
     return console.log(err);
   }
-=======
->>>>>>> 5426ade7485576f57cf3e9a3a54ba6595b14ff6e
+  },
+
+
+  //LINKS RELATED
+
+
+  getAllLogins: async () => {
+    try {
+      const res = await axios.get("/api/link");
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getById: async id => {
+    try {
+      const res = await axios.get(`/api/link/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getByTaskId: async id => {
+    try {
+      const res = await axios.get(`/api/link/task/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  createNewLink: async newLink => {
+    try{
+      let {taskId, displayText, link} = newLink
+      console.log(newLink);
+      const res = await axios.post("/api/link", {
+        vals: [taskId,
+          displayText,
+          link
+        ]});
+    console.log(res);
+    return res;
+  } catch (err) {
+    return console.log(err);
   }
+  },
+  deleteLink: async id => {
+    try {
+      const res = await axios.delete(`/api/link/${id}`);
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
 };

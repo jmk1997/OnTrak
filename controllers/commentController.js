@@ -9,7 +9,6 @@ module.exports = {
     },
     getOneById: (req,res) => {
         console.log(req.isAuthenticated());
-        console.log(req.commentData);
         db.Comment.selectOneById(req.params.id, data =>{
             res.status(200).json(data);
         })
