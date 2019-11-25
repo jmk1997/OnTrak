@@ -23,22 +23,30 @@ class DashboardPage extends React.Component {
     });
   }
   render() {
-    return (
-      // <UserContext.Consumer>
-      //   {({ user }) => (
-          <Container className="mx-0" fluid>
-            <h1>{this.props.groupName} - Dashboard</h1>
+       return (
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between"
-              }}
-            >
-              <div>
-                <h3>Updates</h3>
-                <Table>
-                  <thead>
+
+        <Container className="mx-0" style={{clear: 'both'}} fluid>
+          <h1>{this.props.groupName} - Dashboard</h1>
+          <hr/>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
+            <div>
+              <h3>Updates</h3>
+              <Table>
+                <thead>
+                  <tr>
+                    <td>Name</td>
+                    <td>Updated</td>
+                    <td>Status</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.recent.map(task => (
                     <tr>
                       <td>Name</td>
                       <td>Updated</td>
@@ -91,11 +99,10 @@ class DashboardPage extends React.Component {
                 </Table>
               </div>
             </div>
-          </Container>
-      //   )}
-      //   )
-      // </UserContext.Consumer>
-    );
+          </div>
+        </Container>
+
+      )
   }
 }
 

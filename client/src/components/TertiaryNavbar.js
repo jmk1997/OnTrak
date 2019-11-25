@@ -45,9 +45,10 @@ class TertiaryNavbar extends React.Component {
       <UserContext.Consumer>
         {({ user }) => (
           <Router>
-            <Navbar expand="md" bg="primary" variant="dark" style={{width: '25%'}}>
-              <Navbar.Toggle aria-controls="responsive-top-navbar" />
-              <Navbar.Collapse id="responsive-top-navbar">
+            
+            <Navbar expand="xl" bg="primary" variant="dark" className="TerNav" style={{width: 'auto', float: 'center'}}>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}
                 <Nav>
                   <NavLink
@@ -88,6 +89,7 @@ class TertiaryNavbar extends React.Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
+            
             <Switch>
               <Route
                 exact

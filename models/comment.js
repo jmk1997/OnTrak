@@ -4,7 +4,7 @@ const connection = require("../config/connection"); // import the connection fro
 const Comment = {
   selectAll: (cb) => {
     const queryString =
-      "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments ORDER BY commentId ASC;";
+      "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments ORDER BY creationDate DESC;";
     connection.query(queryString, (err, results) => {
       if (err) throw err;
       cb(results);
@@ -20,7 +20,7 @@ const Comment = {
   },
   selectByUser: (user_id, cb) => {
      const queryString =
-       "SELECT c.commentId, c.taskId, c.creationDate, c.text, c.score FROM Comments c where userId = ?;";
+       "SELECT c.commentId, c.taskId, c.creationDate, c.text, c.score FROM Comments c where userId = ? ORDER BY c.creationDate DESC;";
      connection.execute(queryString, [user_id], (err, results) => {
        if (err) throw err;
        cb(results);
@@ -28,7 +28,7 @@ const Comment = {
   },
   selectByTask: (taskId, cb) => {
       const queryString =
-        "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments WHERE taskId=?;";
+        "SELECT commentId, taskId, userId, creationDate, text, score FROM Comments WHERE commentId=? ORDER BY creationDate DESC LIMIT 1;";
       connection.execute(queryString, [taskId], (err, results) => {
         if (err) throw err;
         cb(results);
