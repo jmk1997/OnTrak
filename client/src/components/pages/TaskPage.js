@@ -73,7 +73,7 @@ class TaskPage extends React.Component {
                         <td>{convertDT(task.deadline)}</td>
                         <td>{task.status}</td>
                         <td>
-                          <TaskPopup task={task} />
+                          <TaskPopup group = {this.props.groupID} task={task} />
                         </td>
                       </tr>
                     ))}
