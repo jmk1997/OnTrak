@@ -3,19 +3,19 @@ const db = require('../models/index.js');
 module.exports = {
   getAllLogins: (req, res) => {
     console.log(req.isAuthenticated());
-    db.loginHistory.selectAll(data => {
+    db.LoginHistory.selectAll(data => {
       res.status(200).json(data);
     });
   },
   getLoginsByUserId: (req, res) => {
     console.log(req.isAuthenticated());
-    db.loginHistory.selectByUserId(req.params.id, data => {
+    db.LoginHistory.selectByUserId(req.params.id, data => {
       res.status(200).json(data);
     });
   },
   getLoginsBetweenDates: (req, res) => {
     console.log(req.isAuthenticated());
-    db.loginHistory.selectBetweenDates(req.body.vals, data => {
+    db.LoginHistory.selectBetweenDates(req.body.vals, data => {
       res.status(200).json(data);
     });
   },
@@ -23,7 +23,7 @@ module.exports = {
     console.log(req.isAuthenticated());
     if(req.isAuthenticated()){
       console.log(req.body.vals);
-        db.loginHistory.insertOne(req.body.vals, result => {
+        db.LoginHistory.insertOne(req.body.vals, result => {
           res.status(200).json({ id: result.insertId });
         });
     }

@@ -3,7 +3,7 @@ const connection = require("../config/connection"); // import the connection fro
 const loginHistory = {
     selectAll: cb =>{
         const queryString =
-        "SELECT userId, timestamp FROM LoginHistory ORDER BY timestamp DESC;"
+        "SELECT loginHistoryId, userId, loginDatetime FROM LoginHistory ORDER BY loginDatetime DESC;"
         connection.query(queryString, (err,results) => {
             if(err) throw err;
             cb(results);
@@ -11,7 +11,7 @@ const loginHistory = {
     },
     selectByUserId: (id, cb) =>{
       const queryString =
-      "SELECT timestamp, FROM LoginHistory WHERE userId = ? ORDER BY timestamp DESC;"
+      "SELECT loginHistoryId, userId, loginDatetime, FROM LoginHistory WHERE userId = ? ORDER BY loginDatetime DESC;"
       connection.query(queryString, [id], (err,results) => {
           if(err) throw err;
           cb(results);
@@ -19,7 +19,7 @@ const loginHistory = {
     },
     selectBetweenDates: (vals, cb) => {
         const queryString =
-        "SELECT timestamp, userId FROM LoginHistory WHERE timestamp BETWEEN ? AND ?;"
+        "SELECT loginHistoryId, userId, loginDatetime FROM LoginHistory WHERE loginDatetime BETWEEN ? AND ?;"
         connection.execute(queryString, vals, (err, result) => {
             if (err) throw err;
             cb(result);

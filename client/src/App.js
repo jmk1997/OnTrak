@@ -31,6 +31,13 @@ class App extends React.Component {
             return console.log("an error occurred failed to log user in.");
           }
           this.setState({ user: res.user });
+
+          API.logNewLogin(res.user.user_id, (err, res) => { // Note: as is, this is the incorrect way to pass user_id and therefore sends null into the database
+            if(err === true) {
+              return console.log("error occurred logging new login");
+            }
+          })
+
         });
       }
     };
