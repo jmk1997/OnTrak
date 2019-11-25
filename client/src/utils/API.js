@@ -392,5 +392,61 @@ export default {
   } catch (err) {
     return console.log(err);
   }
+  },
+
+
+  //LINKS RELATED
+
+
+  getAllLinks: async () => {
+    try {
+      const res = await axios.get("/api/link");
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getLinkById: async id => {
+    try {
+      const res = await axios.get(`/api/link/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  getLinkByTaskId: async id => {
+    try {
+      const res = await axios.get(`/api/link/task/${id}`);
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
+  createNewLink: async newLink => {
+    try{
+      let {taskId, displayText, link} = newLink
+      console.log(newLink);
+      const res = await axios.post("/api/link", {
+        vals: [taskId,
+          displayText,
+          link
+        ]});
+    console.log(res);
+    return res;
+  } catch (err) {
+    return console.log(err);
   }
+  },
+  deleteLinkById: async id => {
+    try {
+      const res = await axios.delete(`/api/link/${id}`);
+      console.log(res);
+      return res;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
 };

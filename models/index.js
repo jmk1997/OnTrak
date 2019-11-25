@@ -4,5 +4,6 @@ module.exports = {
   Course: require('./courses'),
   Task: require('./task'),
   Comment: require('./comment'),
-  LoginHistory: require('./loginHistory')
+  LoginHistory: require('./loginHistory'),
+  Link: require('./link')
 };

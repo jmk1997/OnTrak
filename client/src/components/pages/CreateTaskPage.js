@@ -64,7 +64,8 @@ class CreateTaskPage extends React.Component {
           
             trigger={<Button variant="success">Create New Task</Button>}
             modal
-            contentStyle={{ margin: "100px", width: "100%", padding: "20px" }}
+            contentStyle={{ margin: "100px", width: "40%", padding: "20px", height: '65%' }}
+            className="mx-auto mb-2"
             // position="right center"
           >
                           
@@ -95,7 +96,7 @@ class CreateTaskPage extends React.Component {
                 </Form.Control>
               </Form.Group>
             </Form.Row>
-            <Button disabled={!this.isValidInput()} className="w-50 mx-auto mb-2" type="submit" size="block" variant="success">
+            <Button disabled={!this.isValidInput()} className="mx-auto mb-2" type="submit" size="block" variant="success" style={{width: '20%'}} >
               Create New Task
             </Button>
             
