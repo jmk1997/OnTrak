@@ -49,7 +49,7 @@ class SecondaryNavbar extends React.Component {
         {({ user }) => (
           <Router>
             
-            <Navbar expand="xl" bg="primary" variant="dark" className="SecNav" style={{width: '%auto', float: 'left'}}>
+            <Navbar expand="xl" bg="primary" variant="dark" className="SecNav" style={{width: 'auto', float: 'left'}}>
               <Navbar.Toggle aria-controls="responsive-top-navbar" />
               <Navbar.Collapse id="responsive-top-navbar">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}

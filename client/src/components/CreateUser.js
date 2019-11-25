@@ -4,6 +4,9 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import API from '../utils/API';
+
+import "./form.css";
+
 export default class AdminCreateUser extends React.Component {
   constructor(props) {
     super(props);
@@ -41,10 +44,10 @@ export default class AdminCreateUser extends React.Component {
   render() {
     return(
       <div>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center forms"  >
         <Col xs="12" md="11" lg="10" className="border">
-          <h1 className="text-center text-capitalize">Create User Form.</h1>
-          <Form disabled={!this.isValidInput()} onSubmit={e => this.handleSubmit(e)} className="text-center p-3">
+          <h1 className="text-center text-capitalize">Create User Form</h1>
+          <Form disabled={!this.isValidInput()} onSubmit={e => this.handleSubmit(e)} className="formSubmit">
             <Form.Row className="justify-content-center">
               <Form.Group controlId="newUsername">
                 <Form.Label>New User's Username</Form.Label>
@@ -59,7 +62,7 @@ export default class AdminCreateUser extends React.Component {
             </Form.Row>
             <Form.Row className="justify-content-center">
               <Form.Group controlId="newAId">
-                <Form.Label>New User's Access Rights</Form.Label>
+                <Form.Label>New User's Access Rights<br/>(1 = Student, 2 = Professor, 3 = Admin)</Form.Label>
                 <Form.Control size="lg" onChange={this.handleInputChange} type="number" min="1" max="3" name="access_id" placeholder="1" />
               </Form.Group>
             </Form.Row>
