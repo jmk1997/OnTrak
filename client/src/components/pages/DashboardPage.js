@@ -22,9 +22,11 @@ class DashboardPage extends React.Component {
     API.groupInfo(this.props.groupID).then(res => {
       this.setState({ courseInfo: res[0] });
     });
-    API.getUserRating(this.props.parse).then(res => {
-      this.setSTate({score:res.data})
-    })
+    API.getUserRating( [this.props.user, this.props.groupID] ).then(res => {
+      this.setState({score: res})
+    });
+    console.log(this.state.score);
+    
   }
   render() {
        return (

@@ -130,7 +130,7 @@ class TaskPopup extends React.Component {
                           />
                         </Form.Group>
                       </Form.Row>
-                      <Button
+                    {user.access_id === 1 ? (<Button
                         // disabled={!this.isValidInput()}
                         className="w-50 mx-auto mb-2"
                         type="submit"
@@ -138,7 +138,7 @@ class TaskPopup extends React.Component {
                         variant="success"
                       >
                         Add Link
-                      </Button>
+                    </Button>) : (<div/>)}
                     </Form>
                   ) : (
                     <div />
@@ -202,7 +202,7 @@ class TaskPopup extends React.Component {
                           />
                         </Form.Group>
                       </Form.Row>
-                      <Button
+                      {user.access_id === 1 ? (<Button
                         // disabled={!this.isValidInput()}
                         className="w-50 mx-auto mb-2"
                         type="submit"
@@ -210,7 +210,7 @@ class TaskPopup extends React.Component {
                         variant="success"
                       >
                         Add Comment
-                      </Button>
+                      </Button>) : (<div/>)}
                     </Form>
                   ) : (
                     <div />

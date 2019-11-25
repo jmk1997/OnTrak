@@ -311,7 +311,7 @@ export default {
   getUserRating: async vals => {
     try {
       let{ userId, groupID } = vals;
-      const res = await axios.post(`/api/comment/user/`, {vals: [userId, groupID]});
+      const res = await axios.post(`/api/comment/user/`, {dat: [userId, groupID]});
       console.log(res);
       return res.data;
     } catch (err) {

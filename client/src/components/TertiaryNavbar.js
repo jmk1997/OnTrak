@@ -94,7 +94,7 @@ class TertiaryNavbar extends React.Component {
               <Route
                 exact
                 path={`/group=${this.props.groupID}`}
-                render={() => <DashboardPage groupID={this.props.groupID} groupName={this.props.groupName} parse = {user.user_Id, this.props.groupID}/>}
+                render={() => <DashboardPage groupID={this.props.groupID} groupName={this.props.groupName} user = {user.user_id}/>}
               />
 
               {/* This is where tasks are bound to the component! */}

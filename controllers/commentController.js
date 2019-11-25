@@ -27,7 +27,7 @@ module.exports = {
     },
     getUserRating: (req,res) => {
       console.log(req.isAuthenticated());
-      db.Comment.getUserRating(req.params.vals, data =>{
+      db.Comment.getUserRating(req.params.dat, data =>{
           res.status(200).json(data);
       })
   },
