@@ -37,7 +37,7 @@ class TaskPage extends React.Component{
   render() { 
     let {createNewTask} = this.state;
     return (
-    <Container>
+    <Container style={{clear: 'both'}}>
       <h1>{this.props.groupName} - Tasks</h1>
       <hr/>
       <div

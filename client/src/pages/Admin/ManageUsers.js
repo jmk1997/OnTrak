@@ -29,8 +29,8 @@ export default class ManageUsers extends React.Component {
     return (
       <UserContext.Consumer>
         {({ user }) => (
-          <Row className="text-center text-white">
-            <Col xs="12">
+          <Row className="text-center text-white" style={{clear: 'both'}}>
+            <Col xs="12" >
               <h1>Manage Users</h1>
               <ButtonGroup size="lg" className="mb-3">
                 <Button

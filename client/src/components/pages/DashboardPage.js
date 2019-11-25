@@ -25,7 +25,7 @@ class DashboardPage extends React.Component{
        return (
          
         
-        <Container className="mx-0" fluid>
+        <Container className="mx-0" style={{clear: 'both'}} fluid>
           <h1>{this.props.groupName} - Dashboard</h1>
           <hr/>
           <div

@@ -16,10 +16,10 @@ const TopNavbar = () => (
 
   <UserContext.Consumer>
     {({ user, getUserLogout }) => (
-      <Navbar expand="md" bg="primary" variant="dark" >
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <img src={logoName} style={{width: '5%', padding: '5px'}}/>
+      <Navbar expand="xl" bg="primary" variant="dark" style={{ width: 'auto', float: 'left'}} >
+        <Navbar.Toggle aria-controls="responsive-top-navbar" />
+        <Navbar.Collapse id="responsive-top-navbar">
+          <img src={logoName} style={{width: '10%'}}/>
           
           <Nav className="mr-auto">
           
@@ -80,11 +80,13 @@ const TopNavbar = () => (
             </NavLink> */}
             
           </Nav>
+          
         </Navbar.Collapse>
         <ButtonGroup
           size="sm"
           aria-label="Navbar action buttons"
           className="p-0"
+          style={{float: 'right'}}
         >
           <Button
             disabled
@@ -106,6 +108,7 @@ const TopNavbar = () => (
 
         </ButtonGroup>
       </Navbar>
+      
     )}
   </UserContext.Consumer>
 );

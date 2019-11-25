@@ -74,8 +74,9 @@ class App extends React.Component {
             </Container>
           ) : (
             <div>
-      
+              
               <TopNavbar />
+              
               <Container className="mx-0" fluid>
                 <Switch>
                   <PrivateAccessRoute
