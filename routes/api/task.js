@@ -12,6 +12,7 @@ router.route('/:id')
   .delete(taskController.deleteById)
   .get(taskController.getTaskByGroupId)
   .post(taskController.markTaskAsDone)
+  .post(taskController.markTaskAsNotDone)
 //=======================================================
 router.route('/recent/:id')
   .get(taskController.getRecentTasksByGroupId)

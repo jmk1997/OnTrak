@@ -35,10 +35,10 @@ module.exports = {
       res.status(200).json(data);
     });
   },
-  getUserByUsernameWithPassword: (req, res) => {
+  getUsersByGroup: (req, res) => {
     console.log(req.isAuthenticated());
-    db.User.getUserByUsernameWithPassword(req.params.username, data => {
-      res.status(200).jason(data);
+    db.User.selectAllByGroup(req.params.id, data => {
+      res.status(200).json(data);
     });
   },
   updateUserById: (req, res) => {

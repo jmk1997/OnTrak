@@ -27,7 +27,7 @@ const Task = {
     },
     insertOne: (vals, cb) => {
         const queryString =
-        "INSERT INTO Tasks(groupId, description, deadline, taskName, userId, updatedDate) VALUES(?,?,?,?,?, CURDATE())"
+        "INSERT INTO Tasks(groupId, description, deadline, taskName, userId, updatedDate) VALUES(?,?,?,?,?, CURDATE());"
         connection.execute(queryString, vals, (err, result) => {
             if (err) throw err;
             cb(result);
@@ -51,6 +51,15 @@ const Task = {
         }
         );
     },
+    markTaskAsNotDone: (id,cb) =>{
+      const queryString = 
+        "Update Tasks SET status='Not Done', updatedDate = CURDATE() where taskId = ?;";
+        connection.execute(queryString, id, (err, result) => {
+          if(err) throw err;
+          cb(result);
+        }
+        );
+    },
     getCompletionData: (id, cb) =>{
       const queryString =
       "SELECT s.username as name, count(userId) as y from Tasks t join Users s on t.userId=s.user_id where groupId = ? and status='Done' group by userId;"
@@ -61,7 +70,7 @@ const Task = {
     },
     getUnCompletionData: (id, cb) =>{
       const queryString =
-      "SELECT 'Not Done' as name, count(userId) as y from Tasks t join Users s on t.userId=s.user_id where groupId = ? and status='Not done';"
+      "SELECT 'Not Done' as name, count(userId) as y from Tasks t join Users s on t.userId=s.user_id where groupId = ? and status='Not Done';"
       connection.query(queryString, [id], (err,results) => {
           if(err) throw err;
           cb(results);

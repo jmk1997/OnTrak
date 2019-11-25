@@ -16,13 +16,13 @@ const TopNavbar = () => (
 
   <UserContext.Consumer>
     {({ user, getUserLogout }) => (
-      <Navbar expand="xl" bg="primary" variant="dark" style={{ width: 'auto', float: 'left'}} >
+      <Navbar expand="xl" bg="primary" variant="dark" style={{ width: 'auto', float:'center'}} >
         <Navbar.Toggle aria-controls="responsive-top-navbar" />
         <Navbar.Collapse id="responsive-top-navbar">
-          <img src={logoName} style={{width: '10%'}}/>
-          
+          <img src={logoName} style={{width: '5%'}}/>
+
           <Nav className="mr-auto">
-          
+
             <RenderIfAId aId={1}>
               <NavLink
                 exact
@@ -40,7 +40,7 @@ const TopNavbar = () => (
                 to="/"
                 className="nav-link"
                 activeClassName="active"
-                
+
               >
                 Courses
               </NavLink>
@@ -78,9 +78,9 @@ const TopNavbar = () => (
             {/* <NavLink exact to="/about" className="nav-link" activeClassName="active">
               About
             </NavLink> */}
-            
+
           </Nav>
-          
+
         </Navbar.Collapse>
         <ButtonGroup
           size="sm"
@@ -108,10 +108,9 @@ const TopNavbar = () => (
 
         </ButtonGroup>
       </Navbar>
-      
+
     )}
   </UserContext.Consumer>
 );
 
 export default withRouter(TopNavbar);
-

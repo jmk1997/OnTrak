@@ -89,5 +89,10 @@ module.exports = {
         db.Task.markTaskAsDone(req.params.id, data =>{
           res.status(200).json(data);
         });
+      },
+      markTaskAsNotDone: (req, res) => {
+        db.Task.markTaskAsNotDone(req.params.id, data =>{
+          res.status(200).json(data);
+        });
       }
 }
