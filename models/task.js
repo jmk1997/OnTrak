@@ -27,7 +27,7 @@ const Task = {
     },
     insertOne: (vals, cb) => {
         const queryString =
-        "INSERT INTO Tasks(groupId, description, deadline, taskName, userId, updatedDate) VALUES(?,?,?,?, (SELECT u.user_id FROM Users u join UserGroupRelation ugr on ugr.user_id=u.user_id where u.username = ? and ugr.group_id = ?), CURDATE());"
+        "INSERT INTO Tasks(groupId, description, deadline, taskName, userId, updatedDate) VALUES(?,?,?,?,?, CURDATE());"
         connection.execute(queryString, vals, (err, result) => {
             if (err) throw err;
             cb(result);

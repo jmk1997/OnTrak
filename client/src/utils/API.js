@@ -246,13 +246,12 @@ export default {
         description,
         deadline,
         taskName,
-        username,
-        groupId2,
+        userId,
         status
       } = newTask;
       const res = await axios.post("/api/task", {
         //If we want to autogenerate a value, change one of the values here
-        vals: [groupId, description, deadline, taskName, username, groupId2]
+        vals: [groupId, description, deadline, taskName, userId]
       });
       console.log(res);
       return res;

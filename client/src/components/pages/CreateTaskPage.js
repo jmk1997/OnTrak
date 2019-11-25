@@ -45,7 +45,6 @@ class CreateTaskPage extends React.Component {
       deadline : '',
       taskName: '',
       userId: '',
-      groupId2: this.props.groupID,
 
       members: []
     };
@@ -92,7 +91,7 @@ class CreateTaskPage extends React.Component {
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Label><h5>Assign to</h5></Form.Label>
                 <Form.Control size = "lg" onChange={this.handleInputChange} as="select" name="userId">
-                  {this.state.members.map(member =>( <option>{member.username}</option>))}
+                  {this.state.members.map(member =>( <option value={member.user_id}>{member.username}</option>))}
                 </Form.Control>
               </Form.Group>
             </Form.Row>
