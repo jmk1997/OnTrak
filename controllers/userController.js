@@ -35,6 +35,12 @@ module.exports = {
       res.status(200).json(data);
     });
   },
+  getUserByUsernameWithPassword: (req, res) => {
+    console.log(req.isAuthenticated());
+    db.User.getUserByUsernameWithPassword(req.params.username, data => {
+      res.status(200).jason(data);
+    });
+  },
   updateUserById: (req, res) => {
     console.log(req.isAuthenticated());
     const userData = req.body.vals; // grab onto the new user array of values
