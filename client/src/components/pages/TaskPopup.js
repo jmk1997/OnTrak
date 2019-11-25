@@ -48,7 +48,8 @@ class TaskPopup extends React.Component {
           <Popup
             trigger={<Button>View</Button>}
             modal
-            contentStyle={{ margin: "100px", width: "100%", padding: "20px" }}
+            contentStyle={{ margin: "100px", width: "50%", padding: "20px" }}
+            className="mx-auto mb-2"
             // position="right center"
           >
             <div
@@ -61,6 +62,19 @@ class TaskPopup extends React.Component {
             >
               <div>
                 <h1>{this.props.task.taskName}</h1>
+                <h2 >
+                    Assignee:{" "}
+                    {this.props.task.userId === user.user_id
+                      ? "You"
+                      : this.props.task.username}
+                  </h2>
+
+                  <h2>
+                    Due: {convertDT(this.props.task.deadline)}
+                  </h2>
+
+                  <br/>
+                  {/*
                 <div
                   style={{
                     display: "flex",
@@ -68,19 +82,14 @@ class TaskPopup extends React.Component {
                     alignItems: "center"
                   }}
                 >
-                  <h2>
-                    Assignee:{" "}
-                    {this.props.task.userId === user.user_id
-                      ? "You"
-                      : this.props.task.username}
-                  </h2>
-
-                  <h2 style={{ textAlign: "right" }}>
-                    Due: {convertDT(this.props.task.deadline)}
-                  </h2>
+                  
+                      
+                  
                 </div>
+                */}
                 <div
                   style={{ display: "flex", justifyContent: "space-around" }}
+                  
                 >
                   <div>
                     <h3>Links:</h3>

@@ -398,7 +398,7 @@ export default {
   //LINKS RELATED
 
 
-  getAllLogins: async () => {
+  getAllLinks: async () => {
     try {
       const res = await axios.get("/api/link");
       console.log(res);
@@ -407,7 +407,7 @@ export default {
       return console.log(err);
     }
   },
-  getById: async id => {
+  getLinkById: async id => {
     try {
       const res = await axios.get(`/api/link/${id}`);
       console.log(res);
@@ -416,7 +416,7 @@ export default {
       return console.log(err);
     }
   },
-  getByTaskId: async id => {
+  getLinkByTaskId: async id => {
     try {
       const res = await axios.get(`/api/link/task/${id}`);
       console.log(res);
@@ -440,7 +440,7 @@ export default {
     return console.log(err);
   }
   },
-  deleteLink: async id => {
+  deleteLinkById: async id => {
     try {
       const res = await axios.delete(`/api/link/${id}`);
       console.log(res);
