@@ -44,8 +44,10 @@ class TaskPopup extends React.Component {
       checked: this.props.task.status === "Not Done" ? false : true
     });
     API.getCommentByTaskId(this.props.task.taskId).then(res => {
-      console.log("COMMENTS HERE:", res);
       this.setState({ comments: res });
+    });
+    API.getLinkByTaskId(this.props.task.taskId).then(res => {
+      this.setState({ links: res });
     });
   }
   render() {
@@ -64,16 +66,7 @@ class TaskPopup extends React.Component {
               flexDirection: "column",
               justifyContent: "space-between"
             }}
-            // position="right center"
           >
-            {/* <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-                justifyContent: "space-between"
-              }}
-            > */}
             <div>
               <h1>{this.props.task.taskName}</h1>
               <h4 style={{ color: "black" }}>{this.props.task.description}</h4>
@@ -98,6 +91,17 @@ class TaskPopup extends React.Component {
               <div style={{ display: "flex", justifyContent: "space-around" }}>
                 <div>
                   <h3>Links:</h3>
+                  <Table>
+                    <tbody>
+                      {this.state.links.map(l => (
+                        <tr>
+                          <td>
+                            <a href={`http://${l.link}`} target="_">{l.displayText}</a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
                   {this.props.task.userId === user.user_id ? (
                     <Form
                       // disabled={!this.isValidInput()}
@@ -137,17 +141,27 @@ class TaskPopup extends React.Component {
                       </Button>
                     </Form>
                   ) : (
-                    // <Button>Add Link</Button>
                     <div />
                   )}
-                  {/* {this.state.links.map(l => (
-                      <p style={{ textAlign: "left" }} key={l.id}>
-                        {c.text}
-                      </p>
-                    ))} */}
                 </div>
                 <div>
                   <h3>Comments:</h3>
+                  <Table>
+                    <thead>
+                      <tr>
+                        <td>Comment</td>
+                        <td>Score</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.comments.map(c => (
+                        <tr>
+                          <td>{c.text}</td>
+                          <td>{c.score}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
                   {this.props.task.userId !== user.user_id ? (
                     <Form
                       // disabled={!this.isValidInput()}
@@ -201,22 +215,6 @@ class TaskPopup extends React.Component {
                   ) : (
                     <div />
                   )}
-                  <Table>
-                    <thead>
-                      <tr>
-                        <td>Comment</td>
-                        <td>Score</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.state.comments.map(c => (
-                        <tr>
-                          <td>{c.text}</td>
-                          <td>{c.score}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </Table>
                 </div>
               </div>
               <div
