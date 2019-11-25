@@ -41,6 +41,13 @@ const Comment = {
       cb(result);
     });
   },
+  getUserRating: (vals, cb) => {
+    const queryString = "SELECT AVG(score) FROM Groups g join (SELECT t.taskId, c.score, t.groupID FROM Comments c join Tasks t on c.taskId = t.taskId WHERE c.userId = ?) p on g.group_id = p.groupId where groupID = ?;";
+    connection.execute(queryString, [vals], (err, result) => {
+      if (err) throw err;
+      cb(result);
+    });
+  },
   insertOne: (vals, cb) => {
     const queryString =
       "INSERT INTO Comments (taskId, userId, text, score) VALUES (?,?,?,?)";

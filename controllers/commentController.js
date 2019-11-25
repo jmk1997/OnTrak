@@ -25,6 +25,12 @@ module.exports = {
             res.status(200).json(data);
         })
     },
+    getUserRating: (req,res) => {
+      console.log(req.isAuthenticated());
+      db.Comment.getUserRating(req.params.vals, data =>{
+          res.status(200).json(data);
+      })
+  },
     deleteById: (req, res) => {
         console.log(req.isAuthenticated());
         if(req.isAuthenticated){

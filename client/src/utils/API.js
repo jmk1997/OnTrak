@@ -308,6 +308,16 @@ export default {
       return console.log(err);
     }
   },
+  getUserRating: async vals => {
+    try {
+      let{ userId, groupID } = vals;
+      const res = await axios.post(`/api/comment/user/`, {vals: [userId, groupID]});
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      return console.log(err);
+    }
+  },
   postNewComment: async newComment => {
     try {
       let { taskId, userId, text, score } = newComment;

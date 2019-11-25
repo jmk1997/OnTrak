@@ -20,4 +20,8 @@ router.route('/task/:id')
 // Matches with "/api/comment/user/:id"
 router.route('/user/:id')
     .get(commentController.getAllByUser)
+    
+router.route('/user')
+    .post(commentController.getUserRating)
+
 module.exports = router;

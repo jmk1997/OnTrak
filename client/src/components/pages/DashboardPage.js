@@ -11,8 +11,9 @@ var Highcharts = require("highcharts");
 class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
+    
   }
-  state = { recent: [], courseInfo: [] };
+  state = { recent: [], courseInfo: [] , score:''};
 
   componentWillMount() {
     API.getRecentTaskByGroup(this.props.groupID).then(res =>
@@ -21,6 +22,9 @@ class DashboardPage extends React.Component {
     API.groupInfo(this.props.groupID).then(res => {
       this.setState({ courseInfo: res[0] });
     });
+    API.getUserRating(this.props.parse).then(res => {
+      this.setSTate({score:res.data})
+    })
   }
   render() {
        return (
@@ -62,6 +66,7 @@ class DashboardPage extends React.Component {
                 <h6 className="text-dark">
                   {this.state.courseInfo.group_desc}
                 </h6>
+                <h6> {this.state.score} </h6>
                 {/* ))} */}
               </div>
               <div>
