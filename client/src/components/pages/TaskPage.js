@@ -41,9 +41,10 @@ class TaskPage extends React.Component {
                 justifyContent: "space-between"
               }}
             >
-              <Container className="mx-0" fluid>
+              <Container className="mx-0" style={{width: '50%'}} fluid>
                 <h2>Overview</h2>
                 <HighchartsReact
+                  style={{background: 'blue'}}
                   highcharts={Highcharts}
                   options={{
                     chart: { type: "pie" },
