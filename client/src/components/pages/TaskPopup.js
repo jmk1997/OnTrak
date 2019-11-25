@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+
+import Table from "react-bootstrap/Table";
 import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
 import convertDT from "../functions";
@@ -28,17 +30,24 @@ class TaskPopup extends React.Component {
     console.log("Before: ", this.state.checked);
     let isChecked = this.state.checked;
     this.setState({ checked: !isChecked });
-    // if (this.state.checked === true) {
-    //   API.markTaskAsDone(this.props.task.taskId);
-    // } else {
-    //   API.markTaskAsNotDone(this.props.task.taskId);
-    // }
+
+    if (this.state.checked === true) {
+      API.markTaskAsDone(this.props.task.taskId);
+    } else {
+      API.markTaskAsNotDone(this.props.task.taskId);
+    }
     console.log("After: ", this.state.checked);
   };
 
   componentWillMount() {
     this.setState({
       checked: this.props.task.status === "Not Done" ? false : true
+    });
+    API.getCommentByTaskId(this.props.task.taskId).then(res => {
+      this.setState({ comments: res });
+    });
+    API.getLinkByTaskId(this.props.task.taskId).then(res => {
+      this.setState({ links: res });
     });
   }
   render() {
@@ -48,140 +57,166 @@ class TaskPopup extends React.Component {
           <Popup
             trigger={<Button>View</Button>}
             modal
-            contentStyle={{ margin: "100px", width: "50%", padding: "20px" }}
-            className="mx-auto mb-2"
-            // position="right center"
+            contentStyle={{
+              margin: "100px",
+              width: "100%",
+              // height: "100%",
+              padding: "20px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between"
+            }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-                justifyContent: "space-between"
-              }}
-            >
-              <div>
-                <h1>{this.props.task.taskName}</h1>
-                <h2 >
-                    Assignee:{" "}
-                    {this.props.task.userId === user.user_id
-                      ? "You"
-                      : this.props.task.username}
-                  </h2>
+            <div>
+              <h1>{this.props.task.taskName}</h1>
+              <h4 style={{ color: "black" }}>{this.props.task.description}</h4>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}
+              >
+                <h2>
+                  Assignee:{" "}
+                  {this.props.task.userId === user.user_id
+                    ? "You"
+                    : this.props.task.username}
+                </h2>
 
-                  <h2>
-                    Due: {convertDT(this.props.task.deadline)}
-                  </h2>
-
-                  <br/>
-                  {/*
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center"
-                  }}
-                >
-                  
-                      
-                  
+                <h2 style={{ textAlign: "right" }}>
+                  Due: {convertDT(this.props.task.deadline)}
+                </h2>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-around" }}>
+                <div>
+                  <h3>Links:</h3>
+                  <Table>
+                    <tbody>
+                      {this.state.links.map(l => (
+                        <tr>
+                          <td>
+                            <a href={`http://${l.link}`} target="_">{l.displayText}</a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                  {this.props.task.userId === user.user_id ? (
+                    <Form
+                      // disabled={!this.isValidInput()}
+                      // onSubmit={e => this.handleSubmit(e)}
+                      className="text-center"
+                    >
+                      <Form.Row className="justify-content-center">
+                        <Form.Group controlId="newURL">
+                          {/* <Form.Label>Link URL</Form.Label> */}
+                          <Form.Control
+                            size="lg"
+                            // onChange={this.handleInputChange}
+                            type="text"
+                            name="url"
+                            placeholder="URL"
+                          />
+                        </Form.Group>
+                        <Form.Group controlId="newDisplay">
+                          {/* <Form.Label>Link Display</Form.Label> */}
+                          <Form.Control
+                            size="lg"
+                            // onChange={this.handleInputChange}
+                            type="text"
+                            name="display"
+                            placeholder="Display"
+                          />
+                        </Form.Group>
+                      </Form.Row>
+                      <Button
+                        // disabled={!this.isValidInput()}
+                        className="w-50 mx-auto mb-2"
+                        type="submit"
+                        size="block"
+                        variant="success"
+                      >
+                        Add Link
+                      </Button>
+                    </Form>
+                  ) : (
+                    <div />
+                  )}
                 </div>
-                */}
-                <div
-                  style={{ display: "flex", justifyContent: "space-around" }}
-                  
-                >
-                  <div>
-                    <h3>Links:</h3>
-                    {this.props.task.userId === user.user_id ? (
-                      <Form
+                <div>
+                  <h3>Comments:</h3>
+                  <Table>
+                    <thead>
+                      <tr>
+                        <td>Comment</td>
+                        <td>Score</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.comments.map(c => (
+                        <tr>
+                          <td>{c.text}</td>
+                          <td>{c.score}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                  {this.props.task.userId !== user.user_id ? (
+                    <Form
+                      // disabled={!this.isValidInput()}
+                      // onSubmit={e => this.handleSubmit(e)}
+                      className="text-center"
+                    >
+                      <Form.Row className="justify-content-center">
+                        <Form.Group controlId="comment">
+                          <Form.Control
+                            size="lg"
+                            // onChange={this.handleInputChange}
+                            type="text"
+                            name="comment"
+                            placeholder="Comment"
+                          />
+                        </Form.Group>
+                        <Form.Group controlId="score">
+                          <Form.Check
+                            inline
+                            type="radio"
+                            label="&#128577;"
+                            name="score"
+                            id="1"
+                          />
+                          <Form.Check
+                            inline
+                            type="radio"
+                            label="&#128528;"
+                            name="score"
+                            id="5"
+                          />
+                          <Form.Check
+                            inline
+                            type="radio"
+                            label="&#128512;"
+                            name="score"
+                            id="10"
+                          />
+                        </Form.Group>
+                      </Form.Row>
+                      <Button
                         // disabled={!this.isValidInput()}
-                        // onSubmit={e => this.handleSubmit(e)}
-                        className="text-center p-3"
+                        className="w-50 mx-auto mb-2"
+                        type="submit"
+                        size="block"
+                        variant="success"
                       >
-                        <Form.Row className="justify-content-center">
-                          <Form.Group controlId="newURL">
-                            {/* <Form.Label>Link URL</Form.Label> */}
-                            <Form.Control
-                              size="lg"
-                              // onChange={this.handleInputChange}
-                              type="text"
-                              name="url"
-                              placeholder="URL"
-                            />
-                          </Form.Group>
-                          <Form.Group controlId="newDisplay">
-                            {/* <Form.Label>Link Display</Form.Label> */}
-                            <Form.Control
-                              size="lg"
-                              // onChange={this.handleInputChange}
-                              type="text"
-                              name="display"
-                              placeholder="Display"
-                            />
-                          </Form.Group>
-                        </Form.Row>
-                        <Button
-                          // disabled={!this.isValidInput()}
-                          className="w-50 mx-auto mb-2"
-                          type="submit"
-                          size="block"
-                          variant="success"
-                        >
-                          Add Link
-                        </Button>
-                      </Form>
-                    ) : (
-                      // <Button>Add Link</Button>
-                      <div />
-                    )}
-                  </div>
-                  <div>
-                    <h3>Comments:</h3>
-                    {this.props.task.userId !== user.user_id ? (
-                      <Form
-                        // disabled={!this.isValidInput()}
-                        // onSubmit={e => this.handleSubmit(e)}
-                        className="text-center p-3"
-                      >
-                        <Form.Row className="justify-content-center">
-                          <Form.Group controlId="comment">
-                            <Form.Control
-                              size="lg"
-                              // onChange={this.handleInputChange}
-                              type="text"
-                              name="comment"
-                              placeholder="Comment"
-                            />
-                          </Form.Group>
-                          {/* <Form.Group controlId="score"> */}
-                            <Form.Check inline type="radio" label="&#128577;" id="1" />
-                            <Form.Check inline type="radio" label="&#128528;" id="2" />
-                            <Form.Check inline type="radio" label="&#128512;" id="3" />
-                          {/* </Form.Group> */}
-                        </Form.Row>
-                        <Button
-                          // disabled={!this.isValidInput()}
-                          className="w-50 mx-auto mb-2"
-                          type="submit"
-                          size="block"
-                          variant="success"
-                        >
-                          Add Comment
-                        </Button>
-                      </Form>
-                    ) : (
-                      <div />
-                    )}
-                    {this.state.comments.map(c => (
-                      <p style={{ textAlign: "left" }} key={c.commentId}>
-                        {c.text}
-                      </p>
-                    ))}
-                  </div>
+                        Add Comment
+                      </Button>
+                    </Form>
+                  ) : (
+                    <div />
+                  )}
                 </div>
               </div>
-
               <div
                 style={{
                   display: "flex",
@@ -199,6 +234,7 @@ class TaskPopup extends React.Component {
                 <h3 style={{ marginLeft: "10px" }}>Done</h3>
               </div>
             </div>
+            {/* </div> */}
           </Popup>
         )}
       </UserContext.Consumer>

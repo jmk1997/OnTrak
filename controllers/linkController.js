@@ -21,7 +21,7 @@ module.exports = {
     },
     createNewLink: (req, res) => {
         console.log(req.isAuthenticated());
-        if(true || req.isAuthenticated()){
+        if(req.isAuthenticated()){
           const linkData = req.body.vals;
           console.log(linkData);
             db.Link.insertOne(linkData, result => {
