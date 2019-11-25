@@ -340,7 +340,6 @@ export default {
     } catch (err) {
       return console.log(err);
     }
-<<<<<<< HEAD
   },
 
 
@@ -393,7 +392,5 @@ export default {
   } catch (err) {
     return console.log(err);
   }
-=======
->>>>>>> 5426ade7485576f57cf3e9a3a54ba6595b14ff6e
   }
 };
