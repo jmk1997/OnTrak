@@ -9,7 +9,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-
 import UserContext from "../../UserContext";
 import API from "../../utils/API";
 
@@ -64,7 +63,7 @@ class CreateTaskPage extends React.Component {
           
             trigger={<Button variant="success">Create New Task</Button>}
             modal
-            contentStyle={{ margin: "100px", width: "40%", padding: "20px", height: '65%' }}
+            contentStyle={{ margin: "100px", width: "40%", padding: "20px", height: '78%' }}
             className="mx-auto mb-2"
             // position="right center"
           >
@@ -96,7 +95,7 @@ class CreateTaskPage extends React.Component {
                 </Form.Control>
               </Form.Group>
             </Form.Row>
-            <Button disabled={!this.isValidInput()} className="mx-auto mb-2" type="submit" size="block" variant="success" style={{width: '20%'}} >
+            <Button disabled={!this.isValidInput()} className="mx-auto mb-2" type="submit" size="block" variant="success" style={{width: 'auto'}} >
               Create New Task
             </Button>
             

@@ -48,7 +48,7 @@ class TaskPopup extends React.Component {
           <Popup
             trigger={<Button>View</Button>}
             modal
-            contentStyle={{ margin: "100px", width: "50%", padding: "20px" }}
+            contentStyle={{ margin: "auto", width: "50%", padding: "20px", height: "90%" }}
             className="mx-auto mb-2"
             // position="right center"
           >
