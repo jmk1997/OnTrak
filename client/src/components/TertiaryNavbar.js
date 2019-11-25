@@ -21,8 +21,6 @@ import { withRouter } from "react-router";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import DashboardPage from "./pages/DashboardPage";
 
-import "./navs.css";
-
 var Highcharts = require("highcharts");
 
 
@@ -47,10 +45,10 @@ class TertiaryNavbar extends React.Component {
       <UserContext.Consumer>
         {({ user }) => (
           <Router>
-            <div className="TerNav">
-            <Navbar expand="md" bg="primary" variant="dark" style={{width: '20%', float: 'left'}}>
-              <Navbar.Toggle aria-controls="responsive-top-navbar" />
-              <Navbar.Collapse id="responsive-top-navbar">
+            
+            <Navbar expand="xl" bg="primary" variant="dark" className="TerNav" style={{width: 'auto', float: 'left', clear: 'right'}}>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
                 {/* <Navbar.Brand>OnTrak</Navbar.Brand> */}
                 <Nav>
                   <NavLink
@@ -91,7 +89,7 @@ class TertiaryNavbar extends React.Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-            </div>
+            
             <Switch>
               <Route
                 exact
