@@ -96,17 +96,20 @@ class TaskPopup extends React.Component {
                       {this.state.links.map(l => (
                         <tr>
                           <td>
-                            <a href={`http://${l.link}`} target="_">{l.displayText}</a>
+                            <a href={`http://${l.link}`} target="_">
+                              {l.displayText}
+                            </a>
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </Table>
-                  {this.props.task.userId === user.user_id ? (
+                  {this.props.task.userId === user.user_id &&
+                  user.access_id === 1 ? (
                     <Form
-                      // disabled={!this.isValidInput()}
-                      // onSubmit={e => this.handleSubmit(e)}
-                      className="text-center"
+                    // disabled={!this.isValidInput()}
+                    // onSubmit={e => this.handleSubmit(e)}
+                    // className="text-center"
                     >
                       <Form.Row className="justify-content-center">
                         <Form.Group controlId="newURL">
@@ -130,15 +133,17 @@ class TaskPopup extends React.Component {
                           />
                         </Form.Group>
                       </Form.Row>
-                    {user.access_id === 1 ? (<Button
-                        // disabled={!this.isValidInput()}
-                        className="w-50 mx-auto mb-2"
-                        type="submit"
-                        size="block"
-                        variant="success"
-                      >
-                        Add Link
-                    </Button>) : (<div/>)}
+                      
+                        <Button
+                          // disabled={!this.isValidInput()}
+                          className="w-50 mx-auto mb-2"
+                          type="submit"
+                          size="block"
+                          variant="success"
+                        >
+                          Add Link
+                        </Button>
+                      }
                     </Form>
                   ) : (
                     <div />
@@ -157,16 +162,27 @@ class TaskPopup extends React.Component {
                       {this.state.comments.map(c => (
                         <tr>
                           <td>{c.text}</td>
-                          <td>{c.score}</td>
+                          <td>
+                            {c.score === 1 ? (
+                              <p>&#128577;</p>
+                            ) : c.score === 5 ? (
+                              <p>&#128528;</p>
+                            ) : c.score === 10 ? (
+                              <p>&#128512;</p>
+                            ) : (
+                              ""
+                            )}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </Table>
-                  {this.props.task.userId !== user.user_id ? (
+                  {this.props.task.userId !== user.user_id &&
+                  user.access_id === 1 ? (
                     <Form
-                      // disabled={!this.isValidInput()}
-                      // onSubmit={e => this.handleSubmit(e)}
-                      className="text-center"
+                    // disabled={!this.isValidInput()}
+                    // onSubmit={e => this.handleSubmit(e)}
+                    // className="text-center"
                     >
                       <Form.Row className="justify-content-center">
                         <Form.Group controlId="comment">
@@ -202,7 +218,7 @@ class TaskPopup extends React.Component {
                           />
                         </Form.Group>
                       </Form.Row>
-                      {user.access_id === 1 ? (<Button
+                      <Button
                         // disabled={!this.isValidInput()}
                         className="w-50 mx-auto mb-2"
                         type="submit"
@@ -210,14 +226,15 @@ class TaskPopup extends React.Component {
                         variant="success"
                       >
                         Add Comment
-                      </Button>) : (<div/>)}
+                      </Button>
+                      )}
                     </Form>
                   ) : (
                     <div />
                   )}
                 </div>
               </div>
-              <div
+              {user.access_id === 1 ? (<div
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -232,7 +249,7 @@ class TaskPopup extends React.Component {
                   checkedIcon={false}
                 />
                 <h3 style={{ marginLeft: "10px" }}>Done</h3>
-              </div>
+              </div>) : <div/>}
             </div>
             {/* </div> */}
           </Popup>

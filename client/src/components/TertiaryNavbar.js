@@ -68,14 +68,15 @@ class TertiaryNavbar extends React.Component {
                     Tasks
                   </NavLink>
                   {this.props.viewChat === true ? (
-                    <NavLink
-                      exact
-                      to={`/group=${this.props.groupID}/chat`}
-                      className="nav-link"
-                      activeClassName="active"
-                    >
-                      Chat
-                    </NavLink>
+                    // <NavLink
+                    //   exact
+                    //   to={`/group=${this.props.groupID}/chat`}
+                    //   className="nav-link"
+                    //   activeClassName="active"
+                    // >
+                    //   Chat
+                    // </NavLink>
+                    <div/>
                   ) : (
                     <NavLink
                       exact
@@ -104,16 +105,17 @@ class TertiaryNavbar extends React.Component {
                 render = {()=> <TaskPage groupID={this.props.groupID} groupName={this.props.groupName} />}
               />
               {this.props.viewChat === true ? (
-                <Route
-                  exact
-                  path={`/group=${this.props.groupID}/chat`}
-                  render={() => (
-                    <Container className="mx-0" fluid>
-                      <h1>{this.props.groupName} - Chat</h1>
-                      <img style={{ width: "100%" }} src={fakeChat}></img>
-                    </Container>
-                  )}
-                />
+                // <Route
+                //   exact
+                //   path={`/group=${this.props.groupID}/chat`}
+                //   render={() => (
+                //     <Container className="mx-0" fluid>
+                //       <h1>{this.props.groupName} - Chat</h1>
+                //       <img style={{ width: "100%" }} src={fakeChat}></img>
+                //     </Container>
+                //   )}
+                // />
+                <div/>
               ) : (
                 <Route
                   exact
